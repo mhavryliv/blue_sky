@@ -1,0 +1,4 @@
+/data/eva/blueSky/DemoRunner/Builds/Android/app/.externalNativeBuild/cmake/release_Release/x86_64/CMakeFiles/rebuild_cache.dir
+/data/eva/blueSky/DemoRunner/Builds/Android/app/.externalNativeBuild/cmake/release_Release/x86_64/CMakeFiles/edit_cache.dir
+/data/eva/blueSky/DemoRunner/Builds/Android/app/.externalNativeBuild/cmake/release_Release/x86_64/CMakeFiles/juce_jni.dir
+/data/eva/blueSky/DemoRunner/Builds/Android/app/.externalNativeBuild/cmake/release_Release/x86_64/CMakeFiles/cpufeatures.dir

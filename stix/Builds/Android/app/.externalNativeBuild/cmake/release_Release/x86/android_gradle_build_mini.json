@@ -1,0 +1,24 @@
+{
+  "buildFiles": [
+    "/Users/mhavryliv/Library/Android/sdk/ndk/20.1.5948944/build/cmake/platforms.cmake",
+    "/data/eva/blueSky/DemoRunner/Builds/Android/app/CMakeLists.txt",
+    "/Users/mhavryliv/Library/Android/sdk/ndk/20.1.5948944/build/cmake/android.toolchain.cmake"
+  ],
+  "cleanCommands": [
+    "/Users/mhavryliv/Library/Android/sdk/cmake/3.10.2.4988404/bin/cmake --build /data/eva/blueSky/DemoRunner/Builds/Android/app/.externalNativeBuild/cmake/release_Release/x86 --target clean"
+  ],
+  "libraries": {
+    "juce_jni-Release-x86": {
+      "artifactName": "juce_jni",
+      "buildCommand": "/Users/mhavryliv/Library/Android/sdk/cmake/3.10.2.4988404/bin/cmake --build /data/eva/blueSky/DemoRunner/Builds/Android/app/.externalNativeBuild/cmake/release_Release/x86 --target juce_jni",
+      "abi": "x86",
+      "output": "/data/eva/blueSky/DemoRunner/Builds/Android/app/build/intermediates/cmake/release_/release/obj/x86/libjuce_jni.so"
+    },
+    "cpufeatures-Release-x86": {
+      "artifactName": "cpufeatures",
+      "buildCommand": "/Users/mhavryliv/Library/Android/sdk/cmake/3.10.2.4988404/bin/cmake --build /data/eva/blueSky/DemoRunner/Builds/Android/app/.externalNativeBuild/cmake/release_Release/x86 --target cpufeatures",
+      "abi": "x86",
+      "output": "/data/eva/blueSky/DemoRunner/Builds/Android/app/.externalNativeBuild/cmake/release_Release/x86/libcpufeatures.a"
+    }
+  }
+}

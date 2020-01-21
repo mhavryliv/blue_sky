@@ -1,0 +1,4 @@
+/data/eva/blueSky/DemoRunner/Builds/Android/app/.externalNativeBuild/cmake/debug_Debug/armeabi-v7a/CMakeFiles/rebuild_cache.dir
+/data/eva/blueSky/DemoRunner/Builds/Android/app/.externalNativeBuild/cmake/debug_Debug/armeabi-v7a/CMakeFiles/edit_cache.dir
+/data/eva/blueSky/DemoRunner/Builds/Android/app/.externalNativeBuild/cmake/debug_Debug/armeabi-v7a/CMakeFiles/juce_jni.dir
+/data/eva/blueSky/DemoRunner/Builds/Android/app/.externalNativeBuild/cmake/debug_Debug/armeabi-v7a/CMakeFiles/cpufeatures.dir
