@@ -1,10 +1,10 @@
 Executable : /Users/mhavryliv/Library/Android/sdk/cmake/3.10.2.4988404/bin/cmake
 arguments : 
--H/data/eva/blueSky/DemoRunner/Builds/Android/app
--B/data/eva/blueSky/DemoRunner/Builds/Android/app/.externalNativeBuild/cmake/debug_Debug/armeabi-v7a
+-H/data/eva/blue_sky/stix/Builds/Android/app
+-B/data/eva/blue_sky/stix/Builds/Android/app/.externalNativeBuild/cmake/debug_Debug/armeabi-v7a
 -DANDROID_ABI=armeabi-v7a
 -DANDROID_PLATFORM=android-23
--DCMAKE_LIBRARY_OUTPUT_DIRECTORY=/data/eva/blueSky/DemoRunner/Builds/Android/app/build/intermediates/cmake/debug_/debug/obj/armeabi-v7a
+-DCMAKE_LIBRARY_OUTPUT_DIRECTORY=/data/eva/blue_sky/stix/Builds/Android/app/build/intermediates/cmake/debug_/debug/obj/armeabi-v7a
 -DCMAKE_BUILD_TYPE=Debug
 -DANDROID_NDK=/Users/mhavryliv/Library/Android/sdk/ndk/20.1.5948944
 -DCMAKE_C_FLAGS=-fsigned-char

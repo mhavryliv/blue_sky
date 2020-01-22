@@ -1,4 +1,4 @@
-/data/eva/blueSky/DemoRunner/Builds/Android/app/.externalNativeBuild/cmake/release_Release/x86/CMakeFiles/rebuild_cache.dir
-/data/eva/blueSky/DemoRunner/Builds/Android/app/.externalNativeBuild/cmake/release_Release/x86/CMakeFiles/edit_cache.dir
-/data/eva/blueSky/DemoRunner/Builds/Android/app/.externalNativeBuild/cmake/release_Release/x86/CMakeFiles/juce_jni.dir
-/data/eva/blueSky/DemoRunner/Builds/Android/app/.externalNativeBuild/cmake/release_Release/x86/CMakeFiles/cpufeatures.dir
+/data/eva/blue_sky/stix/Builds/Android/app/.externalNativeBuild/cmake/release_Release/x86/CMakeFiles/rebuild_cache.dir
+/data/eva/blue_sky/stix/Builds/Android/app/.externalNativeBuild/cmake/release_Release/x86/CMakeFiles/edit_cache.dir
+/data/eva/blue_sky/stix/Builds/Android/app/.externalNativeBuild/cmake/release_Release/x86/CMakeFiles/juce_jni.dir
+/data/eva/blue_sky/stix/Builds/Android/app/.externalNativeBuild/cmake/release_Release/x86/CMakeFiles/cpufeatures.dir

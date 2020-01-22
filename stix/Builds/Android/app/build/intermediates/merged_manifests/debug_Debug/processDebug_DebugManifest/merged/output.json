@@ -1,0 +1,1 @@
+[{"outputType":{"type":"MERGED_MANIFESTS"},"apkInfo":{"type":"MAIN","splits":[],"versionCode":1,"versionName":"0.1","enabled":true,"outputFile":"app-debug_-debug.apk","fullName":"debug_Debug","baseName":"debug_-debug"},"path":"AndroidManifest.xml","properties":{"packageId":"com.mhavryliv.uts.stix","split":"","minSdkVersion":"23"}}]

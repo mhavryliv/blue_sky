@@ -1,0 +1,129 @@
+-- Merging decision tree log ---
+manifest
+ADDED from /data/eva/blue_sky/stix/Builds/Android/app/src/main/AndroidManifest.xml:3:1-26:12
+INJECTED from /data/eva/blue_sky/stix/Builds/Android/app/src/main/AndroidManifest.xml:3:1-26:12
+INJECTED from /data/eva/blue_sky/stix/Builds/Android/app/src/main/AndroidManifest.xml:3:1-26:12
+INJECTED from /data/eva/blue_sky/stix/Builds/Android/app/src/main/AndroidManifest.xml:3:1-26:12
+INJECTED from /data/eva/blue_sky/stix/Builds/Android/app/src/main/AndroidManifest.xml:3:1-26:12
+INJECTED from /data/eva/blue_sky/stix/Builds/Android/app/src/main/AndroidManifest.xml:3:1-26:12
+INJECTED from /data/eva/blue_sky/stix/Builds/Android/app/src/main/AndroidManifest.xml:3:1-26:12
+	package
+		ADDED from /data/eva/blue_sky/stix/Builds/Android/app/src/main/AndroidManifest.xml:4:11-43
+		INJECTED from /data/eva/blue_sky/stix/Builds/Android/app/src/main/AndroidManifest.xml
+		INJECTED from /data/eva/blue_sky/stix/Builds/Android/app/src/main/AndroidManifest.xml
+	android:versionName
+		ADDED from /data/eva/blue_sky/stix/Builds/Android/app/src/main/AndroidManifest.xml:3:94-119
+		INJECTED from /data/eva/blue_sky/stix/Builds/Android/app/src/main/AndroidManifest.xml
+		INJECTED from /data/eva/blue_sky/stix/Builds/Android/app/src/main/AndroidManifest.xml
+	xmlns:android
+		ADDED from /data/eva/blue_sky/stix/Builds/Android/app/src/main/AndroidManifest.xml:3:11-69
+	android:versionCode
+		ADDED from /data/eva/blue_sky/stix/Builds/Android/app/src/main/AndroidManifest.xml:3:70-93
+		INJECTED from /data/eva/blue_sky/stix/Builds/Android/app/src/main/AndroidManifest.xml
+		INJECTED from /data/eva/blue_sky/stix/Builds/Android/app/src/main/AndroidManifest.xml
+supports-screens
+ADDED from /data/eva/blue_sky/stix/Builds/Android/app/src/main/AndroidManifest.xml:5:3-133
+	android:largeScreens
+		ADDED from /data/eva/blue_sky/stix/Builds/Android/app/src/main/AndroidManifest.xml:5:78-105
+	android:smallScreens
+		ADDED from /data/eva/blue_sky/stix/Builds/Android/app/src/main/AndroidManifest.xml:5:21-48
+	android:normalScreens
+		ADDED from /data/eva/blue_sky/stix/Builds/Android/app/src/main/AndroidManifest.xml:5:49-77
+	android:anyDensity
+		ADDED from /data/eva/blue_sky/stix/Builds/Android/app/src/main/AndroidManifest.xml:5:106-131
+uses-permission#android.permission.WRITE_EXTERNAL_STORAGE
+ADDED from /data/eva/blue_sky/stix/Builds/Android/app/src/main/AndroidManifest.xml:6:3-78
+	android:name
+		ADDED from /data/eva/blue_sky/stix/Builds/Android/app/src/main/AndroidManifest.xml:6:20-76
+uses-permission#android.permission.READ_EXTERNAL_STORAGE
+ADDED from /data/eva/blue_sky/stix/Builds/Android/app/src/main/AndroidManifest.xml:7:3-77
+	android:name
+		ADDED from /data/eva/blue_sky/stix/Builds/Android/app/src/main/AndroidManifest.xml:7:20-75
+uses-permission#android.permission.ACCESS_COARSE_LOCATION
+ADDED from /data/eva/blue_sky/stix/Builds/Android/app/src/main/AndroidManifest.xml:8:3-78
+	android:name
+		ADDED from /data/eva/blue_sky/stix/Builds/Android/app/src/main/AndroidManifest.xml:8:20-76
+uses-permission#android.permission.BLUETOOTH_ADMIN
+ADDED from /data/eva/blue_sky/stix/Builds/Android/app/src/main/AndroidManifest.xml:9:3-71
+	android:name
+		ADDED from /data/eva/blue_sky/stix/Builds/Android/app/src/main/AndroidManifest.xml:9:20-69
+uses-permission#android.permission.BLUETOOTH
+ADDED from /data/eva/blue_sky/stix/Builds/Android/app/src/main/AndroidManifest.xml:10:3-65
+	android:name
+		ADDED from /data/eva/blue_sky/stix/Builds/Android/app/src/main/AndroidManifest.xml:10:20-63
+uses-permission#android.permission.CAMERA
+ADDED from /data/eva/blue_sky/stix/Builds/Android/app/src/main/AndroidManifest.xml:11:3-62
+	android:name
+		ADDED from /data/eva/blue_sky/stix/Builds/Android/app/src/main/AndroidManifest.xml:11:20-60
+uses-permission#android.permission.RECORD_AUDIO
+ADDED from /data/eva/blue_sky/stix/Builds/Android/app/src/main/AndroidManifest.xml:12:3-68
+	android:name
+		ADDED from /data/eva/blue_sky/stix/Builds/Android/app/src/main/AndroidManifest.xml:12:20-66
+uses-permission#android.permission.INTERNET
+ADDED from /data/eva/blue_sky/stix/Builds/Android/app/src/main/AndroidManifest.xml:13:3-64
+	android:name
+		ADDED from /data/eva/blue_sky/stix/Builds/Android/app/src/main/AndroidManifest.xml:13:20-62
+uses-feature#0x00030000
+ADDED from /data/eva/blue_sky/stix/Builds/Android/app/src/main/AndroidManifest.xml:14:3-75
+	android:glEsVersion
+		ADDED from /data/eva/blue_sky/stix/Builds/Android/app/src/main/AndroidManifest.xml:14:17-49
+	android:required
+		ADDED from /data/eva/blue_sky/stix/Builds/Android/app/src/main/AndroidManifest.xml:14:50-73
+application
+ADDED from /data/eva/blue_sky/stix/Builds/Android/app/src/main/AndroidManifest.xml:15:3-25:17
+	android:label
+		ADDED from /data/eva/blue_sky/stix/Builds/Android/app/src/main/AndroidManifest.xml:15:16-48
+	android:hardwareAccelerated
+		ADDED from /data/eva/blue_sky/stix/Builds/Android/app/src/main/AndroidManifest.xml:15:116-151
+	android:icon
+		ADDED from /data/eva/blue_sky/stix/Builds/Android/app/src/main/AndroidManifest.xml:15:86-115
+	android:name
+		ADDED from /data/eva/blue_sky/stix/Builds/Android/app/src/main/AndroidManifest.xml:15:49-85
+activity#com.roli.juce.JuceActivity
+ADDED from /data/eva/blue_sky/stix/Builds/Android/app/src/main/AndroidManifest.xml:16:5-22:16
+	android:screenOrientation
+		ADDED from /data/eva/blue_sky/stix/Builds/Android/app/src/main/AndroidManifest.xml:17:15-51
+	android:label
+		ADDED from /data/eva/blue_sky/stix/Builds/Android/app/src/main/AndroidManifest.xml:16:57-89
+	android:launchMode
+		ADDED from /data/eva/blue_sky/stix/Builds/Android/app/src/main/AndroidManifest.xml:17:52-83
+	android:hardwareAccelerated
+		ADDED from /data/eva/blue_sky/stix/Builds/Android/app/src/main/AndroidManifest.xml:17:84-118
+	android:configChanges
+		ADDED from /data/eva/blue_sky/stix/Builds/Android/app/src/main/AndroidManifest.xml:16:90-151
+	android:name
+		ADDED from /data/eva/blue_sky/stix/Builds/Android/app/src/main/AndroidManifest.xml:16:15-56
+intent-filter#action:name:android.intent.action.MAIN+category:name:android.intent.category.LAUNCHER
+ADDED from /data/eva/blue_sky/stix/Builds/Android/app/src/main/AndroidManifest.xml:18:7-21:23
+action#android.intent.action.MAIN
+ADDED from /data/eva/blue_sky/stix/Builds/Android/app/src/main/AndroidManifest.xml:19:9-60
+	android:name
+		ADDED from /data/eva/blue_sky/stix/Builds/Android/app/src/main/AndroidManifest.xml:19:17-58
+category#android.intent.category.LAUNCHER
+ADDED from /data/eva/blue_sky/stix/Builds/Android/app/src/main/AndroidManifest.xml:20:9-68
+	android:name
+		ADDED from /data/eva/blue_sky/stix/Builds/Android/app/src/main/AndroidManifest.xml:20:19-66
+provider#com.roli.juce.JuceSharingContentProvider
+ADDED from /data/eva/blue_sky/stix/Builds/Android/app/src/main/AndroidManifest.xml:23:5-24:76
+	android:grantUriPermissions
+		ADDED from /data/eva/blue_sky/stix/Builds/Android/app/src/main/AndroidManifest.xml:24:15-49
+	android:authorities
+		ADDED from /data/eva/blue_sky/stix/Builds/Android/app/src/main/AndroidManifest.xml:23:71-138
+	android:exported
+		ADDED from /data/eva/blue_sky/stix/Builds/Android/app/src/main/AndroidManifest.xml:24:50-74
+	android:name
+		ADDED from /data/eva/blue_sky/stix/Builds/Android/app/src/main/AndroidManifest.xml:23:15-70
+uses-sdk
+INJECTED from /data/eva/blue_sky/stix/Builds/Android/app/src/main/AndroidManifest.xml reason: use-sdk injection requested
+INJECTED from /data/eva/blue_sky/stix/Builds/Android/app/src/main/AndroidManifest.xml
+INJECTED from /data/eva/blue_sky/stix/Builds/Android/app/src/main/AndroidManifest.xml
+INJECTED from /data/eva/blue_sky/stix/Builds/Android/app/src/main/AndroidManifest.xml
+INJECTED from /data/eva/blue_sky/stix/Builds/Android/app/src/main/AndroidManifest.xml
+	android:targetSdkVersion
+		INJECTED from /data/eva/blue_sky/stix/Builds/Android/app/src/main/AndroidManifest.xml
+		ADDED from /data/eva/blue_sky/stix/Builds/Android/app/src/main/AndroidManifest.xml
+		INJECTED from /data/eva/blue_sky/stix/Builds/Android/app/src/main/AndroidManifest.xml
+	android:minSdkVersion
+		INJECTED from /data/eva/blue_sky/stix/Builds/Android/app/src/main/AndroidManifest.xml
+		ADDED from /data/eva/blue_sky/stix/Builds/Android/app/src/main/AndroidManifest.xml
+		INJECTED from /data/eva/blue_sky/stix/Builds/Android/app/src/main/AndroidManifest.xml

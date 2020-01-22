@@ -1,24 +1,24 @@
 {
   "buildFiles": [
     "/Users/mhavryliv/Library/Android/sdk/ndk/20.1.5948944/build/cmake/platforms.cmake",
-    "/data/eva/blueSky/DemoRunner/Builds/Android/app/CMakeLists.txt",
+    "/data/eva/blue_sky/stix/Builds/Android/app/CMakeLists.txt",
     "/Users/mhavryliv/Library/Android/sdk/ndk/20.1.5948944/build/cmake/android.toolchain.cmake"
   ],
   "cleanCommands": [
-    "/Users/mhavryliv/Library/Android/sdk/cmake/3.10.2.4988404/bin/cmake --build /data/eva/blueSky/DemoRunner/Builds/Android/app/.externalNativeBuild/cmake/release_Release/x86_64 --target clean"
+    "/Users/mhavryliv/Library/Android/sdk/cmake/3.10.2.4988404/bin/cmake --build /data/eva/blue_sky/stix/Builds/Android/app/.externalNativeBuild/cmake/release_Release/x86_64 --target clean"
   ],
   "libraries": {
     "cpufeatures-Release-x86_64": {
       "artifactName": "cpufeatures",
-      "buildCommand": "/Users/mhavryliv/Library/Android/sdk/cmake/3.10.2.4988404/bin/cmake --build /data/eva/blueSky/DemoRunner/Builds/Android/app/.externalNativeBuild/cmake/release_Release/x86_64 --target cpufeatures",
+      "buildCommand": "/Users/mhavryliv/Library/Android/sdk/cmake/3.10.2.4988404/bin/cmake --build /data/eva/blue_sky/stix/Builds/Android/app/.externalNativeBuild/cmake/release_Release/x86_64 --target cpufeatures",
       "abi": "x86_64",
-      "output": "/data/eva/blueSky/DemoRunner/Builds/Android/app/.externalNativeBuild/cmake/release_Release/x86_64/libcpufeatures.a"
+      "output": "/data/eva/blue_sky/stix/Builds/Android/app/.externalNativeBuild/cmake/release_Release/x86_64/libcpufeatures.a"
     },
     "juce_jni-Release-x86_64": {
       "artifactName": "juce_jni",
-      "buildCommand": "/Users/mhavryliv/Library/Android/sdk/cmake/3.10.2.4988404/bin/cmake --build /data/eva/blueSky/DemoRunner/Builds/Android/app/.externalNativeBuild/cmake/release_Release/x86_64 --target juce_jni",
+      "buildCommand": "/Users/mhavryliv/Library/Android/sdk/cmake/3.10.2.4988404/bin/cmake --build /data/eva/blue_sky/stix/Builds/Android/app/.externalNativeBuild/cmake/release_Release/x86_64 --target juce_jni",
       "abi": "x86_64",
-      "output": "/data/eva/blueSky/DemoRunner/Builds/Android/app/build/intermediates/cmake/release_/release/obj/x86_64/libjuce_jni.so"
+      "output": "/data/eva/blue_sky/stix/Builds/Android/app/build/intermediates/cmake/release_/release/obj/x86_64/libjuce_jni.so"
     }
   }
 }
