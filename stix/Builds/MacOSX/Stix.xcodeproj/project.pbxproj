@@ -69,6 +69,10 @@
 			isa = PBXBuildFile;
 			fileRef = 96D99A08027CA35D6A4E5CFD;
 		};
+		47ED2C78B05B8A6A00E36C46 = {
+			isa = PBXBuildFile;
+			fileRef = 685A261BE78585293F3EAD36;
+		};
 		91CD2BCE4CA07E18229EB436 = {
 			isa = PBXBuildFile;
 			fileRef = 9672FCE6167ADB567A9EB2F8;
@@ -76,6 +80,14 @@
 		75DB074DBAE04408A0A917B7 = {
 			isa = PBXBuildFile;
 			fileRef = E0A3F113BC27B7B4D6F1D693;
+		};
+		03B5AB3B84A745ADDA6C55B7 = {
+			isa = PBXBuildFile;
+			fileRef = D34757AEE959CFDE2D8C92A7;
+		};
+		12159BCAF7A8D57B70E89CC9 = {
+			isa = PBXBuildFile;
+			fileRef = 51C3E1C3BFCF9076FB697FCF;
 		};
 		4FBBB55F4E347757F74F1F41 = {
 			isa = PBXBuildFile;
@@ -333,6 +345,13 @@
 			path = System/Library/Frameworks/AudioToolbox.framework;
 			sourceTree = SDKROOT;
 		};
+		4C94742B7977370FBDAA186C = {
+			isa = PBXFileReference;
+			lastKnownFileType = sourcecode.c.h;
+			name = Player.h;
+			path = ../../Source/audio/Player.h;
+			sourceTree = "SOURCE_ROOT";
+		};
 		4DF215D350FFE5E119CBA7E5 = {
 			isa = PBXFileReference;
 			lastKnownFileType = sourcecode.cpp.cpp;
@@ -360,6 +379,13 @@
 			name = CoreAudio.framework;
 			path = System/Library/Frameworks/CoreAudio.framework;
 			sourceTree = SDKROOT;
+		};
+		51C3E1C3BFCF9076FB697FCF = {
+			isa = PBXFileReference;
+			lastKnownFileType = sourcecode.cpp.cpp;
+			name = Home.cpp;
+			path = ../../Source/UI/Home.cpp;
+			sourceTree = "SOURCE_ROOT";
 		};
 		5965349393850F41DF76F350 = {
 			isa = PBXFileReference;
@@ -402,6 +428,13 @@
 			name = "juce_data_structures";
 			path = "/Users/mhavryliv/Development/Projucer/JUCE/modules/juce_data_structures";
 			sourceTree = "<absolute>";
+		};
+		685A261BE78585293F3EAD36 = {
+			isa = PBXFileReference;
+			lastKnownFileType = folder;
+			name = Assets;
+			path = ../../../Assets;
+			sourceTree = "<group>";
 		};
 		6B91D06F8BD4F615C1A5DCDB = {
 			isa = PBXFileReference;
@@ -508,6 +541,13 @@
 			path = "../../JuceLibraryCode/include_juce_gui_basics.mm";
 			sourceTree = "SOURCE_ROOT";
 		};
+		A60895E80C94C88DA83A10B7 = {
+			isa = PBXFileReference;
+			lastKnownFileType = sourcecode.c.h;
+			name = Home.h;
+			path = ../../Source/UI/Home.h;
+			sourceTree = "SOURCE_ROOT";
+		};
 		B4389672DA4CC8E0A531062D = {
 			isa = PBXFileReference;
 			lastKnownFileType = wrapper.framework;
@@ -542,6 +582,13 @@
 			includeInIndex = 0;
 			path = Stix.app;
 			sourceTree = "BUILT_PRODUCTS_DIR";
+		};
+		D34757AEE959CFDE2D8C92A7 = {
+			isa = PBXFileReference;
+			lastKnownFileType = sourcecode.cpp.cpp;
+			name = Player.cpp;
+			path = ../../Source/audio/Player.cpp;
+			sourceTree = "SOURCE_ROOT";
 		};
 		DC192EFA899E6CBE6B5CD394 = {
 			isa = PBXFileReference;
@@ -627,9 +674,20 @@
 			path = "../../JuceLibraryCode/include_juce_events.mm";
 			sourceTree = "SOURCE_ROOT";
 		};
+		DAEFDB67F494BA76855C0581 = {
+			isa = PBXGroup;
+			children = (
+				D34757AEE959CFDE2D8C92A7,
+				4C94742B7977370FBDAA186C,
+			);
+			name = audio;
+			sourceTree = "<group>";
+		};
 		D8BD06F96EA3C171D2B51512 = {
 			isa = PBXGroup;
 			children = (
+				51C3E1C3BFCF9076FB697FCF,
+				A60895E80C94C88DA83A10B7,
 				25E5ED33876A2C752378C859,
 				EB68BD1224CD9748BFA332C0,
 			);
@@ -639,6 +697,7 @@
 		6F933968486D9AD9FE112622 = {
 			isa = PBXGroup;
 			children = (
+				DAEFDB67F494BA76855C0581,
 				D8BD06F96EA3C171D2B51512,
 				260481E972425474BB8155B0,
 				ECE79F1433E92BB6213C86F5,
@@ -713,6 +772,7 @@
 		D87DCD5DA4EC8D78DFF37FCC = {
 			isa = PBXGroup;
 			children = (
+				685A261BE78585293F3EAD36,
 				4EC2782DE1779A130835B64D,
 				9672FCE6167ADB567A9EB2F8,
 				E0A3F113BC27B7B4D6F1D693,
@@ -971,6 +1031,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				47ED2C78B05B8A6A00E36C46,
 				91CD2BCE4CA07E18229EB436,
 				75DB074DBAE04408A0A917B7,
 			);
@@ -980,6 +1041,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				03B5AB3B84A745ADDA6C55B7,
+				12159BCAF7A8D57B70E89CC9,
 				4FBBB55F4E347757F74F1F41,
 				F619F3887CEC064441BB6EE6,
 				C2BB2B6DA237FE0CB64C7EDA,

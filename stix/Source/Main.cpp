@@ -25,7 +25,6 @@
 */
 
 #include "../JuceLibraryCode/JuceHeader.h"
-
 #include "UI/MainComponent.h"
 
 
@@ -45,12 +44,13 @@ public:
 
     const String getApplicationName() override       { return ProjectInfo::projectName; }
     const String getApplicationVersion() override    { return ProjectInfo::versionString; }
-    bool moreThanOneInstanceAllowed() override       { return true; }
+    bool moreThanOneInstanceAllowed() override       { return false; }
 
     //==============================================================================
     void initialise (const String& commandLine) override
     {
         mainWindow.reset (new MainAppWindow (getApplicationName()));
+        
     }
 
     bool backButtonPressed() override    {
@@ -83,8 +83,9 @@ private:
            #else
             setBounds ((int) (0.1f * getParentWidth()),
                        (int) (0.1f * getParentHeight()),
-                       jmax (850, (int) (0.5f * getParentWidth())),
-                       jmax (600, (int) (0.7f * getParentHeight())));
+                       400, 600);
+//                       jmax (400, (int) (0.5f * getParentWidth())),
+//                       jmax (600, (int) (0.7f * getParentHeight())));
            #endif
 
             setContentOwned (new MainComponent(), false);

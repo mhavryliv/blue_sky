@@ -4,7 +4,13 @@
               version="0.1" companyName="Mark Havryliv" id="yj7xMM">
   <MAINGROUP id="G8kbr7" name="Stix">
     <GROUP id="{20E3F84A-29E9-D5FF-4559-1A9E4A70CD60}" name="Source">
+      <GROUP id="{00A6A030-6898-FCD3-B75D-D0B852157F58}" name="audio">
+        <FILE id="h36i60" name="Player.cpp" compile="1" resource="0" file="Source/audio/Player.cpp"/>
+        <FILE id="hDe9Cw" name="Player.h" compile="0" resource="0" file="Source/audio/Player.h"/>
+      </GROUP>
       <GROUP id="{6E0E7E12-C0D4-A099-3BA5-BD1F5930099F}" name="UI">
+        <FILE id="wlSc8O" name="Home.cpp" compile="1" resource="0" file="Source/UI/Home.cpp"/>
+        <FILE id="oKF7lC" name="Home.h" compile="0" resource="0" file="Source/UI/Home.h"/>
         <FILE id="dil3PX" name="MainComponent.cpp" compile="1" resource="0"
               file="Source/UI/MainComponent.cpp"/>
         <FILE id="rfUDH4" name="MainComponent.h" compile="0" resource="0" file="Source/UI/MainComponent.h"/>
@@ -15,7 +21,7 @@
   </MAINGROUP>
   <EXPORTFORMATS>
     <XCODE_MAC targetFolder="Builds/MacOSX" smallIcon="YyqWd2" bigIcon="YyqWd2"
-               microphonePermissionNeeded="1" cameraPermissionNeeded="1">
+               microphonePermissionNeeded="1" cameraPermissionNeeded="1" customXcodeResourceFolders="../Assets">
       <CONFIGURATIONS>
         <CONFIGURATION isDebug="1" name="Debug" recommendedWarnings="LLVM"/>
         <CONFIGURATION isDebug="0" name="Release" recommendedWarnings="LLVM"/>

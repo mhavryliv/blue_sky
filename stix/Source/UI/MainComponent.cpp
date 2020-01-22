@@ -30,28 +30,34 @@
 
 
 //==============================================================================
-MainComponent::MainComponent()
-{
+MainComponent::MainComponent() {
 
+    player_.reset(new Player());
+    
     setOpaque (true);
-    setSize (800, 800);
+    
+    homeScreen_.reset(new Home());
+    homeScreen_->setPlayerRef(player_.get());
+    addAndMakeVisible(homeScreen_.get());
+    
+    setSize (400, 600);
+
 }
 
-MainComponent::~MainComponent()
-{
+MainComponent::~MainComponent() {
+    player_.reset();
+    homeScreen_.reset();
 }
 
-//==============================================================================
-void MainComponent::paint (Graphics& g)
-{
-    g.fillAll (findColour (ResizableWindow::backgroundColourId));
-    g.setColour(Colours::white);
-    g.drawText("Hello world", getBounds(), Justification::centred);
+void MainComponent::paint(Graphics &g) {
+    g.setColour(Colours::black);
+    g.fillAll();
 }
+
 
 void MainComponent::resized()
 {
     auto bounds = getLocalBounds();
-
+    homeScreen_->setBounds(bounds);
 }
 

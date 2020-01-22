@@ -30,6 +30,10 @@ add_library( ${BINARY_NAME}
 
     SHARED
 
+    "../../../Source/audio/Player.cpp"
+    "../../../Source/audio/Player.h"
+    "../../../Source/UI/Home.cpp"
+    "../../../Source/UI/Home.h"
     "../../../Source/UI/MainComponent.cpp"
     "../../../Source/UI/MainComponent.h"
     "../../../Source/Main.cpp"
@@ -1633,6 +1637,8 @@ add_library( ${BINARY_NAME}
     "../../../JuceLibraryCode/JuceHeader.h"
 )
 
+set_source_files_properties("../../../Source/audio/Player.h" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties("../../../Source/UI/Home.h" PROPERTIES HEADER_FILE_ONLY TRUE)
 set_source_files_properties("../../../Source/UI/MainComponent.h" PROPERTIES HEADER_FILE_ONLY TRUE)
 set_source_files_properties("../../../Source/JUCEAppIcon.png" PROPERTIES HEADER_FILE_ONLY TRUE)
 set_source_files_properties("../../../../../../../Users/mhavryliv/Development/Projucer/JUCE/modules/juce_analytics/analytics/juce_Analytics.cpp" PROPERTIES HEADER_FILE_ONLY TRUE)

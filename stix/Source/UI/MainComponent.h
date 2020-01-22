@@ -27,6 +27,9 @@
 #pragma once
 
 #include "../JuceLibraryCode/JuceHeader.h"
+#include "Home.h"
+
+#include "../audio/Player.h"
 
 //==============================================================================
 class MainComponent    : public Component
@@ -37,7 +40,8 @@ public:
     ~MainComponent() override;
 
     //==============================================================================
-    void paint (Graphics&) override;
+
+    void paint(Graphics &g) override;
     void resized() override;
 
     //==============================================================================
@@ -48,8 +52,8 @@ public:
 
 
 private:
-
-    //==============================================================================
+    std::unique_ptr<Player> player_;
+    std::unique_ptr<Home> homeScreen_;
 
 
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (MainComponent)
