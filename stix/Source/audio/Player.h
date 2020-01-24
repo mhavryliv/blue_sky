@@ -13,7 +13,7 @@
 #include <JuceHeader.h>
 #include "Voice.h"
 
-class Player : public ChangeListener, public AudioAppComponent {
+class Player : public ChangeBroadcaster, public AudioAppComponent {
 public:
     
     Player();
@@ -27,26 +27,20 @@ public:
     // Commands from UI
     void changePlayState(TransportState newState);
     
-    void changeListenerCallback(ChangeBroadcaster *source) override;
-    bool isTransportSource(ChangeBroadcaster *source) {
-        return source == &transportSource_;
+    bool isPlaying() const {
+        return isPlaying_;
     }
-    AudioTransportSource *transport() {
-        return &transportSource_;
-    }
-    
-    InputStream *createAssetInputStream(const char* resourcePath);
-    File getExamplesDirectory();
-    
     
 private:
     AudioFormatManager formatManager_;
-    std::unique_ptr<AudioFormatReaderSource> readerSource_;
-    AudioTransportSource transportSource_;
     TransportState state_;
     Voice drums_;
+    Voice percussion_;
+    Voice leads_;
+    Voice samples_;
     
-//    void loadFile(const String &fname);
-    void loadFileFromInputStream(InputStream *is);
+    bool isPlaying_;
+    
+    std::vector<Voice*> voices_;
     
 };

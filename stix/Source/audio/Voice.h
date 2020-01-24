@@ -35,6 +35,9 @@ public:
             audio->formatManager_ = fman;
         }
     }
+    void setName(const String &name) {
+        name_ = name;
+    }
 
 private:
     AudioFormatManager *formatManager_;
@@ -80,6 +83,12 @@ private:
         
         void prepareToPlay(int sampsPerBlock, double srate) {
             transportSource_.prepareToPlay(sampsPerBlock, srate);
+            
+            // And re-init our buffer
+            audioBuffer_.setSize(2, sampsPerBlock);
+            info_.buffer = &audioBuffer_;
+            info_.numSamples = sampsPerBlock;
+            info_.startSample = 0;
         }
         
         void releaseResources() {
@@ -87,7 +96,36 @@ private:
         }
         
         void getNextAudioBlock(const AudioSourceChannelInfo &bufferToFill) {
-            transportSource_.getNextAudioBlock(bufferToFill);
+            // Write to my own buffer
+            if(audioBuffer_.getNumSamples() != bufferToFill.numSamples) {
+                Logger::writeToLog("[Voice::Audio] Had to resize local buffer");
+                audioBuffer_.setSize(2, bufferToFill.numSamples, false, false, true);
+            }
+            // Clear out audio buffer
+            audioBuffer_.clear();
+            // Copy settings from the input buffer
+            info_.numSamples = bufferToFill.numSamples;
+            info_.startSample = bufferToFill.startSample;
+            transportSource_.getNextAudioBlock(info_);
+            for(int i = 0; i < audioBuffer_.getNumSamples(); ++i) {
+                float leftVal = audioBuffer_.getReadPointer(0)[i];
+                float rightVal = audioBuffer_.getReadPointer(1)[i];
+            }
+        }
+        
+        void copyFromLocalToDst(AudioBuffer<float> &dst,
+                                float startGain = 1.f, float endGain = 1.f) {
+            int numToCopy = jmin(audioBuffer_.getNumSamples(), dst.getNumSamples());
+            float stepGain = (endGain - startGain) / (float)numToCopy;
+            const float *readLeft = audioBuffer_.getReadPointer(0);
+            const float *readRight = audioBuffer_.getReadPointer(1);
+            float *writeLeft = dst.getWritePointer(0);
+            float *writeRight = dst.getWritePointer(1);
+            for(int i = 0; i < numToCopy; ++i) {
+                float gain = startGain + (stepGain * (float)i);
+                *(writeLeft + i)  += (*(readLeft + i)) * gain;
+                *(writeRight + i)  += (*(readRight + i)) * gain;
+            }
         }
         
         std::unique_ptr<AudioFormatReaderSource> readerSource_;
@@ -95,8 +133,12 @@ private:
         String fname_;
         AudioFormatManager *formatManager_;
         TransportState playState_;
+        AudioSourceChannelInfo info_;
+        AudioBuffer<float> audioBuffer_;
     };
     
+    String name_;
     juce::OwnedArray<Audio> files_;
+    AudioBuffer<float> summingBuffer_;
     
 };

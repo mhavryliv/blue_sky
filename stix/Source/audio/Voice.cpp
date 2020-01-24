@@ -42,6 +42,7 @@ void Voice::prepareToPlay(int sampsPerBlock, double srate) {
     for(Audio *audio : files_) {
         audio->prepareToPlay(sampsPerBlock, srate);
     }
+    summingBuffer_.setSize(2, sampsPerBlock);
 }
 
 void Voice::releaseResources() {
@@ -51,7 +52,19 @@ void Voice::releaseResources() {
 }
 
 void Voice::getNextAudioBlock(const AudioSourceChannelInfo &bufferToFill) {
+    if(summingBuffer_.getNumSamples() != bufferToFill.numSamples) {
+        summingBuffer_.setSize(2, bufferToFill.numSamples, false, true, true);
+    }
+    summingBuffer_.clear();
     for(Audio *audio : files_) {
         audio->getNextAudioBlock(bufferToFill);
+        // Add it to the summing buffer
+        audio->copyFromLocalToDst(summingBuffer_);
+    }
+    
+    // Copy the summing buffer to buffer to fill
+    for(int i = 0; i < bufferToFill.numSamples; ++i) {
+        bufferToFill.buffer->getWritePointer(0)[i] += summingBuffer_.getReadPointer(0)[i];
+        bufferToFill.buffer->getWritePointer(1)[i] += summingBuffer_.getReadPointer(1)[i];
     }
 }
