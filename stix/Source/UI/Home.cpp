@@ -18,6 +18,7 @@
 */
 
 //[Headers] You can add your own extra header files here...
+#include "../audio/Utils.h"
 //[/Headers]
 
 #include "Home.h"
@@ -143,10 +144,10 @@ void Home::buttonClicked (Button* buttonThatWasClicked)
     {
         //[UserButtonCode_playPauseButton_] -- add your button handler code here..
         if(player_->transport()->isPlaying()) {
-            player_->changePlayState(Player::Stopping);
+            player_->changePlayState(Stopping);
         }
         else {
-            player_->changePlayState(Player::Starting);
+            player_->changePlayState(Starting);
         }
 
         //[/UserButtonCode_playPauseButton_]

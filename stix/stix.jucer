@@ -7,6 +7,9 @@
       <GROUP id="{00A6A030-6898-FCD3-B75D-D0B852157F58}" name="audio">
         <FILE id="h36i60" name="Player.cpp" compile="1" resource="0" file="Source/audio/Player.cpp"/>
         <FILE id="hDe9Cw" name="Player.h" compile="0" resource="0" file="Source/audio/Player.h"/>
+        <FILE id="tbBGq6" name="Utils.h" compile="0" resource="0" file="Source/audio/Utils.h"/>
+        <FILE id="zirbbt" name="Voice.cpp" compile="1" resource="0" file="Source/audio/Voice.cpp"/>
+        <FILE id="RquM07" name="Voice.h" compile="0" resource="0" file="Source/audio/Voice.h"/>
       </GROUP>
       <GROUP id="{6E0E7E12-C0D4-A099-3BA5-BD1F5930099F}" name="UI">
         <FILE id="wlSc8O" name="Home.cpp" compile="1" resource="0" file="Source/UI/Home.cpp"/>

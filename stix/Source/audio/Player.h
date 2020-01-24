@@ -11,16 +11,10 @@
 #pragma once
 
 #include <JuceHeader.h>
+#include "Voice.h"
 
 class Player : public ChangeListener, public AudioAppComponent {
 public:
-    enum TransportState
-    {
-        Stopped,
-        Starting,
-        Playing,
-        Stopping
-    };
     
     Player();
     ~Player();
@@ -50,6 +44,7 @@ private:
     std::unique_ptr<AudioFormatReaderSource> readerSource_;
     AudioTransportSource transportSource_;
     TransportState state_;
+    Voice drums_;
     
 //    void loadFile(const String &fname);
     void loadFileFromInputStream(InputStream *is);

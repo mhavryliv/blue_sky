@@ -1,4 +1,0 @@
-#Wed Jan 22 15:11:34 AEDT 2020
-base.0=/data/eva/blue_sky/stix/Builds/Android/app/build/intermediates/transforms/dexMerger/debug_/debug/0
-path.0=classes.dex
-renamed.0=classes.dex

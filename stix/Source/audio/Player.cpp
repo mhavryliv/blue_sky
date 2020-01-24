@@ -13,15 +13,16 @@
 Player::Player() : state_(Stopped) {
     setAudioChannels(0, 2);
     formatManager_.registerBasicFormats();
-    transportSource_.addChangeListener(this);
-    
-    InputStream *is = createAssetInputStream("drums_1.wav");
-    if(is == nullptr) {
-        Logger::writeToLog("[Player] Couldn't load file!");
-    }
-    else {
-        loadFileFromInputStream(is);
-    }
+    drums_.setFormatManager(&formatManager_);
+    drums_.loadFileIntoPosition("drums_1.wav", 0);
+//    transportSource_.addChangeListener(this);
+//    InputStream *is = createAssetInputStream("drums_1.wav");
+//    if(is == nullptr) {
+//        Logger::writeToLog("[Player] Couldn't load file!");
+//    }
+//    else {
+//        loadFileFromInputStream(is);
+//    }
     
 }
 
@@ -61,27 +62,29 @@ void Player::changePlayState(TransportState newState) {
     {
         state_ = newState;
         
-        switch (state_)
-        {
-            case Stopped:
-                Logger::writeToLog("[Player] Stopped");
-                transportSource_.setPosition (0.0);
-                break;
-                
-            case Starting:
-                Logger::writeToLog("[Player] Starting");
-                transportSource_.start();
-                break;
-                
-            case Playing:
-                Logger::writeToLog("[Player] Playing");
-                break;
-                
-            case Stopping:
-                Logger::writeToLog("[Player] Stopping");
-                transportSource_.stop();
-                break;
-        }
+        drums_.changePlayState(newState);
+        
+//        switch (state_)
+//        {
+//            case Stopped:
+//                Logger::writeToLog("[Player] Stopped");
+//                transportSource_.setPosition (0.0);
+//                break;
+//
+//            case Starting:
+//                Logger::writeToLog("[Player] Starting");
+//                transportSource_.start();
+//                break;
+//
+//            case Playing:
+//                Logger::writeToLog("[Player] Playing");
+//                break;
+//
+//            case Stopping:
+//                Logger::writeToLog("[Player] Stopping");
+//                transportSource_.stop();
+//                break;
+//        }
     }
 }
 
@@ -89,15 +92,18 @@ void Player::changePlayState(TransportState newState) {
 #pragma mark - Audio Callbacks
 
 void Player::prepareToPlay(int sampsPerBlock, double srate) {
-    transportSource_.prepareToPlay(sampsPerBlock, srate);
+    drums_.prepareToPlay(sampsPerBlock, srate);
+//    transportSource_.prepareToPlay(sampsPerBlock, srate);
 }
 
 void Player::releaseResources() {
-    transportSource_.releaseResources();
+    drums_.releaseResources();
+//    transportSource_.releaseResources();
 }
 
 void Player::getNextAudioBlock(const AudioSourceChannelInfo &bufferToFill) {
-    transportSource_.getNextAudioBlock(bufferToFill);
+    drums_.getNextAudioBlock(bufferToFill);
+//    transportSource_.getNextAudioBlock(bufferToFill);
 }
 
 
@@ -142,5 +148,4 @@ File Player::getExamplesDirectory() {
         currentFile = currentFile.getParentDirectory();
     
     return currentFile;
-
 }

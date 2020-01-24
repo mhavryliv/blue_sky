@@ -32,6 +32,9 @@ add_library( ${BINARY_NAME}
 
     "../../../Source/audio/Player.cpp"
     "../../../Source/audio/Player.h"
+    "../../../Source/audio/Utils.h"
+    "../../../Source/audio/Voice.cpp"
+    "../../../Source/audio/Voice.h"
     "../../../Source/UI/Home.cpp"
     "../../../Source/UI/Home.h"
     "../../../Source/UI/MainComponent.cpp"
@@ -1638,6 +1641,8 @@ add_library( ${BINARY_NAME}
 )
 
 set_source_files_properties("../../../Source/audio/Player.h" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties("../../../Source/audio/Utils.h" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties("../../../Source/audio/Voice.h" PROPERTIES HEADER_FILE_ONLY TRUE)
 set_source_files_properties("../../../Source/UI/Home.h" PROPERTIES HEADER_FILE_ONLY TRUE)
 set_source_files_properties("../../../Source/UI/MainComponent.h" PROPERTIES HEADER_FILE_ONLY TRUE)
 set_source_files_properties("../../../Source/JUCEAppIcon.png" PROPERTIES HEADER_FILE_ONLY TRUE)
