@@ -14,9 +14,9 @@ Player::Player() : state_(Stopped) {
     formatManager_.registerBasicFormats();
 
     drums_.setName("Drums");
-    percussion_.setName("Percussion");
-    leads_.setName("Leads");
-    samples_.setName("Samples");
+    bass_.setName("Bass");
+    harmony_.setName("Harmony");
+    melody_.setName("Melody");
 
     StringArray fileNames;
     fileNames.add("drums_1.wav");
@@ -24,16 +24,30 @@ Player::Player() : state_(Stopped) {
     fileNames.add("leads_1.wav");
     fileNames.add("samples_1.wav");
 
+    
+    // Load it all into drums and see if I can get the voices all playing
     voices_.push_back(&drums_);
-    voices_.push_back(&percussion_);
-    voices_.push_back(&leads_);
-    voices_.push_back(&samples_);
-
     for(int i = 0; i < voices_.size(); ++i) {
         Voice *voice = voices_.at(i);
         voice->setFormatManager(&formatManager_);
-        voice->loadFileIntoPosition(fileNames[i], 0);
     }
+
+    drums_.loadFileIntoPosition(fileNames[0], 0);
+    drums_.loadFileIntoPosition(fileNames[1], 1);
+    drums_.loadFileIntoPosition(fileNames[2], 2);
+    drums_.loadFileIntoPosition(fileNames[3], 3);
+    
+    
+    
+//    voices_.push_back(&percussion_);
+//    voices_.push_back(&leads_);
+//    voices_.push_back(&samples_);
+
+//    for(int i = 0; i < voices_.size(); ++i) {
+//        Voice *voice = voices_.at(i);
+//        voice->setFormatManager(&formatManager_);
+//        voice->loadFileIntoPosition(fileNames[i], 0);
+//    }
     
 //    drums_.loadFileIntoPosition("drums_1.wav", 0);
 //    percussion_.loadFileIntoPosition("percussion_1.wav", 0);

@@ -20,13 +20,14 @@ public:
     
     void loadFileIntoPosition(const String &fname, int position);
     void changePlayState(TransportState newState);
+    void setStemVol(int stem, float vol, bool zeroOthers);
     
     // Audio player helpers
     void prepareToPlay(int sampsPerBlock, double srate);
     void releaseResources();
     void getNextAudioBlock(const AudioSourceChannelInfo &bufferToFill);
     
-    const int MAX_LAYERS = 1;
+    const int MAX_LAYERS = 4;
     
     
     void setFormatManager(AudioFormatManager *fman) {
@@ -140,5 +141,7 @@ private:
     String name_;
     juce::OwnedArray<Audio> files_;
     AudioBuffer<float> summingBuffer_;
+    Array<float> stemVols_;
+    Array<float> prevStemVols_;
     
 };

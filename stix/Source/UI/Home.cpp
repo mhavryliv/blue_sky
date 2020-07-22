@@ -123,21 +123,25 @@ void Home::buttonClicked (Button* buttonThatWasClicked)
     if (buttonThatWasClicked == drumsButton_.get())
     {
         //[UserButtonCode_drumsButton_] -- add your button handler code here..
+        player_->drums()->setStemVol(0, 1.f, true);
         //[/UserButtonCode_drumsButton_]
     }
     else if (buttonThatWasClicked == percButton_.get())
     {
         //[UserButtonCode_percButton_] -- add your button handler code here..
+        player_->drums()->setStemVol(1, 1.f, true);
         //[/UserButtonCode_percButton_]
     }
     else if (buttonThatWasClicked == samplesButton_.get())
     {
         //[UserButtonCode_samplesButton_] -- add your button handler code here..
+        player_->drums()->setStemVol(2, 1.f, true);
         //[/UserButtonCode_samplesButton_]
     }
     else if (buttonThatWasClicked == leadButton_.get())
     {
         //[UserButtonCode_leadButton_] -- add your button handler code here..
+        player_->drums()->setStemVol(3, 1.f, true);
         //[/UserButtonCode_leadButton_]
     }
     else if (buttonThatWasClicked == playPauseButton_.get())

@@ -31,13 +31,18 @@ public:
         return isPlaying_;
     }
     
+    Voice* drums() { return &drums_; }
+    Voice* bass() { return &bass_; }
+    Voice* harmony() { return &harmony_; }
+    Voice* melody() { return &melody_; }
+    
 private:
     AudioFormatManager formatManager_;
     TransportState state_;
     Voice drums_;
-    Voice percussion_;
-    Voice leads_;
-    Voice samples_;
+    Voice bass_;
+    Voice harmony_;
+    Voice melody_;
     
     bool isPlaying_;
     
