@@ -60,7 +60,7 @@ public:
         auto resourceFile = assetsDir.getChildFile (resourcePath);
         jassert (resourceFile.existsAsFile());
         
-        return resourceFile.createInputStream();
+        return resourceFile.createInputStream().release();
 #endif
     }
     

@@ -143,7 +143,7 @@ void Home::buttonClicked (Button* buttonThatWasClicked)
     else if (buttonThatWasClicked == playPauseButton_.get())
     {
         //[UserButtonCode_playPauseButton_] -- add your button handler code here..
-        if(player_->transport()->isPlaying()) {
+        if(player_->isPlaying()) {
             player_->changePlayState(Stopping);
         }
         else {
@@ -164,15 +164,15 @@ void Home::buttonClicked (Button* buttonThatWasClicked)
 #pragma mark - My code
 
 void Home::changeListenerCallback(ChangeBroadcaster *source) {
-    if(player_->isTransportSource(source)) {
-        auto transport = dynamic_cast<AudioTransportSource*>(source);
-        if(transport->isPlaying()) {
-            playPauseButton_->setButtonText("Pause");
-        }
-        else {
-            playPauseButton_->setButtonText("Play");
-        }
-    }
+//    if(player_->isTransportSource(source)) {
+//        auto transport = dynamic_cast<AudioTransportSource*>(source);
+//        if(transport->isPlaying()) {
+//            playPauseButton_->setButtonText("Pause");
+//        }
+//        else {
+//            playPauseButton_->setButtonText("Play");
+//        }
+//    }
 }
 //[/MiscUserCode]
 
@@ -204,8 +204,8 @@ BEGIN_JUCER_METADATA
               virtualName="" explicitFocusOrder="0" pos="248 111 120 24" buttonText="Lead"
               connectedEdges="0" needsCallback="1" radioGroupId="0"/>
   <TEXTBUTTON name="new button" id="51f8c43abf1df459" memberName="playPauseButton_"
-              virtualName="" explicitFocusOrder="0" pos="120Cc 160 100 24"
-              buttonText="Play" connectedEdges="0" needsCallback="1" radioGroupId="0"/>
+              virtualName="" explicitFocusOrder="0" pos="0Cc 160 100 24" buttonText="Play"
+              connectedEdges="0" needsCallback="1" radioGroupId="0"/>
 </JUCER_COMPONENT>
 
 END_JUCER_METADATA

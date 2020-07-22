@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<JUCERPROJECT name="Stix" projectType="guiapp" jucerVersion="5.4.5" bundleIdentifier="com.mhavryliv.uts.stix"
-              version="0.1" companyName="Mark Havryliv" id="yj7xMM">
+<JUCERPROJECT name="Stix" projectType="guiapp" bundleIdentifier="com.mhavryliv.uts.stix"
+              version="0.1" companyName="Mark Havryliv" id="yj7xMM" jucerFormatVersion="1">
   <MAINGROUP id="G8kbr7" name="Stix">
     <GROUP id="{20E3F84A-29E9-D5FF-4559-1A9E4A70CD60}" name="Source">
       <GROUP id="{00A6A030-6898-FCD3-B75D-D0B852157F58}" name="audio">

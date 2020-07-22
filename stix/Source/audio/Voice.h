@@ -48,7 +48,7 @@ private:
             playState_ = Stopped;
         }
         void loadFileFromInputStream(InputStream *is) {
-            auto* reader = formatManager_->createReaderFor (is);
+            auto* reader = formatManager_->createReaderFor (std::unique_ptr<InputStream> (is));
             if(reader != nullptr) {
                 std::unique_ptr<AudioFormatReaderSource> newSource
                 (new AudioFormatReaderSource (reader, true));

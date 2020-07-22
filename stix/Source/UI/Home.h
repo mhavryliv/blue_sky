@@ -47,7 +47,7 @@ public:
     //[UserMethods]     -- You can add your own custom methods in this section.
     void setPlayerRef(Player *ref) {
         player_ = ref;
-        player_->transport()->addChangeListener(this);
+//        player_->transport()->addChangeListener(this);
     }
 
     void changeListenerCallback(ChangeBroadcaster *source) override;

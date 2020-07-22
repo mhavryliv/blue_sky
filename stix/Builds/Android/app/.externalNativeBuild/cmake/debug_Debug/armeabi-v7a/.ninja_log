@@ -30,3 +30,9 @@
 17	2674	1579666289	CMakeFiles/juce_jni.dir/data/eva/blue_sky/stix/Source/UI/Home.cpp.o	75662c43dab0556f
 17	2694	1579666289	CMakeFiles/juce_jni.dir/data/eva/blue_sky/stix/Source/Main.cpp.o	4f1dc1486b596b5d
 2695	5293	1579666292	../../../../build/intermediates/cmake/debug_/debug/obj/armeabi-v7a/libjuce_jni.so	4ff27fd92b271e8c
+70	3143	1580103859	CMakeFiles/juce_jni.dir/data/eva/blue_sky/stix/Source/UI/MainComponent.cpp.o	b322e9504e82158b
+70	3148	1580103859	CMakeFiles/juce_jni.dir/data/eva/blue_sky/stix/Source/UI/Home.cpp.o	75662c43dab0556f
+70	3160	1580103859	CMakeFiles/juce_jni.dir/data/eva/blue_sky/stix/Source/Main.cpp.o	4f1dc1486b596b5d
+69	3172	1580103859	CMakeFiles/juce_jni.dir/data/eva/blue_sky/stix/Source/audio/Voice.cpp.o	8e98bcd759053d1e
+69	3189	1580103859	CMakeFiles/juce_jni.dir/data/eva/blue_sky/stix/Source/audio/Player.cpp.o	3b58aef6adf0d814
+3189	6231	1580103862	../../../../build/intermediates/cmake/debug_/debug/obj/armeabi-v7a/libjuce_jni.so	a95c6a2ce8e182e4

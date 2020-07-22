@@ -3,12 +3,16 @@
 
 cmake_minimum_required(VERSION 3.4.1)
 
-SET(BINARY_NAME "juce_jni")
+set(BINARY_NAME "juce_jni")
+
+set(OBOE_DIR "/Users/mhavryliv/Development/Projucer/JUCE/modules/juce_audio_devices/native/oboe")
+
+add_subdirectory (${OBOE_DIR} ./oboe)
 
 add_library("cpufeatures" STATIC "${ANDROID_NDK}/sources/android/cpufeatures/cpu-features.c")
 set_source_files_properties("${ANDROID_NDK}/sources/android/cpufeatures/cpu-features.c" PROPERTIES COMPILE_FLAGS "-Wno-sign-conversion -Wno-gnu-statement-expression")
 
-add_definitions("-DJUCE_ANDROID=1" "-DJUCE_ANDROID_API_VERSION=23" "-DJUCE_PUSH_NOTIFICATIONS=1" "-DJUCE_PUSH_NOTIFICATIONS_ACTIVITY=\"com/roli/juce/JuceActivity\"" "-DJUCE_ANDROID_GL_ES_VERSION_3_0=1" "-DJUCER_ANDROIDSTUDIO_7F0E4A25=1" "-DJUCE_APP_VERSION=0.1" "-DJUCE_APP_VERSION_HEX=0x100")
+add_definitions("-DJUCE_ANDROID=1" "-DJUCE_ANDROID_API_VERSION=23" "-DJUCE_PUSH_NOTIFICATIONS=1" "-DJUCE_PUSH_NOTIFICATIONS_ACTIVITY=\"com/rmsl/juce/JuceActivity\"" "-DJUCE_CONTENT_SHARING=1" "-DJUCE_ANDROID_GL_ES_VERSION_3_0=1" "-DJUCER_ANDROIDSTUDIO_7F0E4A25=1" "-DJUCE_APP_VERSION=0.1" "-DJUCE_APP_VERSION_HEX=0x100")
 
 include_directories( AFTER
     "../../../JuceLibraryCode"
@@ -18,13 +22,13 @@ include_directories( AFTER
 
 enable_language(ASM)
 
-IF(JUCE_BUILD_CONFIGURATION MATCHES "DEBUG")
-    add_definitions("-DDEBUG=1" "-D_DEBUG=1")
-ELSEIF(JUCE_BUILD_CONFIGURATION MATCHES "RELEASE")
-    add_definitions("-DNDEBUG=1")
-ELSE(JUCE_BUILD_CONFIGURATION MATCHES "DEBUG")
-    MESSAGE( FATAL_ERROR "No matching build-configuration found." )
-ENDIF(JUCE_BUILD_CONFIGURATION MATCHES "DEBUG")
+if(JUCE_BUILD_CONFIGURATION MATCHES "DEBUG")
+    add_definitions("-DJUCER_ANDROIDSTUDIO_7F0E4A25=1" "-DJUCE_APP_VERSION=0.1" "-DJUCE_APP_VERSION_HEX=0x100" "-DDEBUG=1" "-D_DEBUG=1")
+elseif(JUCE_BUILD_CONFIGURATION MATCHES "RELEASE")
+    add_definitions("-DJUCER_ANDROIDSTUDIO_7F0E4A25=1" "-DJUCE_APP_VERSION=0.1" "-DJUCE_APP_VERSION_HEX=0x100" "-DNDEBUG=1")
+else()
+    message( FATAL_ERROR "No matching build-configuration found." )
+endif()
 
 add_library( ${BINARY_NAME}
 
@@ -112,16 +116,17 @@ add_library( ${BINARY_NAME}
     "../../../../../../../Users/mhavryliv/Development/Projucer/JUCE/modules/juce_audio_basics/synthesisers/juce_Synthesiser.cpp"
     "../../../../../../../Users/mhavryliv/Development/Projucer/JUCE/modules/juce_audio_basics/synthesisers/juce_Synthesiser.h"
     "../../../../../../../Users/mhavryliv/Development/Projucer/JUCE/modules/juce_audio_basics/utilities/juce_ADSR.h"
-    "../../../../../../../Users/mhavryliv/Development/Projucer/JUCE/modules/juce_audio_basics/utilities/juce_CatmullRomInterpolator.cpp"
-    "../../../../../../../Users/mhavryliv/Development/Projucer/JUCE/modules/juce_audio_basics/utilities/juce_CatmullRomInterpolator.h"
     "../../../../../../../Users/mhavryliv/Development/Projucer/JUCE/modules/juce_audio_basics/utilities/juce_Decibels.h"
+    "../../../../../../../Users/mhavryliv/Development/Projucer/JUCE/modules/juce_audio_basics/utilities/juce_GenericInterpolator.h"
     "../../../../../../../Users/mhavryliv/Development/Projucer/JUCE/modules/juce_audio_basics/utilities/juce_IIRFilter.cpp"
     "../../../../../../../Users/mhavryliv/Development/Projucer/JUCE/modules/juce_audio_basics/utilities/juce_IIRFilter.h"
+    "../../../../../../../Users/mhavryliv/Development/Projucer/JUCE/modules/juce_audio_basics/utilities/juce_Interpolators.cpp"
+    "../../../../../../../Users/mhavryliv/Development/Projucer/JUCE/modules/juce_audio_basics/utilities/juce_Interpolators.h"
     "../../../../../../../Users/mhavryliv/Development/Projucer/JUCE/modules/juce_audio_basics/utilities/juce_LagrangeInterpolator.cpp"
-    "../../../../../../../Users/mhavryliv/Development/Projucer/JUCE/modules/juce_audio_basics/utilities/juce_LagrangeInterpolator.h"
     "../../../../../../../Users/mhavryliv/Development/Projucer/JUCE/modules/juce_audio_basics/utilities/juce_Reverb.h"
     "../../../../../../../Users/mhavryliv/Development/Projucer/JUCE/modules/juce_audio_basics/utilities/juce_SmoothedValue.cpp"
     "../../../../../../../Users/mhavryliv/Development/Projucer/JUCE/modules/juce_audio_basics/utilities/juce_SmoothedValue.h"
+    "../../../../../../../Users/mhavryliv/Development/Projucer/JUCE/modules/juce_audio_basics/utilities/juce_WindowedSincInterpolator.cpp"
     "../../../../../../../Users/mhavryliv/Development/Projucer/JUCE/modules/juce_audio_basics/juce_audio_basics.cpp"
     "../../../../../../../Users/mhavryliv/Development/Projucer/JUCE/modules/juce_audio_basics/juce_audio_basics.mm"
     "../../../../../../../Users/mhavryliv/Development/Projucer/JUCE/modules/juce_audio_basics/juce_audio_basics.h"
@@ -136,7 +141,118 @@ add_library( ${BINARY_NAME}
     "../../../../../../../Users/mhavryliv/Development/Projucer/JUCE/modules/juce_audio_devices/midi_io/juce_MidiDevices.h"
     "../../../../../../../Users/mhavryliv/Development/Projucer/JUCE/modules/juce_audio_devices/midi_io/juce_MidiMessageCollector.cpp"
     "../../../../../../../Users/mhavryliv/Development/Projucer/JUCE/modules/juce_audio_devices/midi_io/juce_MidiMessageCollector.h"
+    "../../../../../../../Users/mhavryliv/Development/Projucer/JUCE/modules/juce_audio_devices/native/oboe/include/oboe/AudioStream.h"
+    "../../../../../../../Users/mhavryliv/Development/Projucer/JUCE/modules/juce_audio_devices/native/oboe/include/oboe/AudioStreamBase.h"
+    "../../../../../../../Users/mhavryliv/Development/Projucer/JUCE/modules/juce_audio_devices/native/oboe/include/oboe/AudioStreamBuilder.h"
+    "../../../../../../../Users/mhavryliv/Development/Projucer/JUCE/modules/juce_audio_devices/native/oboe/include/oboe/AudioStreamCallback.h"
+    "../../../../../../../Users/mhavryliv/Development/Projucer/JUCE/modules/juce_audio_devices/native/oboe/include/oboe/Definitions.h"
+    "../../../../../../../Users/mhavryliv/Development/Projucer/JUCE/modules/juce_audio_devices/native/oboe/include/oboe/LatencyTuner.h"
+    "../../../../../../../Users/mhavryliv/Development/Projucer/JUCE/modules/juce_audio_devices/native/oboe/include/oboe/Oboe.h"
+    "../../../../../../../Users/mhavryliv/Development/Projucer/JUCE/modules/juce_audio_devices/native/oboe/include/oboe/ResultWithValue.h"
+    "../../../../../../../Users/mhavryliv/Development/Projucer/JUCE/modules/juce_audio_devices/native/oboe/include/oboe/StabilizedCallback.h"
+    "../../../../../../../Users/mhavryliv/Development/Projucer/JUCE/modules/juce_audio_devices/native/oboe/include/oboe/Utilities.h"
+    "../../../../../../../Users/mhavryliv/Development/Projucer/JUCE/modules/juce_audio_devices/native/oboe/include/oboe/Version.h"
+    "../../../../../../../Users/mhavryliv/Development/Projucer/JUCE/modules/juce_audio_devices/native/oboe/src/aaudio/AAudioLoader.cpp"
+    "../../../../../../../Users/mhavryliv/Development/Projucer/JUCE/modules/juce_audio_devices/native/oboe/src/aaudio/AAudioLoader.h"
+    "../../../../../../../Users/mhavryliv/Development/Projucer/JUCE/modules/juce_audio_devices/native/oboe/src/aaudio/AudioStreamAAudio.cpp"
+    "../../../../../../../Users/mhavryliv/Development/Projucer/JUCE/modules/juce_audio_devices/native/oboe/src/aaudio/AudioStreamAAudio.h"
+    "../../../../../../../Users/mhavryliv/Development/Projucer/JUCE/modules/juce_audio_devices/native/oboe/src/common/AudioClock.h"
+    "../../../../../../../Users/mhavryliv/Development/Projucer/JUCE/modules/juce_audio_devices/native/oboe/src/common/AudioSourceCaller.cpp"
+    "../../../../../../../Users/mhavryliv/Development/Projucer/JUCE/modules/juce_audio_devices/native/oboe/src/common/AudioSourceCaller.h"
+    "../../../../../../../Users/mhavryliv/Development/Projucer/JUCE/modules/juce_audio_devices/native/oboe/src/common/AudioStream.cpp"
+    "../../../../../../../Users/mhavryliv/Development/Projucer/JUCE/modules/juce_audio_devices/native/oboe/src/common/AudioStreamBuilder.cpp"
+    "../../../../../../../Users/mhavryliv/Development/Projucer/JUCE/modules/juce_audio_devices/native/oboe/src/common/DataConversionFlowGraph.cpp"
+    "../../../../../../../Users/mhavryliv/Development/Projucer/JUCE/modules/juce_audio_devices/native/oboe/src/common/DataConversionFlowGraph.h"
+    "../../../../../../../Users/mhavryliv/Development/Projucer/JUCE/modules/juce_audio_devices/native/oboe/src/common/FilterAudioStream.cpp"
+    "../../../../../../../Users/mhavryliv/Development/Projucer/JUCE/modules/juce_audio_devices/native/oboe/src/common/FilterAudioStream.h"
+    "../../../../../../../Users/mhavryliv/Development/Projucer/JUCE/modules/juce_audio_devices/native/oboe/src/common/FixedBlockAdapter.cpp"
+    "../../../../../../../Users/mhavryliv/Development/Projucer/JUCE/modules/juce_audio_devices/native/oboe/src/common/FixedBlockAdapter.h"
+    "../../../../../../../Users/mhavryliv/Development/Projucer/JUCE/modules/juce_audio_devices/native/oboe/src/common/FixedBlockReader.cpp"
+    "../../../../../../../Users/mhavryliv/Development/Projucer/JUCE/modules/juce_audio_devices/native/oboe/src/common/FixedBlockReader.h"
+    "../../../../../../../Users/mhavryliv/Development/Projucer/JUCE/modules/juce_audio_devices/native/oboe/src/common/FixedBlockWriter.cpp"
+    "../../../../../../../Users/mhavryliv/Development/Projucer/JUCE/modules/juce_audio_devices/native/oboe/src/common/FixedBlockWriter.h"
+    "../../../../../../../Users/mhavryliv/Development/Projucer/JUCE/modules/juce_audio_devices/native/oboe/src/common/LatencyTuner.cpp"
+    "../../../../../../../Users/mhavryliv/Development/Projucer/JUCE/modules/juce_audio_devices/native/oboe/src/common/MonotonicCounter.h"
+    "../../../../../../../Users/mhavryliv/Development/Projucer/JUCE/modules/juce_audio_devices/native/oboe/src/common/OboeDebug.h"
+    "../../../../../../../Users/mhavryliv/Development/Projucer/JUCE/modules/juce_audio_devices/native/oboe/src/common/QuirksManager.cpp"
+    "../../../../../../../Users/mhavryliv/Development/Projucer/JUCE/modules/juce_audio_devices/native/oboe/src/common/QuirksManager.h"
+    "../../../../../../../Users/mhavryliv/Development/Projucer/JUCE/modules/juce_audio_devices/native/oboe/src/common/SourceFloatCaller.cpp"
+    "../../../../../../../Users/mhavryliv/Development/Projucer/JUCE/modules/juce_audio_devices/native/oboe/src/common/SourceFloatCaller.h"
+    "../../../../../../../Users/mhavryliv/Development/Projucer/JUCE/modules/juce_audio_devices/native/oboe/src/common/SourceI16Caller.cpp"
+    "../../../../../../../Users/mhavryliv/Development/Projucer/JUCE/modules/juce_audio_devices/native/oboe/src/common/SourceI16Caller.h"
+    "../../../../../../../Users/mhavryliv/Development/Projucer/JUCE/modules/juce_audio_devices/native/oboe/src/common/StabilizedCallback.cpp"
+    "../../../../../../../Users/mhavryliv/Development/Projucer/JUCE/modules/juce_audio_devices/native/oboe/src/common/Trace.cpp"
+    "../../../../../../../Users/mhavryliv/Development/Projucer/JUCE/modules/juce_audio_devices/native/oboe/src/common/Trace.h"
+    "../../../../../../../Users/mhavryliv/Development/Projucer/JUCE/modules/juce_audio_devices/native/oboe/src/common/Utilities.cpp"
+    "../../../../../../../Users/mhavryliv/Development/Projucer/JUCE/modules/juce_audio_devices/native/oboe/src/common/Version.cpp"
+    "../../../../../../../Users/mhavryliv/Development/Projucer/JUCE/modules/juce_audio_devices/native/oboe/src/fifo/FifoBuffer.cpp"
+    "../../../../../../../Users/mhavryliv/Development/Projucer/JUCE/modules/juce_audio_devices/native/oboe/src/fifo/FifoBuffer.h"
+    "../../../../../../../Users/mhavryliv/Development/Projucer/JUCE/modules/juce_audio_devices/native/oboe/src/fifo/FifoController.cpp"
+    "../../../../../../../Users/mhavryliv/Development/Projucer/JUCE/modules/juce_audio_devices/native/oboe/src/fifo/FifoController.h"
+    "../../../../../../../Users/mhavryliv/Development/Projucer/JUCE/modules/juce_audio_devices/native/oboe/src/fifo/FifoControllerBase.cpp"
+    "../../../../../../../Users/mhavryliv/Development/Projucer/JUCE/modules/juce_audio_devices/native/oboe/src/fifo/FifoControllerBase.h"
+    "../../../../../../../Users/mhavryliv/Development/Projucer/JUCE/modules/juce_audio_devices/native/oboe/src/fifo/FifoControllerIndirect.cpp"
+    "../../../../../../../Users/mhavryliv/Development/Projucer/JUCE/modules/juce_audio_devices/native/oboe/src/fifo/FifoControllerIndirect.h"
+    "../../../../../../../Users/mhavryliv/Development/Projucer/JUCE/modules/juce_audio_devices/native/oboe/src/flowgraph/resampler/HyperbolicCosineWindow.h"
+    "../../../../../../../Users/mhavryliv/Development/Projucer/JUCE/modules/juce_audio_devices/native/oboe/src/flowgraph/resampler/IntegerRatio.cpp"
+    "../../../../../../../Users/mhavryliv/Development/Projucer/JUCE/modules/juce_audio_devices/native/oboe/src/flowgraph/resampler/IntegerRatio.h"
+    "../../../../../../../Users/mhavryliv/Development/Projucer/JUCE/modules/juce_audio_devices/native/oboe/src/flowgraph/resampler/KaiserWindow.h"
+    "../../../../../../../Users/mhavryliv/Development/Projucer/JUCE/modules/juce_audio_devices/native/oboe/src/flowgraph/resampler/LinearResampler.cpp"
+    "../../../../../../../Users/mhavryliv/Development/Projucer/JUCE/modules/juce_audio_devices/native/oboe/src/flowgraph/resampler/LinearResampler.h"
+    "../../../../../../../Users/mhavryliv/Development/Projucer/JUCE/modules/juce_audio_devices/native/oboe/src/flowgraph/resampler/MultiChannelResampler.cpp"
+    "../../../../../../../Users/mhavryliv/Development/Projucer/JUCE/modules/juce_audio_devices/native/oboe/src/flowgraph/resampler/MultiChannelResampler.h"
+    "../../../../../../../Users/mhavryliv/Development/Projucer/JUCE/modules/juce_audio_devices/native/oboe/src/flowgraph/resampler/PolyphaseResampler.cpp"
+    "../../../../../../../Users/mhavryliv/Development/Projucer/JUCE/modules/juce_audio_devices/native/oboe/src/flowgraph/resampler/PolyphaseResampler.h"
+    "../../../../../../../Users/mhavryliv/Development/Projucer/JUCE/modules/juce_audio_devices/native/oboe/src/flowgraph/resampler/PolyphaseResamplerMono.cpp"
+    "../../../../../../../Users/mhavryliv/Development/Projucer/JUCE/modules/juce_audio_devices/native/oboe/src/flowgraph/resampler/PolyphaseResamplerMono.h"
+    "../../../../../../../Users/mhavryliv/Development/Projucer/JUCE/modules/juce_audio_devices/native/oboe/src/flowgraph/resampler/PolyphaseResamplerStereo.cpp"
+    "../../../../../../../Users/mhavryliv/Development/Projucer/JUCE/modules/juce_audio_devices/native/oboe/src/flowgraph/resampler/PolyphaseResamplerStereo.h"
+    "../../../../../../../Users/mhavryliv/Development/Projucer/JUCE/modules/juce_audio_devices/native/oboe/src/flowgraph/resampler/SincResampler.cpp"
+    "../../../../../../../Users/mhavryliv/Development/Projucer/JUCE/modules/juce_audio_devices/native/oboe/src/flowgraph/resampler/SincResampler.h"
+    "../../../../../../../Users/mhavryliv/Development/Projucer/JUCE/modules/juce_audio_devices/native/oboe/src/flowgraph/resampler/SincResamplerStereo.cpp"
+    "../../../../../../../Users/mhavryliv/Development/Projucer/JUCE/modules/juce_audio_devices/native/oboe/src/flowgraph/resampler/SincResamplerStereo.h"
+    "../../../../../../../Users/mhavryliv/Development/Projucer/JUCE/modules/juce_audio_devices/native/oboe/src/flowgraph/ClipToRange.cpp"
+    "../../../../../../../Users/mhavryliv/Development/Projucer/JUCE/modules/juce_audio_devices/native/oboe/src/flowgraph/ClipToRange.h"
+    "../../../../../../../Users/mhavryliv/Development/Projucer/JUCE/modules/juce_audio_devices/native/oboe/src/flowgraph/FlowGraphNode.cpp"
+    "../../../../../../../Users/mhavryliv/Development/Projucer/JUCE/modules/juce_audio_devices/native/oboe/src/flowgraph/FlowGraphNode.h"
+    "../../../../../../../Users/mhavryliv/Development/Projucer/JUCE/modules/juce_audio_devices/native/oboe/src/flowgraph/ManyToMultiConverter.cpp"
+    "../../../../../../../Users/mhavryliv/Development/Projucer/JUCE/modules/juce_audio_devices/native/oboe/src/flowgraph/ManyToMultiConverter.h"
+    "../../../../../../../Users/mhavryliv/Development/Projucer/JUCE/modules/juce_audio_devices/native/oboe/src/flowgraph/MonoToMultiConverter.cpp"
+    "../../../../../../../Users/mhavryliv/Development/Projucer/JUCE/modules/juce_audio_devices/native/oboe/src/flowgraph/MonoToMultiConverter.h"
+    "../../../../../../../Users/mhavryliv/Development/Projucer/JUCE/modules/juce_audio_devices/native/oboe/src/flowgraph/RampLinear.cpp"
+    "../../../../../../../Users/mhavryliv/Development/Projucer/JUCE/modules/juce_audio_devices/native/oboe/src/flowgraph/RampLinear.h"
+    "../../../../../../../Users/mhavryliv/Development/Projucer/JUCE/modules/juce_audio_devices/native/oboe/src/flowgraph/SampleRateConverter.cpp"
+    "../../../../../../../Users/mhavryliv/Development/Projucer/JUCE/modules/juce_audio_devices/native/oboe/src/flowgraph/SampleRateConverter.h"
+    "../../../../../../../Users/mhavryliv/Development/Projucer/JUCE/modules/juce_audio_devices/native/oboe/src/flowgraph/SinkFloat.cpp"
+    "../../../../../../../Users/mhavryliv/Development/Projucer/JUCE/modules/juce_audio_devices/native/oboe/src/flowgraph/SinkFloat.h"
+    "../../../../../../../Users/mhavryliv/Development/Projucer/JUCE/modules/juce_audio_devices/native/oboe/src/flowgraph/SinkI16.cpp"
+    "../../../../../../../Users/mhavryliv/Development/Projucer/JUCE/modules/juce_audio_devices/native/oboe/src/flowgraph/SinkI16.h"
+    "../../../../../../../Users/mhavryliv/Development/Projucer/JUCE/modules/juce_audio_devices/native/oboe/src/flowgraph/SinkI24.cpp"
+    "../../../../../../../Users/mhavryliv/Development/Projucer/JUCE/modules/juce_audio_devices/native/oboe/src/flowgraph/SinkI24.h"
+    "../../../../../../../Users/mhavryliv/Development/Projucer/JUCE/modules/juce_audio_devices/native/oboe/src/flowgraph/SourceFloat.cpp"
+    "../../../../../../../Users/mhavryliv/Development/Projucer/JUCE/modules/juce_audio_devices/native/oboe/src/flowgraph/SourceFloat.h"
+    "../../../../../../../Users/mhavryliv/Development/Projucer/JUCE/modules/juce_audio_devices/native/oboe/src/flowgraph/SourceI16.cpp"
+    "../../../../../../../Users/mhavryliv/Development/Projucer/JUCE/modules/juce_audio_devices/native/oboe/src/flowgraph/SourceI16.h"
+    "../../../../../../../Users/mhavryliv/Development/Projucer/JUCE/modules/juce_audio_devices/native/oboe/src/flowgraph/SourceI24.cpp"
+    "../../../../../../../Users/mhavryliv/Development/Projucer/JUCE/modules/juce_audio_devices/native/oboe/src/flowgraph/SourceI24.h"
+    "../../../../../../../Users/mhavryliv/Development/Projucer/JUCE/modules/juce_audio_devices/native/oboe/src/opensles/AudioInputStreamOpenSLES.cpp"
+    "../../../../../../../Users/mhavryliv/Development/Projucer/JUCE/modules/juce_audio_devices/native/oboe/src/opensles/AudioInputStreamOpenSLES.h"
+    "../../../../../../../Users/mhavryliv/Development/Projucer/JUCE/modules/juce_audio_devices/native/oboe/src/opensles/AudioOutputStreamOpenSLES.cpp"
+    "../../../../../../../Users/mhavryliv/Development/Projucer/JUCE/modules/juce_audio_devices/native/oboe/src/opensles/AudioOutputStreamOpenSLES.h"
+    "../../../../../../../Users/mhavryliv/Development/Projucer/JUCE/modules/juce_audio_devices/native/oboe/src/opensles/AudioStreamBuffered.cpp"
+    "../../../../../../../Users/mhavryliv/Development/Projucer/JUCE/modules/juce_audio_devices/native/oboe/src/opensles/AudioStreamBuffered.h"
+    "../../../../../../../Users/mhavryliv/Development/Projucer/JUCE/modules/juce_audio_devices/native/oboe/src/opensles/AudioStreamOpenSLES.cpp"
+    "../../../../../../../Users/mhavryliv/Development/Projucer/JUCE/modules/juce_audio_devices/native/oboe/src/opensles/AudioStreamOpenSLES.h"
+    "../../../../../../../Users/mhavryliv/Development/Projucer/JUCE/modules/juce_audio_devices/native/oboe/src/opensles/EngineOpenSLES.cpp"
+    "../../../../../../../Users/mhavryliv/Development/Projucer/JUCE/modules/juce_audio_devices/native/oboe/src/opensles/EngineOpenSLES.h"
+    "../../../../../../../Users/mhavryliv/Development/Projucer/JUCE/modules/juce_audio_devices/native/oboe/src/opensles/OpenSLESUtilities.cpp"
+    "../../../../../../../Users/mhavryliv/Development/Projucer/JUCE/modules/juce_audio_devices/native/oboe/src/opensles/OpenSLESUtilities.h"
+    "../../../../../../../Users/mhavryliv/Development/Projucer/JUCE/modules/juce_audio_devices/native/oboe/src/opensles/OutputMixerOpenSLES.cpp"
+    "../../../../../../../Users/mhavryliv/Development/Projucer/JUCE/modules/juce_audio_devices/native/oboe/src/opensles/OutputMixerOpenSLES.h"
+    "../../../../../../../Users/mhavryliv/Development/Projucer/JUCE/modules/juce_audio_devices/native/oboe/CMakeLists.txt"
+    "../../../../../../../Users/mhavryliv/Development/Projucer/JUCE/modules/juce_audio_devices/native/oboe/readme.md"
     "../../../../../../../Users/mhavryliv/Development/Projucer/JUCE/modules/juce_audio_devices/native/juce_android_Audio.cpp"
+    "../../../../../../../Users/mhavryliv/Development/Projucer/JUCE/modules/juce_audio_devices/native/juce_android_HighPerformanceAudioHelpers.h"
     "../../../../../../../Users/mhavryliv/Development/Projucer/JUCE/modules/juce_audio_devices/native/juce_android_Midi.cpp"
     "../../../../../../../Users/mhavryliv/Development/Projucer/JUCE/modules/juce_audio_devices/native/juce_android_Oboe.cpp"
     "../../../../../../../Users/mhavryliv/Development/Projucer/JUCE/modules/juce_audio_devices/native/juce_android_OpenSL.cpp"
@@ -464,6 +580,8 @@ add_library( ${BINARY_NAME}
     "../../../../../../../Users/mhavryliv/Development/Projucer/JUCE/modules/juce_audio_processors/utilities/juce_AudioProcessorParameterWithID.h"
     "../../../../../../../Users/mhavryliv/Development/Projucer/JUCE/modules/juce_audio_processors/utilities/juce_AudioProcessorValueTreeState.cpp"
     "../../../../../../../Users/mhavryliv/Development/Projucer/JUCE/modules/juce_audio_processors/utilities/juce_AudioProcessorValueTreeState.h"
+    "../../../../../../../Users/mhavryliv/Development/Projucer/JUCE/modules/juce_audio_processors/utilities/juce_ParameterAttachments.cpp"
+    "../../../../../../../Users/mhavryliv/Development/Projucer/JUCE/modules/juce_audio_processors/utilities/juce_ParameterAttachments.h"
     "../../../../../../../Users/mhavryliv/Development/Projucer/JUCE/modules/juce_audio_processors/utilities/juce_RangedAudioParameter.cpp"
     "../../../../../../../Users/mhavryliv/Development/Projucer/JUCE/modules/juce_audio_processors/utilities/juce_RangedAudioParameter.h"
     "../../../../../../../Users/mhavryliv/Development/Projucer/JUCE/modules/juce_audio_processors/juce_audio_processors.cpp"
@@ -685,6 +803,8 @@ add_library( ${BINARY_NAME}
     "../../../../../../../Users/mhavryliv/Development/Projucer/JUCE/modules/juce_core/files/juce_FileSearchPath.cpp"
     "../../../../../../../Users/mhavryliv/Development/Projucer/JUCE/modules/juce_core/files/juce_FileSearchPath.h"
     "../../../../../../../Users/mhavryliv/Development/Projucer/JUCE/modules/juce_core/files/juce_MemoryMappedFile.h"
+    "../../../../../../../Users/mhavryliv/Development/Projucer/JUCE/modules/juce_core/files/juce_RangedDirectoryIterator.cpp"
+    "../../../../../../../Users/mhavryliv/Development/Projucer/JUCE/modules/juce_core/files/juce_RangedDirectoryIterator.h"
     "../../../../../../../Users/mhavryliv/Development/Projucer/JUCE/modules/juce_core/files/juce_TemporaryFile.cpp"
     "../../../../../../../Users/mhavryliv/Development/Projucer/JUCE/modules/juce_core/files/juce_TemporaryFile.h"
     "../../../../../../../Users/mhavryliv/Development/Projucer/JUCE/modules/juce_core/files/juce_WildcardFileFilter.cpp"
@@ -707,6 +827,8 @@ add_library( ${BINARY_NAME}
     "../../../../../../../Users/mhavryliv/Development/Projucer/JUCE/modules/juce_core/maths/juce_Random.h"
     "../../../../../../../Users/mhavryliv/Development/Projucer/JUCE/modules/juce_core/maths/juce_Range.h"
     "../../../../../../../Users/mhavryliv/Development/Projucer/JUCE/modules/juce_core/maths/juce_StatisticsAccumulator.h"
+    "../../../../../../../Users/mhavryliv/Development/Projucer/JUCE/modules/juce_core/memory/juce_AllocationHooks.cpp"
+    "../../../../../../../Users/mhavryliv/Development/Projucer/JUCE/modules/juce_core/memory/juce_AllocationHooks.h"
     "../../../../../../../Users/mhavryliv/Development/Projucer/JUCE/modules/juce_core/memory/juce_Atomic.h"
     "../../../../../../../Users/mhavryliv/Development/Projucer/JUCE/modules/juce_core/memory/juce_ByteOrder.h"
     "../../../../../../../Users/mhavryliv/Development/Projucer/JUCE/modules/juce_core/memory/juce_ContainerDeletePolicy.h"
@@ -728,8 +850,6 @@ add_library( ${BINARY_NAME}
     "../../../../../../../Users/mhavryliv/Development/Projucer/JUCE/modules/juce_core/misc/juce_Result.h"
     "../../../../../../../Users/mhavryliv/Development/Projucer/JUCE/modules/juce_core/misc/juce_RuntimePermissions.cpp"
     "../../../../../../../Users/mhavryliv/Development/Projucer/JUCE/modules/juce_core/misc/juce_RuntimePermissions.h"
-    "../../../../../../../Users/mhavryliv/Development/Projucer/JUCE/modules/juce_core/misc/juce_StdFunctionCompat.cpp"
-    "../../../../../../../Users/mhavryliv/Development/Projucer/JUCE/modules/juce_core/misc/juce_StdFunctionCompat.h"
     "../../../../../../../Users/mhavryliv/Development/Projucer/JUCE/modules/juce_core/misc/juce_Uuid.cpp"
     "../../../../../../../Users/mhavryliv/Development/Projucer/JUCE/modules/juce_core/misc/juce_Uuid.h"
     "../../../../../../../Users/mhavryliv/Development/Projucer/JUCE/modules/juce_core/misc/juce_WindowsRegistry.h"
@@ -795,6 +915,7 @@ add_library( ${BINARY_NAME}
     "../../../../../../../Users/mhavryliv/Development/Projucer/JUCE/modules/juce_core/streams/juce_URLInputSource.cpp"
     "../../../../../../../Users/mhavryliv/Development/Projucer/JUCE/modules/juce_core/streams/juce_URLInputSource.h"
     "../../../../../../../Users/mhavryliv/Development/Projucer/JUCE/modules/juce_core/system/juce_CompilerSupport.h"
+    "../../../../../../../Users/mhavryliv/Development/Projucer/JUCE/modules/juce_core/system/juce_CompilerWarnings.h"
     "../../../../../../../Users/mhavryliv/Development/Projucer/JUCE/modules/juce_core/system/juce_PlatformDefs.h"
     "../../../../../../../Users/mhavryliv/Development/Projucer/JUCE/modules/juce_core/system/juce_StandardHeader.h"
     "../../../../../../../Users/mhavryliv/Development/Projucer/JUCE/modules/juce_core/system/juce_SystemStats.cpp"
@@ -845,6 +966,7 @@ add_library( ${BINARY_NAME}
     "../../../../../../../Users/mhavryliv/Development/Projucer/JUCE/modules/juce_core/threads/juce_ThreadPool.h"
     "../../../../../../../Users/mhavryliv/Development/Projucer/JUCE/modules/juce_core/threads/juce_TimeSliceThread.cpp"
     "../../../../../../../Users/mhavryliv/Development/Projucer/JUCE/modules/juce_core/threads/juce_TimeSliceThread.h"
+    "../../../../../../../Users/mhavryliv/Development/Projucer/JUCE/modules/juce_core/threads/juce_WaitableEvent.cpp"
     "../../../../../../../Users/mhavryliv/Development/Projucer/JUCE/modules/juce_core/threads/juce_WaitableEvent.h"
     "../../../../../../../Users/mhavryliv/Development/Projucer/JUCE/modules/juce_core/time/juce_PerformanceCounter.cpp"
     "../../../../../../../Users/mhavryliv/Development/Projucer/JUCE/modules/juce_core/time/juce_PerformanceCounter.h"
@@ -927,6 +1049,8 @@ add_library( ${BINARY_NAME}
     "../../../../../../../Users/mhavryliv/Development/Projucer/JUCE/modules/juce_data_structures/juce_data_structures.h"
     "../../../../../../../Users/mhavryliv/Development/Projucer/JUCE/modules/juce_dsp/containers/juce_AudioBlock.h"
     "../../../../../../../Users/mhavryliv/Development/Projucer/JUCE/modules/juce_dsp/containers/juce_AudioBlock_test.cpp"
+    "../../../../../../../Users/mhavryliv/Development/Projucer/JUCE/modules/juce_dsp/containers/juce_FixedSizeFunction.h"
+    "../../../../../../../Users/mhavryliv/Development/Projucer/JUCE/modules/juce_dsp/containers/juce_FixedSizeFunction_test.cpp"
     "../../../../../../../Users/mhavryliv/Development/Projucer/JUCE/modules/juce_dsp/containers/juce_SIMDRegister.h"
     "../../../../../../../Users/mhavryliv/Development/Projucer/JUCE/modules/juce_dsp/containers/juce_SIMDRegister_Impl.h"
     "../../../../../../../Users/mhavryliv/Development/Projucer/JUCE/modules/juce_dsp/containers/juce_SIMDRegister_test.cpp"
@@ -934,6 +1058,7 @@ add_library( ${BINARY_NAME}
     "../../../../../../../Users/mhavryliv/Development/Projucer/JUCE/modules/juce_dsp/filter_design/juce_FilterDesign.h"
     "../../../../../../../Users/mhavryliv/Development/Projucer/JUCE/modules/juce_dsp/frequency/juce_Convolution.cpp"
     "../../../../../../../Users/mhavryliv/Development/Projucer/JUCE/modules/juce_dsp/frequency/juce_Convolution.h"
+    "../../../../../../../Users/mhavryliv/Development/Projucer/JUCE/modules/juce_dsp/frequency/juce_Convolution_test.cpp"
     "../../../../../../../Users/mhavryliv/Development/Projucer/JUCE/modules/juce_dsp/frequency/juce_FFT.cpp"
     "../../../../../../../Users/mhavryliv/Development/Projucer/JUCE/modules/juce_dsp/frequency/juce_FFT.h"
     "../../../../../../../Users/mhavryliv/Development/Projucer/JUCE/modules/juce_dsp/frequency/juce_FFT_test.cpp"
@@ -958,26 +1083,51 @@ add_library( ${BINARY_NAME}
     "../../../../../../../Users/mhavryliv/Development/Projucer/JUCE/modules/juce_dsp/native/juce_neon_SIMDNativeOps.h"
     "../../../../../../../Users/mhavryliv/Development/Projucer/JUCE/modules/juce_dsp/native/juce_sse_SIMDNativeOps.cpp"
     "../../../../../../../Users/mhavryliv/Development/Projucer/JUCE/modules/juce_dsp/native/juce_sse_SIMDNativeOps.h"
-    "../../../../../../../Users/mhavryliv/Development/Projucer/JUCE/modules/juce_dsp/processors/juce_Bias.h"
+    "../../../../../../../Users/mhavryliv/Development/Projucer/JUCE/modules/juce_dsp/processors/juce_BallisticsFilter.cpp"
+    "../../../../../../../Users/mhavryliv/Development/Projucer/JUCE/modules/juce_dsp/processors/juce_BallisticsFilter.h"
+    "../../../../../../../Users/mhavryliv/Development/Projucer/JUCE/modules/juce_dsp/processors/juce_DelayLine.cpp"
+    "../../../../../../../Users/mhavryliv/Development/Projucer/JUCE/modules/juce_dsp/processors/juce_DelayLine.h"
+    "../../../../../../../Users/mhavryliv/Development/Projucer/JUCE/modules/juce_dsp/processors/juce_DryWetMixer.cpp"
+    "../../../../../../../Users/mhavryliv/Development/Projucer/JUCE/modules/juce_dsp/processors/juce_DryWetMixer.h"
     "../../../../../../../Users/mhavryliv/Development/Projucer/JUCE/modules/juce_dsp/processors/juce_FIRFilter.cpp"
     "../../../../../../../Users/mhavryliv/Development/Projucer/JUCE/modules/juce_dsp/processors/juce_FIRFilter.h"
     "../../../../../../../Users/mhavryliv/Development/Projucer/JUCE/modules/juce_dsp/processors/juce_FIRFilter_test.cpp"
-    "../../../../../../../Users/mhavryliv/Development/Projucer/JUCE/modules/juce_dsp/processors/juce_Gain.h"
+    "../../../../../../../Users/mhavryliv/Development/Projucer/JUCE/modules/juce_dsp/processors/juce_FirstOrderTPTFilter.cpp"
+    "../../../../../../../Users/mhavryliv/Development/Projucer/JUCE/modules/juce_dsp/processors/juce_FirstOrderTPTFilter.h"
     "../../../../../../../Users/mhavryliv/Development/Projucer/JUCE/modules/juce_dsp/processors/juce_IIRFilter.cpp"
     "../../../../../../../Users/mhavryliv/Development/Projucer/JUCE/modules/juce_dsp/processors/juce_IIRFilter.h"
     "../../../../../../../Users/mhavryliv/Development/Projucer/JUCE/modules/juce_dsp/processors/juce_IIRFilter_Impl.h"
-    "../../../../../../../Users/mhavryliv/Development/Projucer/JUCE/modules/juce_dsp/processors/juce_LadderFilter.cpp"
-    "../../../../../../../Users/mhavryliv/Development/Projucer/JUCE/modules/juce_dsp/processors/juce_LadderFilter.h"
-    "../../../../../../../Users/mhavryliv/Development/Projucer/JUCE/modules/juce_dsp/processors/juce_Oscillator.h"
+    "../../../../../../../Users/mhavryliv/Development/Projucer/JUCE/modules/juce_dsp/processors/juce_LinkwitzRileyFilter.cpp"
+    "../../../../../../../Users/mhavryliv/Development/Projucer/JUCE/modules/juce_dsp/processors/juce_LinkwitzRileyFilter.h"
     "../../../../../../../Users/mhavryliv/Development/Projucer/JUCE/modules/juce_dsp/processors/juce_Oversampling.cpp"
     "../../../../../../../Users/mhavryliv/Development/Projucer/JUCE/modules/juce_dsp/processors/juce_Oversampling.h"
+    "../../../../../../../Users/mhavryliv/Development/Projucer/JUCE/modules/juce_dsp/processors/juce_Panner.cpp"
+    "../../../../../../../Users/mhavryliv/Development/Projucer/JUCE/modules/juce_dsp/processors/juce_Panner.h"
     "../../../../../../../Users/mhavryliv/Development/Projucer/JUCE/modules/juce_dsp/processors/juce_ProcessContext.h"
     "../../../../../../../Users/mhavryliv/Development/Projucer/JUCE/modules/juce_dsp/processors/juce_ProcessorChain.h"
+    "../../../../../../../Users/mhavryliv/Development/Projucer/JUCE/modules/juce_dsp/processors/juce_ProcessorChain_test.cpp"
     "../../../../../../../Users/mhavryliv/Development/Projucer/JUCE/modules/juce_dsp/processors/juce_ProcessorDuplicator.h"
     "../../../../../../../Users/mhavryliv/Development/Projucer/JUCE/modules/juce_dsp/processors/juce_ProcessorWrapper.h"
-    "../../../../../../../Users/mhavryliv/Development/Projucer/JUCE/modules/juce_dsp/processors/juce_Reverb.h"
     "../../../../../../../Users/mhavryliv/Development/Projucer/JUCE/modules/juce_dsp/processors/juce_StateVariableFilter.h"
-    "../../../../../../../Users/mhavryliv/Development/Projucer/JUCE/modules/juce_dsp/processors/juce_WaveShaper.h"
+    "../../../../../../../Users/mhavryliv/Development/Projucer/JUCE/modules/juce_dsp/processors/juce_StateVariableTPTFilter.cpp"
+    "../../../../../../../Users/mhavryliv/Development/Projucer/JUCE/modules/juce_dsp/processors/juce_StateVariableTPTFilter.h"
+    "../../../../../../../Users/mhavryliv/Development/Projucer/JUCE/modules/juce_dsp/widgets/juce_Bias.h"
+    "../../../../../../../Users/mhavryliv/Development/Projucer/JUCE/modules/juce_dsp/widgets/juce_Chorus.cpp"
+    "../../../../../../../Users/mhavryliv/Development/Projucer/JUCE/modules/juce_dsp/widgets/juce_Chorus.h"
+    "../../../../../../../Users/mhavryliv/Development/Projucer/JUCE/modules/juce_dsp/widgets/juce_Compressor.cpp"
+    "../../../../../../../Users/mhavryliv/Development/Projucer/JUCE/modules/juce_dsp/widgets/juce_Compressor.h"
+    "../../../../../../../Users/mhavryliv/Development/Projucer/JUCE/modules/juce_dsp/widgets/juce_Gain.h"
+    "../../../../../../../Users/mhavryliv/Development/Projucer/JUCE/modules/juce_dsp/widgets/juce_LadderFilter.cpp"
+    "../../../../../../../Users/mhavryliv/Development/Projucer/JUCE/modules/juce_dsp/widgets/juce_LadderFilter.h"
+    "../../../../../../../Users/mhavryliv/Development/Projucer/JUCE/modules/juce_dsp/widgets/juce_Limiter.cpp"
+    "../../../../../../../Users/mhavryliv/Development/Projucer/JUCE/modules/juce_dsp/widgets/juce_Limiter.h"
+    "../../../../../../../Users/mhavryliv/Development/Projucer/JUCE/modules/juce_dsp/widgets/juce_NoiseGate.cpp"
+    "../../../../../../../Users/mhavryliv/Development/Projucer/JUCE/modules/juce_dsp/widgets/juce_NoiseGate.h"
+    "../../../../../../../Users/mhavryliv/Development/Projucer/JUCE/modules/juce_dsp/widgets/juce_Oscillator.h"
+    "../../../../../../../Users/mhavryliv/Development/Projucer/JUCE/modules/juce_dsp/widgets/juce_Phaser.cpp"
+    "../../../../../../../Users/mhavryliv/Development/Projucer/JUCE/modules/juce_dsp/widgets/juce_Phaser.h"
+    "../../../../../../../Users/mhavryliv/Development/Projucer/JUCE/modules/juce_dsp/widgets/juce_Reverb.h"
+    "../../../../../../../Users/mhavryliv/Development/Projucer/JUCE/modules/juce_dsp/widgets/juce_WaveShaper.h"
     "../../../../../../../Users/mhavryliv/Development/Projucer/JUCE/modules/juce_dsp/juce_dsp.cpp"
     "../../../../../../../Users/mhavryliv/Development/Projucer/JUCE/modules/juce_dsp/juce_dsp.mm"
     "../../../../../../../Users/mhavryliv/Development/Projucer/JUCE/modules/juce_dsp/juce_dsp.h"
@@ -1374,6 +1524,11 @@ add_library( ${BINARY_NAME}
     "../../../../../../../Users/mhavryliv/Development/Projucer/JUCE/modules/juce_gui_basics/mouse/juce_SelectedItemSet.h"
     "../../../../../../../Users/mhavryliv/Development/Projucer/JUCE/modules/juce_gui_basics/mouse/juce_TextDragAndDropTarget.h"
     "../../../../../../../Users/mhavryliv/Development/Projucer/JUCE/modules/juce_gui_basics/mouse/juce_TooltipClient.h"
+    "../../../../../../../Users/mhavryliv/Development/Projucer/JUCE/modules/juce_gui_basics/native/x11/juce_linux_X11_DragAndDrop.cpp"
+    "../../../../../../../Users/mhavryliv/Development/Projucer/JUCE/modules/juce_gui_basics/native/x11/juce_linux_X11_Symbols.cpp"
+    "../../../../../../../Users/mhavryliv/Development/Projucer/JUCE/modules/juce_gui_basics/native/x11/juce_linux_X11_Symbols.h"
+    "../../../../../../../Users/mhavryliv/Development/Projucer/JUCE/modules/juce_gui_basics/native/x11/juce_linux_XWindowSystem.cpp"
+    "../../../../../../../Users/mhavryliv/Development/Projucer/JUCE/modules/juce_gui_basics/native/x11/juce_linux_XWindowSystem.h"
     "../../../../../../../Users/mhavryliv/Development/Projucer/JUCE/modules/juce_gui_basics/native/juce_android_ContentSharer.cpp"
     "../../../../../../../Users/mhavryliv/Development/Projucer/JUCE/modules/juce_gui_basics/native/juce_android_FileChooser.cpp"
     "../../../../../../../Users/mhavryliv/Development/Projucer/JUCE/modules/juce_gui_basics/native/juce_android_Windowing.cpp"
@@ -1383,10 +1538,7 @@ add_library( ${BINARY_NAME}
     "../../../../../../../Users/mhavryliv/Development/Projucer/JUCE/modules/juce_gui_basics/native/juce_ios_UIViewComponentPeer.mm"
     "../../../../../../../Users/mhavryliv/Development/Projucer/JUCE/modules/juce_gui_basics/native/juce_ios_Windowing.mm"
     "../../../../../../../Users/mhavryliv/Development/Projucer/JUCE/modules/juce_gui_basics/native/juce_linux_FileChooser.cpp"
-    "../../../../../../../Users/mhavryliv/Development/Projucer/JUCE/modules/juce_gui_basics/native/juce_linux_X11.cpp"
-    "../../../../../../../Users/mhavryliv/Development/Projucer/JUCE/modules/juce_gui_basics/native/juce_linux_X11.h"
-    "../../../../../../../Users/mhavryliv/Development/Projucer/JUCE/modules/juce_gui_basics/native/juce_linux_X11_Clipboard.cpp"
-    "../../../../../../../Users/mhavryliv/Development/Projucer/JUCE/modules/juce_gui_basics/native/juce_linux_X11_Windowing.cpp"
+    "../../../../../../../Users/mhavryliv/Development/Projucer/JUCE/modules/juce_gui_basics/native/juce_linux_Windowing.cpp"
     "../../../../../../../Users/mhavryliv/Development/Projucer/JUCE/modules/juce_gui_basics/native/juce_mac_FileChooser.mm"
     "../../../../../../../Users/mhavryliv/Development/Projucer/JUCE/modules/juce_gui_basics/native/juce_mac_MainMenu.mm"
     "../../../../../../../Users/mhavryliv/Development/Projucer/JUCE/modules/juce_gui_basics/native/juce_mac_MouseCursor.mm"
@@ -1491,6 +1643,7 @@ add_library( ${BINARY_NAME}
     "../../../../../../../Users/mhavryliv/Development/Projucer/JUCE/modules/juce_gui_extra/documents/juce_FileBasedDocument.h"
     "../../../../../../../Users/mhavryliv/Development/Projucer/JUCE/modules/juce_gui_extra/embedding/juce_ActiveXControlComponent.h"
     "../../../../../../../Users/mhavryliv/Development/Projucer/JUCE/modules/juce_gui_extra/embedding/juce_AndroidViewComponent.h"
+    "../../../../../../../Users/mhavryliv/Development/Projucer/JUCE/modules/juce_gui_extra/embedding/juce_HWNDComponent.h"
     "../../../../../../../Users/mhavryliv/Development/Projucer/JUCE/modules/juce_gui_extra/embedding/juce_NSViewComponent.h"
     "../../../../../../../Users/mhavryliv/Development/Projucer/JUCE/modules/juce_gui_extra/embedding/juce_ScopedDPIAwarenessDisabler.h"
     "../../../../../../../Users/mhavryliv/Development/Projucer/JUCE/modules/juce_gui_extra/embedding/juce_UIViewComponent.h"
@@ -1532,6 +1685,7 @@ add_library( ${BINARY_NAME}
     "../../../../../../../Users/mhavryliv/Development/Projucer/JUCE/modules/juce_gui_extra/native/juce_mac_SystemTrayIcon.cpp"
     "../../../../../../../Users/mhavryliv/Development/Projucer/JUCE/modules/juce_gui_extra/native/juce_mac_WebBrowserComponent.mm"
     "../../../../../../../Users/mhavryliv/Development/Projucer/JUCE/modules/juce_gui_extra/native/juce_win32_ActiveXComponent.cpp"
+    "../../../../../../../Users/mhavryliv/Development/Projucer/JUCE/modules/juce_gui_extra/native/juce_win32_HWNDComponent.cpp"
     "../../../../../../../Users/mhavryliv/Development/Projucer/JUCE/modules/juce_gui_extra/native/juce_win32_SystemTrayIcon.cpp"
     "../../../../../../../Users/mhavryliv/Development/Projucer/JUCE/modules/juce_gui_extra/native/juce_win32_WebBrowserComponent.cpp"
     "../../../../../../../Users/mhavryliv/Development/Projucer/JUCE/modules/juce_gui_extra/juce_gui_extra.cpp"
@@ -1717,16 +1871,17 @@ set_source_files_properties("../../../../../../../Users/mhavryliv/Development/Pr
 set_source_files_properties("../../../../../../../Users/mhavryliv/Development/Projucer/JUCE/modules/juce_audio_basics/synthesisers/juce_Synthesiser.cpp" PROPERTIES HEADER_FILE_ONLY TRUE)
 set_source_files_properties("../../../../../../../Users/mhavryliv/Development/Projucer/JUCE/modules/juce_audio_basics/synthesisers/juce_Synthesiser.h" PROPERTIES HEADER_FILE_ONLY TRUE)
 set_source_files_properties("../../../../../../../Users/mhavryliv/Development/Projucer/JUCE/modules/juce_audio_basics/utilities/juce_ADSR.h" PROPERTIES HEADER_FILE_ONLY TRUE)
-set_source_files_properties("../../../../../../../Users/mhavryliv/Development/Projucer/JUCE/modules/juce_audio_basics/utilities/juce_CatmullRomInterpolator.cpp" PROPERTIES HEADER_FILE_ONLY TRUE)
-set_source_files_properties("../../../../../../../Users/mhavryliv/Development/Projucer/JUCE/modules/juce_audio_basics/utilities/juce_CatmullRomInterpolator.h" PROPERTIES HEADER_FILE_ONLY TRUE)
 set_source_files_properties("../../../../../../../Users/mhavryliv/Development/Projucer/JUCE/modules/juce_audio_basics/utilities/juce_Decibels.h" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties("../../../../../../../Users/mhavryliv/Development/Projucer/JUCE/modules/juce_audio_basics/utilities/juce_GenericInterpolator.h" PROPERTIES HEADER_FILE_ONLY TRUE)
 set_source_files_properties("../../../../../../../Users/mhavryliv/Development/Projucer/JUCE/modules/juce_audio_basics/utilities/juce_IIRFilter.cpp" PROPERTIES HEADER_FILE_ONLY TRUE)
 set_source_files_properties("../../../../../../../Users/mhavryliv/Development/Projucer/JUCE/modules/juce_audio_basics/utilities/juce_IIRFilter.h" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties("../../../../../../../Users/mhavryliv/Development/Projucer/JUCE/modules/juce_audio_basics/utilities/juce_Interpolators.cpp" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties("../../../../../../../Users/mhavryliv/Development/Projucer/JUCE/modules/juce_audio_basics/utilities/juce_Interpolators.h" PROPERTIES HEADER_FILE_ONLY TRUE)
 set_source_files_properties("../../../../../../../Users/mhavryliv/Development/Projucer/JUCE/modules/juce_audio_basics/utilities/juce_LagrangeInterpolator.cpp" PROPERTIES HEADER_FILE_ONLY TRUE)
-set_source_files_properties("../../../../../../../Users/mhavryliv/Development/Projucer/JUCE/modules/juce_audio_basics/utilities/juce_LagrangeInterpolator.h" PROPERTIES HEADER_FILE_ONLY TRUE)
 set_source_files_properties("../../../../../../../Users/mhavryliv/Development/Projucer/JUCE/modules/juce_audio_basics/utilities/juce_Reverb.h" PROPERTIES HEADER_FILE_ONLY TRUE)
 set_source_files_properties("../../../../../../../Users/mhavryliv/Development/Projucer/JUCE/modules/juce_audio_basics/utilities/juce_SmoothedValue.cpp" PROPERTIES HEADER_FILE_ONLY TRUE)
 set_source_files_properties("../../../../../../../Users/mhavryliv/Development/Projucer/JUCE/modules/juce_audio_basics/utilities/juce_SmoothedValue.h" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties("../../../../../../../Users/mhavryliv/Development/Projucer/JUCE/modules/juce_audio_basics/utilities/juce_WindowedSincInterpolator.cpp" PROPERTIES HEADER_FILE_ONLY TRUE)
 set_source_files_properties("../../../../../../../Users/mhavryliv/Development/Projucer/JUCE/modules/juce_audio_basics/juce_audio_basics.cpp" PROPERTIES HEADER_FILE_ONLY TRUE)
 set_source_files_properties("../../../../../../../Users/mhavryliv/Development/Projucer/JUCE/modules/juce_audio_basics/juce_audio_basics.mm" PROPERTIES HEADER_FILE_ONLY TRUE)
 set_source_files_properties("../../../../../../../Users/mhavryliv/Development/Projucer/JUCE/modules/juce_audio_basics/juce_audio_basics.h" PROPERTIES HEADER_FILE_ONLY TRUE)
@@ -1741,7 +1896,118 @@ set_source_files_properties("../../../../../../../Users/mhavryliv/Development/Pr
 set_source_files_properties("../../../../../../../Users/mhavryliv/Development/Projucer/JUCE/modules/juce_audio_devices/midi_io/juce_MidiDevices.h" PROPERTIES HEADER_FILE_ONLY TRUE)
 set_source_files_properties("../../../../../../../Users/mhavryliv/Development/Projucer/JUCE/modules/juce_audio_devices/midi_io/juce_MidiMessageCollector.cpp" PROPERTIES HEADER_FILE_ONLY TRUE)
 set_source_files_properties("../../../../../../../Users/mhavryliv/Development/Projucer/JUCE/modules/juce_audio_devices/midi_io/juce_MidiMessageCollector.h" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties("../../../../../../../Users/mhavryliv/Development/Projucer/JUCE/modules/juce_audio_devices/native/oboe/include/oboe/AudioStream.h" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties("../../../../../../../Users/mhavryliv/Development/Projucer/JUCE/modules/juce_audio_devices/native/oboe/include/oboe/AudioStreamBase.h" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties("../../../../../../../Users/mhavryliv/Development/Projucer/JUCE/modules/juce_audio_devices/native/oboe/include/oboe/AudioStreamBuilder.h" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties("../../../../../../../Users/mhavryliv/Development/Projucer/JUCE/modules/juce_audio_devices/native/oboe/include/oboe/AudioStreamCallback.h" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties("../../../../../../../Users/mhavryliv/Development/Projucer/JUCE/modules/juce_audio_devices/native/oboe/include/oboe/Definitions.h" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties("../../../../../../../Users/mhavryliv/Development/Projucer/JUCE/modules/juce_audio_devices/native/oboe/include/oboe/LatencyTuner.h" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties("../../../../../../../Users/mhavryliv/Development/Projucer/JUCE/modules/juce_audio_devices/native/oboe/include/oboe/Oboe.h" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties("../../../../../../../Users/mhavryliv/Development/Projucer/JUCE/modules/juce_audio_devices/native/oboe/include/oboe/ResultWithValue.h" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties("../../../../../../../Users/mhavryliv/Development/Projucer/JUCE/modules/juce_audio_devices/native/oboe/include/oboe/StabilizedCallback.h" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties("../../../../../../../Users/mhavryliv/Development/Projucer/JUCE/modules/juce_audio_devices/native/oboe/include/oboe/Utilities.h" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties("../../../../../../../Users/mhavryliv/Development/Projucer/JUCE/modules/juce_audio_devices/native/oboe/include/oboe/Version.h" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties("../../../../../../../Users/mhavryliv/Development/Projucer/JUCE/modules/juce_audio_devices/native/oboe/src/aaudio/AAudioLoader.cpp" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties("../../../../../../../Users/mhavryliv/Development/Projucer/JUCE/modules/juce_audio_devices/native/oboe/src/aaudio/AAudioLoader.h" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties("../../../../../../../Users/mhavryliv/Development/Projucer/JUCE/modules/juce_audio_devices/native/oboe/src/aaudio/AudioStreamAAudio.cpp" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties("../../../../../../../Users/mhavryliv/Development/Projucer/JUCE/modules/juce_audio_devices/native/oboe/src/aaudio/AudioStreamAAudio.h" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties("../../../../../../../Users/mhavryliv/Development/Projucer/JUCE/modules/juce_audio_devices/native/oboe/src/common/AudioClock.h" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties("../../../../../../../Users/mhavryliv/Development/Projucer/JUCE/modules/juce_audio_devices/native/oboe/src/common/AudioSourceCaller.cpp" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties("../../../../../../../Users/mhavryliv/Development/Projucer/JUCE/modules/juce_audio_devices/native/oboe/src/common/AudioSourceCaller.h" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties("../../../../../../../Users/mhavryliv/Development/Projucer/JUCE/modules/juce_audio_devices/native/oboe/src/common/AudioStream.cpp" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties("../../../../../../../Users/mhavryliv/Development/Projucer/JUCE/modules/juce_audio_devices/native/oboe/src/common/AudioStreamBuilder.cpp" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties("../../../../../../../Users/mhavryliv/Development/Projucer/JUCE/modules/juce_audio_devices/native/oboe/src/common/DataConversionFlowGraph.cpp" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties("../../../../../../../Users/mhavryliv/Development/Projucer/JUCE/modules/juce_audio_devices/native/oboe/src/common/DataConversionFlowGraph.h" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties("../../../../../../../Users/mhavryliv/Development/Projucer/JUCE/modules/juce_audio_devices/native/oboe/src/common/FilterAudioStream.cpp" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties("../../../../../../../Users/mhavryliv/Development/Projucer/JUCE/modules/juce_audio_devices/native/oboe/src/common/FilterAudioStream.h" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties("../../../../../../../Users/mhavryliv/Development/Projucer/JUCE/modules/juce_audio_devices/native/oboe/src/common/FixedBlockAdapter.cpp" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties("../../../../../../../Users/mhavryliv/Development/Projucer/JUCE/modules/juce_audio_devices/native/oboe/src/common/FixedBlockAdapter.h" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties("../../../../../../../Users/mhavryliv/Development/Projucer/JUCE/modules/juce_audio_devices/native/oboe/src/common/FixedBlockReader.cpp" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties("../../../../../../../Users/mhavryliv/Development/Projucer/JUCE/modules/juce_audio_devices/native/oboe/src/common/FixedBlockReader.h" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties("../../../../../../../Users/mhavryliv/Development/Projucer/JUCE/modules/juce_audio_devices/native/oboe/src/common/FixedBlockWriter.cpp" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties("../../../../../../../Users/mhavryliv/Development/Projucer/JUCE/modules/juce_audio_devices/native/oboe/src/common/FixedBlockWriter.h" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties("../../../../../../../Users/mhavryliv/Development/Projucer/JUCE/modules/juce_audio_devices/native/oboe/src/common/LatencyTuner.cpp" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties("../../../../../../../Users/mhavryliv/Development/Projucer/JUCE/modules/juce_audio_devices/native/oboe/src/common/MonotonicCounter.h" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties("../../../../../../../Users/mhavryliv/Development/Projucer/JUCE/modules/juce_audio_devices/native/oboe/src/common/OboeDebug.h" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties("../../../../../../../Users/mhavryliv/Development/Projucer/JUCE/modules/juce_audio_devices/native/oboe/src/common/QuirksManager.cpp" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties("../../../../../../../Users/mhavryliv/Development/Projucer/JUCE/modules/juce_audio_devices/native/oboe/src/common/QuirksManager.h" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties("../../../../../../../Users/mhavryliv/Development/Projucer/JUCE/modules/juce_audio_devices/native/oboe/src/common/SourceFloatCaller.cpp" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties("../../../../../../../Users/mhavryliv/Development/Projucer/JUCE/modules/juce_audio_devices/native/oboe/src/common/SourceFloatCaller.h" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties("../../../../../../../Users/mhavryliv/Development/Projucer/JUCE/modules/juce_audio_devices/native/oboe/src/common/SourceI16Caller.cpp" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties("../../../../../../../Users/mhavryliv/Development/Projucer/JUCE/modules/juce_audio_devices/native/oboe/src/common/SourceI16Caller.h" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties("../../../../../../../Users/mhavryliv/Development/Projucer/JUCE/modules/juce_audio_devices/native/oboe/src/common/StabilizedCallback.cpp" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties("../../../../../../../Users/mhavryliv/Development/Projucer/JUCE/modules/juce_audio_devices/native/oboe/src/common/Trace.cpp" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties("../../../../../../../Users/mhavryliv/Development/Projucer/JUCE/modules/juce_audio_devices/native/oboe/src/common/Trace.h" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties("../../../../../../../Users/mhavryliv/Development/Projucer/JUCE/modules/juce_audio_devices/native/oboe/src/common/Utilities.cpp" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties("../../../../../../../Users/mhavryliv/Development/Projucer/JUCE/modules/juce_audio_devices/native/oboe/src/common/Version.cpp" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties("../../../../../../../Users/mhavryliv/Development/Projucer/JUCE/modules/juce_audio_devices/native/oboe/src/fifo/FifoBuffer.cpp" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties("../../../../../../../Users/mhavryliv/Development/Projucer/JUCE/modules/juce_audio_devices/native/oboe/src/fifo/FifoBuffer.h" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties("../../../../../../../Users/mhavryliv/Development/Projucer/JUCE/modules/juce_audio_devices/native/oboe/src/fifo/FifoController.cpp" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties("../../../../../../../Users/mhavryliv/Development/Projucer/JUCE/modules/juce_audio_devices/native/oboe/src/fifo/FifoController.h" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties("../../../../../../../Users/mhavryliv/Development/Projucer/JUCE/modules/juce_audio_devices/native/oboe/src/fifo/FifoControllerBase.cpp" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties("../../../../../../../Users/mhavryliv/Development/Projucer/JUCE/modules/juce_audio_devices/native/oboe/src/fifo/FifoControllerBase.h" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties("../../../../../../../Users/mhavryliv/Development/Projucer/JUCE/modules/juce_audio_devices/native/oboe/src/fifo/FifoControllerIndirect.cpp" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties("../../../../../../../Users/mhavryliv/Development/Projucer/JUCE/modules/juce_audio_devices/native/oboe/src/fifo/FifoControllerIndirect.h" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties("../../../../../../../Users/mhavryliv/Development/Projucer/JUCE/modules/juce_audio_devices/native/oboe/src/flowgraph/resampler/HyperbolicCosineWindow.h" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties("../../../../../../../Users/mhavryliv/Development/Projucer/JUCE/modules/juce_audio_devices/native/oboe/src/flowgraph/resampler/IntegerRatio.cpp" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties("../../../../../../../Users/mhavryliv/Development/Projucer/JUCE/modules/juce_audio_devices/native/oboe/src/flowgraph/resampler/IntegerRatio.h" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties("../../../../../../../Users/mhavryliv/Development/Projucer/JUCE/modules/juce_audio_devices/native/oboe/src/flowgraph/resampler/KaiserWindow.h" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties("../../../../../../../Users/mhavryliv/Development/Projucer/JUCE/modules/juce_audio_devices/native/oboe/src/flowgraph/resampler/LinearResampler.cpp" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties("../../../../../../../Users/mhavryliv/Development/Projucer/JUCE/modules/juce_audio_devices/native/oboe/src/flowgraph/resampler/LinearResampler.h" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties("../../../../../../../Users/mhavryliv/Development/Projucer/JUCE/modules/juce_audio_devices/native/oboe/src/flowgraph/resampler/MultiChannelResampler.cpp" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties("../../../../../../../Users/mhavryliv/Development/Projucer/JUCE/modules/juce_audio_devices/native/oboe/src/flowgraph/resampler/MultiChannelResampler.h" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties("../../../../../../../Users/mhavryliv/Development/Projucer/JUCE/modules/juce_audio_devices/native/oboe/src/flowgraph/resampler/PolyphaseResampler.cpp" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties("../../../../../../../Users/mhavryliv/Development/Projucer/JUCE/modules/juce_audio_devices/native/oboe/src/flowgraph/resampler/PolyphaseResampler.h" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties("../../../../../../../Users/mhavryliv/Development/Projucer/JUCE/modules/juce_audio_devices/native/oboe/src/flowgraph/resampler/PolyphaseResamplerMono.cpp" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties("../../../../../../../Users/mhavryliv/Development/Projucer/JUCE/modules/juce_audio_devices/native/oboe/src/flowgraph/resampler/PolyphaseResamplerMono.h" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties("../../../../../../../Users/mhavryliv/Development/Projucer/JUCE/modules/juce_audio_devices/native/oboe/src/flowgraph/resampler/PolyphaseResamplerStereo.cpp" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties("../../../../../../../Users/mhavryliv/Development/Projucer/JUCE/modules/juce_audio_devices/native/oboe/src/flowgraph/resampler/PolyphaseResamplerStereo.h" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties("../../../../../../../Users/mhavryliv/Development/Projucer/JUCE/modules/juce_audio_devices/native/oboe/src/flowgraph/resampler/SincResampler.cpp" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties("../../../../../../../Users/mhavryliv/Development/Projucer/JUCE/modules/juce_audio_devices/native/oboe/src/flowgraph/resampler/SincResampler.h" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties("../../../../../../../Users/mhavryliv/Development/Projucer/JUCE/modules/juce_audio_devices/native/oboe/src/flowgraph/resampler/SincResamplerStereo.cpp" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties("../../../../../../../Users/mhavryliv/Development/Projucer/JUCE/modules/juce_audio_devices/native/oboe/src/flowgraph/resampler/SincResamplerStereo.h" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties("../../../../../../../Users/mhavryliv/Development/Projucer/JUCE/modules/juce_audio_devices/native/oboe/src/flowgraph/ClipToRange.cpp" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties("../../../../../../../Users/mhavryliv/Development/Projucer/JUCE/modules/juce_audio_devices/native/oboe/src/flowgraph/ClipToRange.h" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties("../../../../../../../Users/mhavryliv/Development/Projucer/JUCE/modules/juce_audio_devices/native/oboe/src/flowgraph/FlowGraphNode.cpp" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties("../../../../../../../Users/mhavryliv/Development/Projucer/JUCE/modules/juce_audio_devices/native/oboe/src/flowgraph/FlowGraphNode.h" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties("../../../../../../../Users/mhavryliv/Development/Projucer/JUCE/modules/juce_audio_devices/native/oboe/src/flowgraph/ManyToMultiConverter.cpp" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties("../../../../../../../Users/mhavryliv/Development/Projucer/JUCE/modules/juce_audio_devices/native/oboe/src/flowgraph/ManyToMultiConverter.h" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties("../../../../../../../Users/mhavryliv/Development/Projucer/JUCE/modules/juce_audio_devices/native/oboe/src/flowgraph/MonoToMultiConverter.cpp" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties("../../../../../../../Users/mhavryliv/Development/Projucer/JUCE/modules/juce_audio_devices/native/oboe/src/flowgraph/MonoToMultiConverter.h" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties("../../../../../../../Users/mhavryliv/Development/Projucer/JUCE/modules/juce_audio_devices/native/oboe/src/flowgraph/RampLinear.cpp" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties("../../../../../../../Users/mhavryliv/Development/Projucer/JUCE/modules/juce_audio_devices/native/oboe/src/flowgraph/RampLinear.h" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties("../../../../../../../Users/mhavryliv/Development/Projucer/JUCE/modules/juce_audio_devices/native/oboe/src/flowgraph/SampleRateConverter.cpp" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties("../../../../../../../Users/mhavryliv/Development/Projucer/JUCE/modules/juce_audio_devices/native/oboe/src/flowgraph/SampleRateConverter.h" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties("../../../../../../../Users/mhavryliv/Development/Projucer/JUCE/modules/juce_audio_devices/native/oboe/src/flowgraph/SinkFloat.cpp" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties("../../../../../../../Users/mhavryliv/Development/Projucer/JUCE/modules/juce_audio_devices/native/oboe/src/flowgraph/SinkFloat.h" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties("../../../../../../../Users/mhavryliv/Development/Projucer/JUCE/modules/juce_audio_devices/native/oboe/src/flowgraph/SinkI16.cpp" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties("../../../../../../../Users/mhavryliv/Development/Projucer/JUCE/modules/juce_audio_devices/native/oboe/src/flowgraph/SinkI16.h" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties("../../../../../../../Users/mhavryliv/Development/Projucer/JUCE/modules/juce_audio_devices/native/oboe/src/flowgraph/SinkI24.cpp" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties("../../../../../../../Users/mhavryliv/Development/Projucer/JUCE/modules/juce_audio_devices/native/oboe/src/flowgraph/SinkI24.h" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties("../../../../../../../Users/mhavryliv/Development/Projucer/JUCE/modules/juce_audio_devices/native/oboe/src/flowgraph/SourceFloat.cpp" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties("../../../../../../../Users/mhavryliv/Development/Projucer/JUCE/modules/juce_audio_devices/native/oboe/src/flowgraph/SourceFloat.h" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties("../../../../../../../Users/mhavryliv/Development/Projucer/JUCE/modules/juce_audio_devices/native/oboe/src/flowgraph/SourceI16.cpp" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties("../../../../../../../Users/mhavryliv/Development/Projucer/JUCE/modules/juce_audio_devices/native/oboe/src/flowgraph/SourceI16.h" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties("../../../../../../../Users/mhavryliv/Development/Projucer/JUCE/modules/juce_audio_devices/native/oboe/src/flowgraph/SourceI24.cpp" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties("../../../../../../../Users/mhavryliv/Development/Projucer/JUCE/modules/juce_audio_devices/native/oboe/src/flowgraph/SourceI24.h" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties("../../../../../../../Users/mhavryliv/Development/Projucer/JUCE/modules/juce_audio_devices/native/oboe/src/opensles/AudioInputStreamOpenSLES.cpp" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties("../../../../../../../Users/mhavryliv/Development/Projucer/JUCE/modules/juce_audio_devices/native/oboe/src/opensles/AudioInputStreamOpenSLES.h" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties("../../../../../../../Users/mhavryliv/Development/Projucer/JUCE/modules/juce_audio_devices/native/oboe/src/opensles/AudioOutputStreamOpenSLES.cpp" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties("../../../../../../../Users/mhavryliv/Development/Projucer/JUCE/modules/juce_audio_devices/native/oboe/src/opensles/AudioOutputStreamOpenSLES.h" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties("../../../../../../../Users/mhavryliv/Development/Projucer/JUCE/modules/juce_audio_devices/native/oboe/src/opensles/AudioStreamBuffered.cpp" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties("../../../../../../../Users/mhavryliv/Development/Projucer/JUCE/modules/juce_audio_devices/native/oboe/src/opensles/AudioStreamBuffered.h" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties("../../../../../../../Users/mhavryliv/Development/Projucer/JUCE/modules/juce_audio_devices/native/oboe/src/opensles/AudioStreamOpenSLES.cpp" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties("../../../../../../../Users/mhavryliv/Development/Projucer/JUCE/modules/juce_audio_devices/native/oboe/src/opensles/AudioStreamOpenSLES.h" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties("../../../../../../../Users/mhavryliv/Development/Projucer/JUCE/modules/juce_audio_devices/native/oboe/src/opensles/EngineOpenSLES.cpp" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties("../../../../../../../Users/mhavryliv/Development/Projucer/JUCE/modules/juce_audio_devices/native/oboe/src/opensles/EngineOpenSLES.h" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties("../../../../../../../Users/mhavryliv/Development/Projucer/JUCE/modules/juce_audio_devices/native/oboe/src/opensles/OpenSLESUtilities.cpp" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties("../../../../../../../Users/mhavryliv/Development/Projucer/JUCE/modules/juce_audio_devices/native/oboe/src/opensles/OpenSLESUtilities.h" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties("../../../../../../../Users/mhavryliv/Development/Projucer/JUCE/modules/juce_audio_devices/native/oboe/src/opensles/OutputMixerOpenSLES.cpp" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties("../../../../../../../Users/mhavryliv/Development/Projucer/JUCE/modules/juce_audio_devices/native/oboe/src/opensles/OutputMixerOpenSLES.h" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties("../../../../../../../Users/mhavryliv/Development/Projucer/JUCE/modules/juce_audio_devices/native/oboe/CMakeLists.txt" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties("../../../../../../../Users/mhavryliv/Development/Projucer/JUCE/modules/juce_audio_devices/native/oboe/readme.md" PROPERTIES HEADER_FILE_ONLY TRUE)
 set_source_files_properties("../../../../../../../Users/mhavryliv/Development/Projucer/JUCE/modules/juce_audio_devices/native/juce_android_Audio.cpp" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties("../../../../../../../Users/mhavryliv/Development/Projucer/JUCE/modules/juce_audio_devices/native/juce_android_HighPerformanceAudioHelpers.h" PROPERTIES HEADER_FILE_ONLY TRUE)
 set_source_files_properties("../../../../../../../Users/mhavryliv/Development/Projucer/JUCE/modules/juce_audio_devices/native/juce_android_Midi.cpp" PROPERTIES HEADER_FILE_ONLY TRUE)
 set_source_files_properties("../../../../../../../Users/mhavryliv/Development/Projucer/JUCE/modules/juce_audio_devices/native/juce_android_Oboe.cpp" PROPERTIES HEADER_FILE_ONLY TRUE)
 set_source_files_properties("../../../../../../../Users/mhavryliv/Development/Projucer/JUCE/modules/juce_audio_devices/native/juce_android_OpenSL.cpp" PROPERTIES HEADER_FILE_ONLY TRUE)
@@ -2069,6 +2335,8 @@ set_source_files_properties("../../../../../../../Users/mhavryliv/Development/Pr
 set_source_files_properties("../../../../../../../Users/mhavryliv/Development/Projucer/JUCE/modules/juce_audio_processors/utilities/juce_AudioProcessorParameterWithID.h" PROPERTIES HEADER_FILE_ONLY TRUE)
 set_source_files_properties("../../../../../../../Users/mhavryliv/Development/Projucer/JUCE/modules/juce_audio_processors/utilities/juce_AudioProcessorValueTreeState.cpp" PROPERTIES HEADER_FILE_ONLY TRUE)
 set_source_files_properties("../../../../../../../Users/mhavryliv/Development/Projucer/JUCE/modules/juce_audio_processors/utilities/juce_AudioProcessorValueTreeState.h" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties("../../../../../../../Users/mhavryliv/Development/Projucer/JUCE/modules/juce_audio_processors/utilities/juce_ParameterAttachments.cpp" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties("../../../../../../../Users/mhavryliv/Development/Projucer/JUCE/modules/juce_audio_processors/utilities/juce_ParameterAttachments.h" PROPERTIES HEADER_FILE_ONLY TRUE)
 set_source_files_properties("../../../../../../../Users/mhavryliv/Development/Projucer/JUCE/modules/juce_audio_processors/utilities/juce_RangedAudioParameter.cpp" PROPERTIES HEADER_FILE_ONLY TRUE)
 set_source_files_properties("../../../../../../../Users/mhavryliv/Development/Projucer/JUCE/modules/juce_audio_processors/utilities/juce_RangedAudioParameter.h" PROPERTIES HEADER_FILE_ONLY TRUE)
 set_source_files_properties("../../../../../../../Users/mhavryliv/Development/Projucer/JUCE/modules/juce_audio_processors/juce_audio_processors.cpp" PROPERTIES HEADER_FILE_ONLY TRUE)
@@ -2290,6 +2558,8 @@ set_source_files_properties("../../../../../../../Users/mhavryliv/Development/Pr
 set_source_files_properties("../../../../../../../Users/mhavryliv/Development/Projucer/JUCE/modules/juce_core/files/juce_FileSearchPath.cpp" PROPERTIES HEADER_FILE_ONLY TRUE)
 set_source_files_properties("../../../../../../../Users/mhavryliv/Development/Projucer/JUCE/modules/juce_core/files/juce_FileSearchPath.h" PROPERTIES HEADER_FILE_ONLY TRUE)
 set_source_files_properties("../../../../../../../Users/mhavryliv/Development/Projucer/JUCE/modules/juce_core/files/juce_MemoryMappedFile.h" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties("../../../../../../../Users/mhavryliv/Development/Projucer/JUCE/modules/juce_core/files/juce_RangedDirectoryIterator.cpp" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties("../../../../../../../Users/mhavryliv/Development/Projucer/JUCE/modules/juce_core/files/juce_RangedDirectoryIterator.h" PROPERTIES HEADER_FILE_ONLY TRUE)
 set_source_files_properties("../../../../../../../Users/mhavryliv/Development/Projucer/JUCE/modules/juce_core/files/juce_TemporaryFile.cpp" PROPERTIES HEADER_FILE_ONLY TRUE)
 set_source_files_properties("../../../../../../../Users/mhavryliv/Development/Projucer/JUCE/modules/juce_core/files/juce_TemporaryFile.h" PROPERTIES HEADER_FILE_ONLY TRUE)
 set_source_files_properties("../../../../../../../Users/mhavryliv/Development/Projucer/JUCE/modules/juce_core/files/juce_WildcardFileFilter.cpp" PROPERTIES HEADER_FILE_ONLY TRUE)
@@ -2312,6 +2582,8 @@ set_source_files_properties("../../../../../../../Users/mhavryliv/Development/Pr
 set_source_files_properties("../../../../../../../Users/mhavryliv/Development/Projucer/JUCE/modules/juce_core/maths/juce_Random.h" PROPERTIES HEADER_FILE_ONLY TRUE)
 set_source_files_properties("../../../../../../../Users/mhavryliv/Development/Projucer/JUCE/modules/juce_core/maths/juce_Range.h" PROPERTIES HEADER_FILE_ONLY TRUE)
 set_source_files_properties("../../../../../../../Users/mhavryliv/Development/Projucer/JUCE/modules/juce_core/maths/juce_StatisticsAccumulator.h" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties("../../../../../../../Users/mhavryliv/Development/Projucer/JUCE/modules/juce_core/memory/juce_AllocationHooks.cpp" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties("../../../../../../../Users/mhavryliv/Development/Projucer/JUCE/modules/juce_core/memory/juce_AllocationHooks.h" PROPERTIES HEADER_FILE_ONLY TRUE)
 set_source_files_properties("../../../../../../../Users/mhavryliv/Development/Projucer/JUCE/modules/juce_core/memory/juce_Atomic.h" PROPERTIES HEADER_FILE_ONLY TRUE)
 set_source_files_properties("../../../../../../../Users/mhavryliv/Development/Projucer/JUCE/modules/juce_core/memory/juce_ByteOrder.h" PROPERTIES HEADER_FILE_ONLY TRUE)
 set_source_files_properties("../../../../../../../Users/mhavryliv/Development/Projucer/JUCE/modules/juce_core/memory/juce_ContainerDeletePolicy.h" PROPERTIES HEADER_FILE_ONLY TRUE)
@@ -2333,8 +2605,6 @@ set_source_files_properties("../../../../../../../Users/mhavryliv/Development/Pr
 set_source_files_properties("../../../../../../../Users/mhavryliv/Development/Projucer/JUCE/modules/juce_core/misc/juce_Result.h" PROPERTIES HEADER_FILE_ONLY TRUE)
 set_source_files_properties("../../../../../../../Users/mhavryliv/Development/Projucer/JUCE/modules/juce_core/misc/juce_RuntimePermissions.cpp" PROPERTIES HEADER_FILE_ONLY TRUE)
 set_source_files_properties("../../../../../../../Users/mhavryliv/Development/Projucer/JUCE/modules/juce_core/misc/juce_RuntimePermissions.h" PROPERTIES HEADER_FILE_ONLY TRUE)
-set_source_files_properties("../../../../../../../Users/mhavryliv/Development/Projucer/JUCE/modules/juce_core/misc/juce_StdFunctionCompat.cpp" PROPERTIES HEADER_FILE_ONLY TRUE)
-set_source_files_properties("../../../../../../../Users/mhavryliv/Development/Projucer/JUCE/modules/juce_core/misc/juce_StdFunctionCompat.h" PROPERTIES HEADER_FILE_ONLY TRUE)
 set_source_files_properties("../../../../../../../Users/mhavryliv/Development/Projucer/JUCE/modules/juce_core/misc/juce_Uuid.cpp" PROPERTIES HEADER_FILE_ONLY TRUE)
 set_source_files_properties("../../../../../../../Users/mhavryliv/Development/Projucer/JUCE/modules/juce_core/misc/juce_Uuid.h" PROPERTIES HEADER_FILE_ONLY TRUE)
 set_source_files_properties("../../../../../../../Users/mhavryliv/Development/Projucer/JUCE/modules/juce_core/misc/juce_WindowsRegistry.h" PROPERTIES HEADER_FILE_ONLY TRUE)
@@ -2400,6 +2670,7 @@ set_source_files_properties("../../../../../../../Users/mhavryliv/Development/Pr
 set_source_files_properties("../../../../../../../Users/mhavryliv/Development/Projucer/JUCE/modules/juce_core/streams/juce_URLInputSource.cpp" PROPERTIES HEADER_FILE_ONLY TRUE)
 set_source_files_properties("../../../../../../../Users/mhavryliv/Development/Projucer/JUCE/modules/juce_core/streams/juce_URLInputSource.h" PROPERTIES HEADER_FILE_ONLY TRUE)
 set_source_files_properties("../../../../../../../Users/mhavryliv/Development/Projucer/JUCE/modules/juce_core/system/juce_CompilerSupport.h" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties("../../../../../../../Users/mhavryliv/Development/Projucer/JUCE/modules/juce_core/system/juce_CompilerWarnings.h" PROPERTIES HEADER_FILE_ONLY TRUE)
 set_source_files_properties("../../../../../../../Users/mhavryliv/Development/Projucer/JUCE/modules/juce_core/system/juce_PlatformDefs.h" PROPERTIES HEADER_FILE_ONLY TRUE)
 set_source_files_properties("../../../../../../../Users/mhavryliv/Development/Projucer/JUCE/modules/juce_core/system/juce_StandardHeader.h" PROPERTIES HEADER_FILE_ONLY TRUE)
 set_source_files_properties("../../../../../../../Users/mhavryliv/Development/Projucer/JUCE/modules/juce_core/system/juce_SystemStats.cpp" PROPERTIES HEADER_FILE_ONLY TRUE)
@@ -2450,6 +2721,7 @@ set_source_files_properties("../../../../../../../Users/mhavryliv/Development/Pr
 set_source_files_properties("../../../../../../../Users/mhavryliv/Development/Projucer/JUCE/modules/juce_core/threads/juce_ThreadPool.h" PROPERTIES HEADER_FILE_ONLY TRUE)
 set_source_files_properties("../../../../../../../Users/mhavryliv/Development/Projucer/JUCE/modules/juce_core/threads/juce_TimeSliceThread.cpp" PROPERTIES HEADER_FILE_ONLY TRUE)
 set_source_files_properties("../../../../../../../Users/mhavryliv/Development/Projucer/JUCE/modules/juce_core/threads/juce_TimeSliceThread.h" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties("../../../../../../../Users/mhavryliv/Development/Projucer/JUCE/modules/juce_core/threads/juce_WaitableEvent.cpp" PROPERTIES HEADER_FILE_ONLY TRUE)
 set_source_files_properties("../../../../../../../Users/mhavryliv/Development/Projucer/JUCE/modules/juce_core/threads/juce_WaitableEvent.h" PROPERTIES HEADER_FILE_ONLY TRUE)
 set_source_files_properties("../../../../../../../Users/mhavryliv/Development/Projucer/JUCE/modules/juce_core/time/juce_PerformanceCounter.cpp" PROPERTIES HEADER_FILE_ONLY TRUE)
 set_source_files_properties("../../../../../../../Users/mhavryliv/Development/Projucer/JUCE/modules/juce_core/time/juce_PerformanceCounter.h" PROPERTIES HEADER_FILE_ONLY TRUE)
@@ -2532,6 +2804,8 @@ set_source_files_properties("../../../../../../../Users/mhavryliv/Development/Pr
 set_source_files_properties("../../../../../../../Users/mhavryliv/Development/Projucer/JUCE/modules/juce_data_structures/juce_data_structures.h" PROPERTIES HEADER_FILE_ONLY TRUE)
 set_source_files_properties("../../../../../../../Users/mhavryliv/Development/Projucer/JUCE/modules/juce_dsp/containers/juce_AudioBlock.h" PROPERTIES HEADER_FILE_ONLY TRUE)
 set_source_files_properties("../../../../../../../Users/mhavryliv/Development/Projucer/JUCE/modules/juce_dsp/containers/juce_AudioBlock_test.cpp" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties("../../../../../../../Users/mhavryliv/Development/Projucer/JUCE/modules/juce_dsp/containers/juce_FixedSizeFunction.h" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties("../../../../../../../Users/mhavryliv/Development/Projucer/JUCE/modules/juce_dsp/containers/juce_FixedSizeFunction_test.cpp" PROPERTIES HEADER_FILE_ONLY TRUE)
 set_source_files_properties("../../../../../../../Users/mhavryliv/Development/Projucer/JUCE/modules/juce_dsp/containers/juce_SIMDRegister.h" PROPERTIES HEADER_FILE_ONLY TRUE)
 set_source_files_properties("../../../../../../../Users/mhavryliv/Development/Projucer/JUCE/modules/juce_dsp/containers/juce_SIMDRegister_Impl.h" PROPERTIES HEADER_FILE_ONLY TRUE)
 set_source_files_properties("../../../../../../../Users/mhavryliv/Development/Projucer/JUCE/modules/juce_dsp/containers/juce_SIMDRegister_test.cpp" PROPERTIES HEADER_FILE_ONLY TRUE)
@@ -2539,6 +2813,7 @@ set_source_files_properties("../../../../../../../Users/mhavryliv/Development/Pr
 set_source_files_properties("../../../../../../../Users/mhavryliv/Development/Projucer/JUCE/modules/juce_dsp/filter_design/juce_FilterDesign.h" PROPERTIES HEADER_FILE_ONLY TRUE)
 set_source_files_properties("../../../../../../../Users/mhavryliv/Development/Projucer/JUCE/modules/juce_dsp/frequency/juce_Convolution.cpp" PROPERTIES HEADER_FILE_ONLY TRUE)
 set_source_files_properties("../../../../../../../Users/mhavryliv/Development/Projucer/JUCE/modules/juce_dsp/frequency/juce_Convolution.h" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties("../../../../../../../Users/mhavryliv/Development/Projucer/JUCE/modules/juce_dsp/frequency/juce_Convolution_test.cpp" PROPERTIES HEADER_FILE_ONLY TRUE)
 set_source_files_properties("../../../../../../../Users/mhavryliv/Development/Projucer/JUCE/modules/juce_dsp/frequency/juce_FFT.cpp" PROPERTIES HEADER_FILE_ONLY TRUE)
 set_source_files_properties("../../../../../../../Users/mhavryliv/Development/Projucer/JUCE/modules/juce_dsp/frequency/juce_FFT.h" PROPERTIES HEADER_FILE_ONLY TRUE)
 set_source_files_properties("../../../../../../../Users/mhavryliv/Development/Projucer/JUCE/modules/juce_dsp/frequency/juce_FFT_test.cpp" PROPERTIES HEADER_FILE_ONLY TRUE)
@@ -2563,26 +2838,51 @@ set_source_files_properties("../../../../../../../Users/mhavryliv/Development/Pr
 set_source_files_properties("../../../../../../../Users/mhavryliv/Development/Projucer/JUCE/modules/juce_dsp/native/juce_neon_SIMDNativeOps.h" PROPERTIES HEADER_FILE_ONLY TRUE)
 set_source_files_properties("../../../../../../../Users/mhavryliv/Development/Projucer/JUCE/modules/juce_dsp/native/juce_sse_SIMDNativeOps.cpp" PROPERTIES HEADER_FILE_ONLY TRUE)
 set_source_files_properties("../../../../../../../Users/mhavryliv/Development/Projucer/JUCE/modules/juce_dsp/native/juce_sse_SIMDNativeOps.h" PROPERTIES HEADER_FILE_ONLY TRUE)
-set_source_files_properties("../../../../../../../Users/mhavryliv/Development/Projucer/JUCE/modules/juce_dsp/processors/juce_Bias.h" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties("../../../../../../../Users/mhavryliv/Development/Projucer/JUCE/modules/juce_dsp/processors/juce_BallisticsFilter.cpp" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties("../../../../../../../Users/mhavryliv/Development/Projucer/JUCE/modules/juce_dsp/processors/juce_BallisticsFilter.h" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties("../../../../../../../Users/mhavryliv/Development/Projucer/JUCE/modules/juce_dsp/processors/juce_DelayLine.cpp" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties("../../../../../../../Users/mhavryliv/Development/Projucer/JUCE/modules/juce_dsp/processors/juce_DelayLine.h" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties("../../../../../../../Users/mhavryliv/Development/Projucer/JUCE/modules/juce_dsp/processors/juce_DryWetMixer.cpp" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties("../../../../../../../Users/mhavryliv/Development/Projucer/JUCE/modules/juce_dsp/processors/juce_DryWetMixer.h" PROPERTIES HEADER_FILE_ONLY TRUE)
 set_source_files_properties("../../../../../../../Users/mhavryliv/Development/Projucer/JUCE/modules/juce_dsp/processors/juce_FIRFilter.cpp" PROPERTIES HEADER_FILE_ONLY TRUE)
 set_source_files_properties("../../../../../../../Users/mhavryliv/Development/Projucer/JUCE/modules/juce_dsp/processors/juce_FIRFilter.h" PROPERTIES HEADER_FILE_ONLY TRUE)
 set_source_files_properties("../../../../../../../Users/mhavryliv/Development/Projucer/JUCE/modules/juce_dsp/processors/juce_FIRFilter_test.cpp" PROPERTIES HEADER_FILE_ONLY TRUE)
-set_source_files_properties("../../../../../../../Users/mhavryliv/Development/Projucer/JUCE/modules/juce_dsp/processors/juce_Gain.h" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties("../../../../../../../Users/mhavryliv/Development/Projucer/JUCE/modules/juce_dsp/processors/juce_FirstOrderTPTFilter.cpp" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties("../../../../../../../Users/mhavryliv/Development/Projucer/JUCE/modules/juce_dsp/processors/juce_FirstOrderTPTFilter.h" PROPERTIES HEADER_FILE_ONLY TRUE)
 set_source_files_properties("../../../../../../../Users/mhavryliv/Development/Projucer/JUCE/modules/juce_dsp/processors/juce_IIRFilter.cpp" PROPERTIES HEADER_FILE_ONLY TRUE)
 set_source_files_properties("../../../../../../../Users/mhavryliv/Development/Projucer/JUCE/modules/juce_dsp/processors/juce_IIRFilter.h" PROPERTIES HEADER_FILE_ONLY TRUE)
 set_source_files_properties("../../../../../../../Users/mhavryliv/Development/Projucer/JUCE/modules/juce_dsp/processors/juce_IIRFilter_Impl.h" PROPERTIES HEADER_FILE_ONLY TRUE)
-set_source_files_properties("../../../../../../../Users/mhavryliv/Development/Projucer/JUCE/modules/juce_dsp/processors/juce_LadderFilter.cpp" PROPERTIES HEADER_FILE_ONLY TRUE)
-set_source_files_properties("../../../../../../../Users/mhavryliv/Development/Projucer/JUCE/modules/juce_dsp/processors/juce_LadderFilter.h" PROPERTIES HEADER_FILE_ONLY TRUE)
-set_source_files_properties("../../../../../../../Users/mhavryliv/Development/Projucer/JUCE/modules/juce_dsp/processors/juce_Oscillator.h" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties("../../../../../../../Users/mhavryliv/Development/Projucer/JUCE/modules/juce_dsp/processors/juce_LinkwitzRileyFilter.cpp" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties("../../../../../../../Users/mhavryliv/Development/Projucer/JUCE/modules/juce_dsp/processors/juce_LinkwitzRileyFilter.h" PROPERTIES HEADER_FILE_ONLY TRUE)
 set_source_files_properties("../../../../../../../Users/mhavryliv/Development/Projucer/JUCE/modules/juce_dsp/processors/juce_Oversampling.cpp" PROPERTIES HEADER_FILE_ONLY TRUE)
 set_source_files_properties("../../../../../../../Users/mhavryliv/Development/Projucer/JUCE/modules/juce_dsp/processors/juce_Oversampling.h" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties("../../../../../../../Users/mhavryliv/Development/Projucer/JUCE/modules/juce_dsp/processors/juce_Panner.cpp" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties("../../../../../../../Users/mhavryliv/Development/Projucer/JUCE/modules/juce_dsp/processors/juce_Panner.h" PROPERTIES HEADER_FILE_ONLY TRUE)
 set_source_files_properties("../../../../../../../Users/mhavryliv/Development/Projucer/JUCE/modules/juce_dsp/processors/juce_ProcessContext.h" PROPERTIES HEADER_FILE_ONLY TRUE)
 set_source_files_properties("../../../../../../../Users/mhavryliv/Development/Projucer/JUCE/modules/juce_dsp/processors/juce_ProcessorChain.h" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties("../../../../../../../Users/mhavryliv/Development/Projucer/JUCE/modules/juce_dsp/processors/juce_ProcessorChain_test.cpp" PROPERTIES HEADER_FILE_ONLY TRUE)
 set_source_files_properties("../../../../../../../Users/mhavryliv/Development/Projucer/JUCE/modules/juce_dsp/processors/juce_ProcessorDuplicator.h" PROPERTIES HEADER_FILE_ONLY TRUE)
 set_source_files_properties("../../../../../../../Users/mhavryliv/Development/Projucer/JUCE/modules/juce_dsp/processors/juce_ProcessorWrapper.h" PROPERTIES HEADER_FILE_ONLY TRUE)
-set_source_files_properties("../../../../../../../Users/mhavryliv/Development/Projucer/JUCE/modules/juce_dsp/processors/juce_Reverb.h" PROPERTIES HEADER_FILE_ONLY TRUE)
 set_source_files_properties("../../../../../../../Users/mhavryliv/Development/Projucer/JUCE/modules/juce_dsp/processors/juce_StateVariableFilter.h" PROPERTIES HEADER_FILE_ONLY TRUE)
-set_source_files_properties("../../../../../../../Users/mhavryliv/Development/Projucer/JUCE/modules/juce_dsp/processors/juce_WaveShaper.h" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties("../../../../../../../Users/mhavryliv/Development/Projucer/JUCE/modules/juce_dsp/processors/juce_StateVariableTPTFilter.cpp" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties("../../../../../../../Users/mhavryliv/Development/Projucer/JUCE/modules/juce_dsp/processors/juce_StateVariableTPTFilter.h" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties("../../../../../../../Users/mhavryliv/Development/Projucer/JUCE/modules/juce_dsp/widgets/juce_Bias.h" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties("../../../../../../../Users/mhavryliv/Development/Projucer/JUCE/modules/juce_dsp/widgets/juce_Chorus.cpp" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties("../../../../../../../Users/mhavryliv/Development/Projucer/JUCE/modules/juce_dsp/widgets/juce_Chorus.h" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties("../../../../../../../Users/mhavryliv/Development/Projucer/JUCE/modules/juce_dsp/widgets/juce_Compressor.cpp" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties("../../../../../../../Users/mhavryliv/Development/Projucer/JUCE/modules/juce_dsp/widgets/juce_Compressor.h" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties("../../../../../../../Users/mhavryliv/Development/Projucer/JUCE/modules/juce_dsp/widgets/juce_Gain.h" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties("../../../../../../../Users/mhavryliv/Development/Projucer/JUCE/modules/juce_dsp/widgets/juce_LadderFilter.cpp" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties("../../../../../../../Users/mhavryliv/Development/Projucer/JUCE/modules/juce_dsp/widgets/juce_LadderFilter.h" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties("../../../../../../../Users/mhavryliv/Development/Projucer/JUCE/modules/juce_dsp/widgets/juce_Limiter.cpp" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties("../../../../../../../Users/mhavryliv/Development/Projucer/JUCE/modules/juce_dsp/widgets/juce_Limiter.h" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties("../../../../../../../Users/mhavryliv/Development/Projucer/JUCE/modules/juce_dsp/widgets/juce_NoiseGate.cpp" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties("../../../../../../../Users/mhavryliv/Development/Projucer/JUCE/modules/juce_dsp/widgets/juce_NoiseGate.h" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties("../../../../../../../Users/mhavryliv/Development/Projucer/JUCE/modules/juce_dsp/widgets/juce_Oscillator.h" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties("../../../../../../../Users/mhavryliv/Development/Projucer/JUCE/modules/juce_dsp/widgets/juce_Phaser.cpp" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties("../../../../../../../Users/mhavryliv/Development/Projucer/JUCE/modules/juce_dsp/widgets/juce_Phaser.h" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties("../../../../../../../Users/mhavryliv/Development/Projucer/JUCE/modules/juce_dsp/widgets/juce_Reverb.h" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties("../../../../../../../Users/mhavryliv/Development/Projucer/JUCE/modules/juce_dsp/widgets/juce_WaveShaper.h" PROPERTIES HEADER_FILE_ONLY TRUE)
 set_source_files_properties("../../../../../../../Users/mhavryliv/Development/Projucer/JUCE/modules/juce_dsp/juce_dsp.cpp" PROPERTIES HEADER_FILE_ONLY TRUE)
 set_source_files_properties("../../../../../../../Users/mhavryliv/Development/Projucer/JUCE/modules/juce_dsp/juce_dsp.mm" PROPERTIES HEADER_FILE_ONLY TRUE)
 set_source_files_properties("../../../../../../../Users/mhavryliv/Development/Projucer/JUCE/modules/juce_dsp/juce_dsp.h" PROPERTIES HEADER_FILE_ONLY TRUE)
@@ -2979,6 +3279,11 @@ set_source_files_properties("../../../../../../../Users/mhavryliv/Development/Pr
 set_source_files_properties("../../../../../../../Users/mhavryliv/Development/Projucer/JUCE/modules/juce_gui_basics/mouse/juce_SelectedItemSet.h" PROPERTIES HEADER_FILE_ONLY TRUE)
 set_source_files_properties("../../../../../../../Users/mhavryliv/Development/Projucer/JUCE/modules/juce_gui_basics/mouse/juce_TextDragAndDropTarget.h" PROPERTIES HEADER_FILE_ONLY TRUE)
 set_source_files_properties("../../../../../../../Users/mhavryliv/Development/Projucer/JUCE/modules/juce_gui_basics/mouse/juce_TooltipClient.h" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties("../../../../../../../Users/mhavryliv/Development/Projucer/JUCE/modules/juce_gui_basics/native/x11/juce_linux_X11_DragAndDrop.cpp" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties("../../../../../../../Users/mhavryliv/Development/Projucer/JUCE/modules/juce_gui_basics/native/x11/juce_linux_X11_Symbols.cpp" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties("../../../../../../../Users/mhavryliv/Development/Projucer/JUCE/modules/juce_gui_basics/native/x11/juce_linux_X11_Symbols.h" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties("../../../../../../../Users/mhavryliv/Development/Projucer/JUCE/modules/juce_gui_basics/native/x11/juce_linux_XWindowSystem.cpp" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties("../../../../../../../Users/mhavryliv/Development/Projucer/JUCE/modules/juce_gui_basics/native/x11/juce_linux_XWindowSystem.h" PROPERTIES HEADER_FILE_ONLY TRUE)
 set_source_files_properties("../../../../../../../Users/mhavryliv/Development/Projucer/JUCE/modules/juce_gui_basics/native/juce_android_ContentSharer.cpp" PROPERTIES HEADER_FILE_ONLY TRUE)
 set_source_files_properties("../../../../../../../Users/mhavryliv/Development/Projucer/JUCE/modules/juce_gui_basics/native/juce_android_FileChooser.cpp" PROPERTIES HEADER_FILE_ONLY TRUE)
 set_source_files_properties("../../../../../../../Users/mhavryliv/Development/Projucer/JUCE/modules/juce_gui_basics/native/juce_android_Windowing.cpp" PROPERTIES HEADER_FILE_ONLY TRUE)
@@ -2988,10 +3293,7 @@ set_source_files_properties("../../../../../../../Users/mhavryliv/Development/Pr
 set_source_files_properties("../../../../../../../Users/mhavryliv/Development/Projucer/JUCE/modules/juce_gui_basics/native/juce_ios_UIViewComponentPeer.mm" PROPERTIES HEADER_FILE_ONLY TRUE)
 set_source_files_properties("../../../../../../../Users/mhavryliv/Development/Projucer/JUCE/modules/juce_gui_basics/native/juce_ios_Windowing.mm" PROPERTIES HEADER_FILE_ONLY TRUE)
 set_source_files_properties("../../../../../../../Users/mhavryliv/Development/Projucer/JUCE/modules/juce_gui_basics/native/juce_linux_FileChooser.cpp" PROPERTIES HEADER_FILE_ONLY TRUE)
-set_source_files_properties("../../../../../../../Users/mhavryliv/Development/Projucer/JUCE/modules/juce_gui_basics/native/juce_linux_X11.cpp" PROPERTIES HEADER_FILE_ONLY TRUE)
-set_source_files_properties("../../../../../../../Users/mhavryliv/Development/Projucer/JUCE/modules/juce_gui_basics/native/juce_linux_X11.h" PROPERTIES HEADER_FILE_ONLY TRUE)
-set_source_files_properties("../../../../../../../Users/mhavryliv/Development/Projucer/JUCE/modules/juce_gui_basics/native/juce_linux_X11_Clipboard.cpp" PROPERTIES HEADER_FILE_ONLY TRUE)
-set_source_files_properties("../../../../../../../Users/mhavryliv/Development/Projucer/JUCE/modules/juce_gui_basics/native/juce_linux_X11_Windowing.cpp" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties("../../../../../../../Users/mhavryliv/Development/Projucer/JUCE/modules/juce_gui_basics/native/juce_linux_Windowing.cpp" PROPERTIES HEADER_FILE_ONLY TRUE)
 set_source_files_properties("../../../../../../../Users/mhavryliv/Development/Projucer/JUCE/modules/juce_gui_basics/native/juce_mac_FileChooser.mm" PROPERTIES HEADER_FILE_ONLY TRUE)
 set_source_files_properties("../../../../../../../Users/mhavryliv/Development/Projucer/JUCE/modules/juce_gui_basics/native/juce_mac_MainMenu.mm" PROPERTIES HEADER_FILE_ONLY TRUE)
 set_source_files_properties("../../../../../../../Users/mhavryliv/Development/Projucer/JUCE/modules/juce_gui_basics/native/juce_mac_MouseCursor.mm" PROPERTIES HEADER_FILE_ONLY TRUE)
@@ -3096,6 +3398,7 @@ set_source_files_properties("../../../../../../../Users/mhavryliv/Development/Pr
 set_source_files_properties("../../../../../../../Users/mhavryliv/Development/Projucer/JUCE/modules/juce_gui_extra/documents/juce_FileBasedDocument.h" PROPERTIES HEADER_FILE_ONLY TRUE)
 set_source_files_properties("../../../../../../../Users/mhavryliv/Development/Projucer/JUCE/modules/juce_gui_extra/embedding/juce_ActiveXControlComponent.h" PROPERTIES HEADER_FILE_ONLY TRUE)
 set_source_files_properties("../../../../../../../Users/mhavryliv/Development/Projucer/JUCE/modules/juce_gui_extra/embedding/juce_AndroidViewComponent.h" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties("../../../../../../../Users/mhavryliv/Development/Projucer/JUCE/modules/juce_gui_extra/embedding/juce_HWNDComponent.h" PROPERTIES HEADER_FILE_ONLY TRUE)
 set_source_files_properties("../../../../../../../Users/mhavryliv/Development/Projucer/JUCE/modules/juce_gui_extra/embedding/juce_NSViewComponent.h" PROPERTIES HEADER_FILE_ONLY TRUE)
 set_source_files_properties("../../../../../../../Users/mhavryliv/Development/Projucer/JUCE/modules/juce_gui_extra/embedding/juce_ScopedDPIAwarenessDisabler.h" PROPERTIES HEADER_FILE_ONLY TRUE)
 set_source_files_properties("../../../../../../../Users/mhavryliv/Development/Projucer/JUCE/modules/juce_gui_extra/embedding/juce_UIViewComponent.h" PROPERTIES HEADER_FILE_ONLY TRUE)
@@ -3137,6 +3440,7 @@ set_source_files_properties("../../../../../../../Users/mhavryliv/Development/Pr
 set_source_files_properties("../../../../../../../Users/mhavryliv/Development/Projucer/JUCE/modules/juce_gui_extra/native/juce_mac_SystemTrayIcon.cpp" PROPERTIES HEADER_FILE_ONLY TRUE)
 set_source_files_properties("../../../../../../../Users/mhavryliv/Development/Projucer/JUCE/modules/juce_gui_extra/native/juce_mac_WebBrowserComponent.mm" PROPERTIES HEADER_FILE_ONLY TRUE)
 set_source_files_properties("../../../../../../../Users/mhavryliv/Development/Projucer/JUCE/modules/juce_gui_extra/native/juce_win32_ActiveXComponent.cpp" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties("../../../../../../../Users/mhavryliv/Development/Projucer/JUCE/modules/juce_gui_extra/native/juce_win32_HWNDComponent.cpp" PROPERTIES HEADER_FILE_ONLY TRUE)
 set_source_files_properties("../../../../../../../Users/mhavryliv/Development/Projucer/JUCE/modules/juce_gui_extra/native/juce_win32_SystemTrayIcon.cpp" PROPERTIES HEADER_FILE_ONLY TRUE)
 set_source_files_properties("../../../../../../../Users/mhavryliv/Development/Projucer/JUCE/modules/juce_gui_extra/native/juce_win32_WebBrowserComponent.cpp" PROPERTIES HEADER_FILE_ONLY TRUE)
 set_source_files_properties("../../../../../../../Users/mhavryliv/Development/Projucer/JUCE/modules/juce_gui_extra/juce_gui_extra.cpp" PROPERTIES HEADER_FILE_ONLY TRUE)
@@ -3224,6 +3528,16 @@ set_source_files_properties("../../../../../../../Users/mhavryliv/Development/Pr
 set_source_files_properties("../../../JuceLibraryCode/AppConfig.h" PROPERTIES HEADER_FILE_ONLY TRUE)
 set_source_files_properties("../../../JuceLibraryCode/JuceHeader.h" PROPERTIES HEADER_FILE_ONLY TRUE)
 
+target_compile_options( ${BINARY_NAME} PRIVATE "-fsigned-char" )
+
+if( JUCE_BUILD_CONFIGURATION MATCHES "DEBUG" )
+    target_compile_options( ${BINARY_NAME} PRIVATE -Wall -Wshadow-all -Wshorten-64-to-32 -Wstrict-aliasing -Wuninitialized -Wunused-parameter -Wconversion -Wsign-compare -Wint-conversion -Wconditional-uninitialized -Woverloaded-virtual -Wreorder -Wconstant-conversion -Wsign-conversion -Wunused-private-field -Wbool-conversion -Wextra-semi -Wunreachable-code -Wzero-as-null-pointer-constant -Wcast-align -Winconsistent-missing-destructor-override -Wshift-sign-overflow -Wnullable-to-nonnull-conversion -Wno-missing-field-initializers -Wno-ignored-qualifiers -Wswitch-enum)
+endif()
+
+if( JUCE_BUILD_CONFIGURATION MATCHES "RELEASE" )
+    target_compile_options( ${BINARY_NAME} PRIVATE -Wall -Wshadow-all -Wshorten-64-to-32 -Wstrict-aliasing -Wuninitialized -Wunused-parameter -Wconversion -Wsign-compare -Wint-conversion -Wconditional-uninitialized -Woverloaded-virtual -Wreorder -Wconstant-conversion -Wsign-conversion -Wunused-private-field -Wbool-conversion -Wextra-semi -Wunreachable-code -Wzero-as-null-pointer-constant -Wcast-align -Winconsistent-missing-destructor-override -Wshift-sign-overflow -Wnullable-to-nonnull-conversion -Wno-missing-field-initializers -Wno-ignored-qualifiers -Wswitch-enum)
+endif()
+
 find_library(log "log")
 find_library(android "android")
 find_library(glesv3 "GLESv3")
@@ -3236,4 +3550,5 @@ target_link_libraries( ${BINARY_NAME}
     ${glesv3}
     ${egl}
     "cpufeatures"
+    "oboe"
 )

@@ -51,16 +51,16 @@ Player::~Player() {
 
 #pragma mark - Main transport callbacks
 
-void Player::changeListenerCallback(ChangeBroadcaster *source) {
-    if(source == &transportSource_) {
-        if(transportSource_.isPlaying()) {
-            changePlayState(Playing);
-        }
-        else {
-            changePlayState(Stopped);
-        }
-    }
-}
+//void Player::changeListenerCallback(ChangeBroadcaster *source) {
+//    if(source == &transportSource_) {
+//        if(transportSource_.isPlaying()) {
+//            changePlayState(Playing);
+//        }
+//        else {
+//            changePlayState(Stopped);
+//        }
+//    }
+//}
 
 
 #pragma mark - Transport State Handling
@@ -68,6 +68,12 @@ void Player::changeListenerCallback(ChangeBroadcaster *source) {
 void Player::changePlayState(TransportState newState) {
     if (state_ != newState) {
         state_ = newState;
+        if(state_ == Stopping) {
+            isPlaying_ = false;
+        }
+        else if (state_ == Starting){
+            isPlaying_ = true;
+        }
         for(Voice *voice : voices_) {
             voice->changePlayState(newState);
         }

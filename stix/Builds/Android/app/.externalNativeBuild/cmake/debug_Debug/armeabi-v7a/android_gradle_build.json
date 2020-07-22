@@ -598,6 +598,14 @@
           "workingDirectoryOrdinal": 0
         },
         {
+          "src": "/data/eva/blue_sky/stix/Builds/Android/app/../../../Source/audio/Utils.h",
+          "workingDirectoryOrdinal": 0
+        },
+        {
+          "src": "/data/eva/blue_sky/stix/Builds/Android/app/../../../Source/audio/Voice.h",
+          "workingDirectoryOrdinal": 0
+        },
+        {
           "src": "/data/eva/blue_sky/stix/Builds/Android/app/../../../Source/UI/Home.h",
           "workingDirectoryOrdinal": 0
         },
@@ -3979,6 +3987,11 @@
         },
         {
           "src": "/data/eva/blue_sky/stix/Builds/Android/app/../../../Source/audio/Player.cpp",
+          "flagsOrdinal": 4,
+          "workingDirectoryOrdinal": 0
+        },
+        {
+          "src": "/data/eva/blue_sky/stix/Builds/Android/app/../../../Source/audio/Voice.cpp",
           "flagsOrdinal": 4,
           "workingDirectoryOrdinal": 0
         },
