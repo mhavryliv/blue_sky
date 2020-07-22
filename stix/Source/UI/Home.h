@@ -7,12 +7,12 @@
   the "//[xyz]" and "//[/xyz]" sections will be retained when the file is loaded
   and re-saved.
 
-  Created with Projucer version: 5.4.5
+  Created with Projucer version: 6.0.1
 
   ------------------------------------------------------------------------------
 
   The Projucer is part of the JUCE library.
-  Copyright (c) 2017 - ROLI Ltd.
+  Copyright (c) 2020 - Raw Material Software Limited.
 
   ==============================================================================
 */
@@ -22,6 +22,7 @@
 //[Headers]     -- You can add your own extra header files here --
 #include "../../JuceLibraryCode/JuceHeader.h"
 #include "../audio/Player.h"
+#include "VoiceUI.h"
 //[/Headers]
 
 
@@ -36,12 +37,12 @@
 */
 class Home  : public Component,
               public ChangeListener,
-              public Button::Listener
+              public juce::Button::Listener
 {
 public:
     //==============================================================================
     Home ();
-    ~Home();
+    ~Home() override;
 
     //==============================================================================
     //[UserMethods]     -- You can add your own custom methods in this section.
@@ -53,23 +54,24 @@ public:
     void changeListenerCallback(ChangeBroadcaster *source) override;
     //[/UserMethods]
 
-    void paint (Graphics& g) override;
+    void paint (juce::Graphics& g) override;
     void resized() override;
-    void buttonClicked (Button* buttonThatWasClicked) override;
+    void buttonClicked (juce::Button* buttonThatWasClicked) override;
 
 
 
 private:
     //[UserVariables]   -- You can add your own custom variables in this section.
     Player *player_;
+    std::unique_ptr<VoiceUI> voiceUI_;
     //[/UserVariables]
 
     //==============================================================================
-    std::unique_ptr<TextButton> drumsButton_;
-    std::unique_ptr<TextButton> percButton_;
-    std::unique_ptr<TextButton> samplesButton_;
-    std::unique_ptr<TextButton> leadButton_;
-    std::unique_ptr<TextButton> playPauseButton_;
+    std::unique_ptr<juce::TextButton> drumsButton_;
+    std::unique_ptr<juce::TextButton> percButton_;
+    std::unique_ptr<juce::TextButton> samplesButton_;
+    std::unique_ptr<juce::TextButton> leadButton_;
+    std::unique_ptr<juce::TextButton> playPauseButton_;
 
 
     //==============================================================================

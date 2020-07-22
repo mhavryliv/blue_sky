@@ -17,6 +17,8 @@
         <FILE id="dil3PX" name="MainComponent.cpp" compile="1" resource="0"
               file="Source/UI/MainComponent.cpp"/>
         <FILE id="rfUDH4" name="MainComponent.h" compile="0" resource="0" file="Source/UI/MainComponent.h"/>
+        <FILE id="QuMe57" name="VoiceUI.cpp" compile="1" resource="0" file="Source/UI/VoiceUI.cpp"/>
+        <FILE id="Zp25mT" name="VoiceUI.h" compile="0" resource="0" file="Source/UI/VoiceUI.h"/>
       </GROUP>
       <FILE id="fcr468" name="Main.cpp" compile="1" resource="0" file="Source/Main.cpp"/>
       <FILE id="YyqWd2" name="JUCEAppIcon.png" compile="0" resource="0" file="Source/JUCEAppIcon.png"/>

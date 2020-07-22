@@ -113,6 +113,10 @@
 			isa = PBXBuildFile;
 			fileRef = 25E5ED33876A2C752378C859;
 		};
+		BEC3FB307CB47E52809A711B = {
+			isa = PBXBuildFile;
+			fileRef = 9C9CF5151C634800EFB9395B;
+		};
 		F619F3887CEC064441BB6EE6 = {
 			isa = PBXBuildFile;
 			fileRef = 260481E972425474BB8155B0;
@@ -245,6 +249,13 @@
 			name = "juce_graphics";
 			path = "/Users/mhavryliv/Development/Projucer/JUCE/modules/juce_graphics";
 			sourceTree = "<absolute>";
+		};
+		16F5292A75C09C4BE023FF6E = {
+			isa = PBXFileReference;
+			lastKnownFileType = sourcecode.c.h;
+			name = VoiceUI.h;
+			path = ../../Source/UI/VoiceUI.h;
+			sourceTree = "SOURCE_ROOT";
 		};
 		18E7F9A04DE6A541F1309177 = {
 			isa = PBXFileReference;
@@ -582,6 +593,13 @@
 			path = "../../JuceLibraryCode/include_juce_gui_extra.mm";
 			sourceTree = "SOURCE_ROOT";
 		};
+		9C9CF5151C634800EFB9395B = {
+			isa = PBXFileReference;
+			lastKnownFileType = sourcecode.cpp.cpp;
+			name = VoiceUI.cpp;
+			path = ../../Source/UI/VoiceUI.cpp;
+			sourceTree = "SOURCE_ROOT";
+		};
 		A04E4408525F24F7DCBA000E = {
 			isa = PBXFileReference;
 			lastKnownFileType = wrapper.framework;
@@ -762,6 +780,8 @@
 				A60895E80C94C88DA83A10B7,
 				25E5ED33876A2C752378C859,
 				EB68BD1224CD9748BFA332C0,
+				9C9CF5151C634800EFB9395B,
+				16F5292A75C09C4BE023FF6E,
 			);
 			name = UI;
 			sourceTree = "<group>";
@@ -1130,6 +1150,7 @@
 				6E1CF07F205590F3E564A4CD,
 				12159BCAF7A8D57B70E89CC9,
 				4FBBB55F4E347757F74F1F41,
+				BEC3FB307CB47E52809A711B,
 				F619F3887CEC064441BB6EE6,
 				C2BB2B6DA237FE0CB64C7EDA,
 				F28112945CEBEA4CE8975833,

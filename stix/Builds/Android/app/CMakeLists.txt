@@ -43,6 +43,8 @@ add_library( ${BINARY_NAME}
     "../../../Source/UI/Home.h"
     "../../../Source/UI/MainComponent.cpp"
     "../../../Source/UI/MainComponent.h"
+    "../../../Source/UI/VoiceUI.cpp"
+    "../../../Source/UI/VoiceUI.h"
     "../../../Source/Main.cpp"
     "../../../Source/JUCEAppIcon.png"
     "../../../../../../../Users/mhavryliv/Development/Projucer/JUCE/modules/juce_analytics/analytics/juce_Analytics.cpp"
@@ -1799,6 +1801,7 @@ set_source_files_properties("../../../Source/audio/Utils.h" PROPERTIES HEADER_FI
 set_source_files_properties("../../../Source/audio/Voice.h" PROPERTIES HEADER_FILE_ONLY TRUE)
 set_source_files_properties("../../../Source/UI/Home.h" PROPERTIES HEADER_FILE_ONLY TRUE)
 set_source_files_properties("../../../Source/UI/MainComponent.h" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties("../../../Source/UI/VoiceUI.h" PROPERTIES HEADER_FILE_ONLY TRUE)
 set_source_files_properties("../../../Source/JUCEAppIcon.png" PROPERTIES HEADER_FILE_ONLY TRUE)
 set_source_files_properties("../../../../../../../Users/mhavryliv/Development/Projucer/JUCE/modules/juce_analytics/analytics/juce_Analytics.cpp" PROPERTIES HEADER_FILE_ONLY TRUE)
 set_source_files_properties("../../../../../../../Users/mhavryliv/Development/Projucer/JUCE/modules/juce_analytics/analytics/juce_Analytics.h" PROPERTIES HEADER_FILE_ONLY TRUE)

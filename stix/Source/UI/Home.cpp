@@ -7,12 +7,12 @@
   the "//[xyz]" and "//[/xyz]" sections will be retained when the file is loaded
   and re-saved.
 
-  Created with Projucer version: 5.4.5
+  Created with Projucer version: 6.0.1
 
   ------------------------------------------------------------------------------
 
   The Projucer is part of the JUCE library.
-  Copyright (c) 2017 - ROLI Ltd.
+  Copyright (c) 2020 - Raw Material Software Limited.
 
   ==============================================================================
 */
@@ -31,43 +31,48 @@
 Home::Home ()
 {
     //[Constructor_pre] You can add your own custom stuff here..
+    voiceUI_.reset(new VoiceUI());
     //[/Constructor_pre]
 
-    drumsButton_.reset (new TextButton ("new button"));
+    drumsButton_.reset (new juce::TextButton ("new button"));
     addAndMakeVisible (drumsButton_.get());
     drumsButton_->setButtonText (TRANS("Drums"));
     drumsButton_->addListener (this);
 
     drumsButton_->setBounds (24, 40, 120, 24);
 
-    percButton_.reset (new TextButton ("new button"));
+    percButton_.reset (new juce::TextButton ("new button"));
     addAndMakeVisible (percButton_.get());
     percButton_->setButtonText (TRANS("Percussion"));
     percButton_->addListener (this);
 
     percButton_->setBounds (248, 40, 120, 24);
 
-    samplesButton_.reset (new TextButton ("new button"));
+    samplesButton_.reset (new juce::TextButton ("new button"));
     addAndMakeVisible (samplesButton_.get());
     samplesButton_->setButtonText (TRANS("Samples"));
     samplesButton_->addListener (this);
 
     samplesButton_->setBounds (24, 112, 120, 24);
 
-    leadButton_.reset (new TextButton ("new button"));
+    leadButton_.reset (new juce::TextButton ("new button"));
     addAndMakeVisible (leadButton_.get());
     leadButton_->setButtonText (TRANS("Lead"));
     leadButton_->addListener (this);
 
     leadButton_->setBounds (248, 111, 120, 24);
 
-    playPauseButton_.reset (new TextButton ("new button"));
+    playPauseButton_.reset (new juce::TextButton ("new button"));
     addAndMakeVisible (playPauseButton_.get());
     playPauseButton_->setButtonText (TRANS("Play"));
     playPauseButton_->addListener (this);
 
 
     //[UserPreSize]
+    voiceUI_->setAlpha(0.f);
+    addChildComponent(voiceUI_.get());
+    voiceUI_->setVisible(true);
+    voiceUI_->setInterceptsMouseClicks(false, false);
     //[/UserPreSize]
 
     setSize (400, 600);
@@ -94,12 +99,12 @@ Home::~Home()
 }
 
 //==============================================================================
-void Home::paint (Graphics& g)
+void Home::paint (juce::Graphics& g)
 {
     //[UserPrePaint] Add your own custom painting code here..
     //[/UserPrePaint]
 
-    g.fillAll (Colour (0xff323e44));
+    g.fillAll (juce::Colour (0xff323e44));
 
     //[UserPaint] Add your own custom painting code here..
     //[/UserPaint]
@@ -112,10 +117,11 @@ void Home::resized()
 
     playPauseButton_->setBounds ((getWidth() / 2) - (100 / 2), 160, 100, 24);
     //[UserResized] Add your own custom resize handling here..
+    voiceUI_->setSize(getWidth(), getHeight());
     //[/UserResized]
 }
 
-void Home::buttonClicked (Button* buttonThatWasClicked)
+void Home::buttonClicked (juce::Button* buttonThatWasClicked)
 {
     //[UserbuttonClicked_Pre]
     //[/UserbuttonClicked_Pre]
@@ -123,6 +129,9 @@ void Home::buttonClicked (Button* buttonThatWasClicked)
     if (buttonThatWasClicked == drumsButton_.get())
     {
         //[UserButtonCode_drumsButton_] -- add your button handler code here..
+        ComponentAnimator &anim = Desktop::getInstance().getAnimator();
+        anim.fadeIn(voiceUI_.get(), 250);
+        voiceUI_->setInterceptsMouseClicks(true, true);
         player_->drums()->setStemVol(0, 1.f, true);
         //[/UserButtonCode_drumsButton_]
     }
