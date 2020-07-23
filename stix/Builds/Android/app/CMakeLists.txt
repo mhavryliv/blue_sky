@@ -41,6 +41,8 @@ add_library( ${BINARY_NAME}
     "../../../Source/audio/Voice.h"
     "../../../Source/UI/Home.cpp"
     "../../../Source/UI/Home.h"
+    "../../../Source/UI/Home_Old.cpp"
+    "../../../Source/UI/Home_Old.h"
     "../../../Source/UI/MainComponent.cpp"
     "../../../Source/UI/MainComponent.h"
     "../../../Source/UI/VoiceUI.cpp"
@@ -1800,6 +1802,8 @@ set_source_files_properties("../../../Source/audio/Player.h" PROPERTIES HEADER_F
 set_source_files_properties("../../../Source/audio/Utils.h" PROPERTIES HEADER_FILE_ONLY TRUE)
 set_source_files_properties("../../../Source/audio/Voice.h" PROPERTIES HEADER_FILE_ONLY TRUE)
 set_source_files_properties("../../../Source/UI/Home.h" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties("../../../Source/UI/Home_Old.cpp" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties("../../../Source/UI/Home_Old.h" PROPERTIES HEADER_FILE_ONLY TRUE)
 set_source_files_properties("../../../Source/UI/MainComponent.h" PROPERTIES HEADER_FILE_ONLY TRUE)
 set_source_files_properties("../../../Source/UI/VoiceUI.h" PROPERTIES HEADER_FILE_ONLY TRUE)
 set_source_files_properties("../../../Source/JUCEAppIcon.png" PROPERTIES HEADER_FILE_ONLY TRUE)

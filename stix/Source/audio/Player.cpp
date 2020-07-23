@@ -30,25 +30,25 @@ Player::Player() : state_(Stopped) {
         voice->setFormatManager(&formatManager_);
     }
 
-    drums_.loadFileIntoPosition("Drums 1.mp3", 0);
-    drums_.loadFileIntoPosition("Drums 2.mp3", 1);
-    drums_.loadFileIntoPosition("Drums 3.mp3", 2);
-    drums_.loadFileIntoPosition("Drums 4.mp3", 3);
+    drums_.loadFileIntoPosition("Drums 1.mp3", 0, "Clean");
+    drums_.loadFileIntoPosition("Drums 2.mp3", 1, "Dirty");
+    drums_.loadFileIntoPosition("Drums 3.mp3", 2, "Extra");
+    drums_.loadFileIntoPosition("Drums 4.mp3", 3, "Funny");
 
-    bass_.loadFileIntoPosition("Bass 1.mp3", 0);
-    bass_.loadFileIntoPosition("Bass 2.mp3", 1);
-    bass_.loadFileIntoPosition("Bass 3.mp3", 2);
-    bass_.loadFileIntoPosition("Bass 4.mp3", 3);
+    bass_.loadFileIntoPosition("Bass 1.mp3", 0, "Simple");
+    bass_.loadFileIntoPosition("Bass 2.mp3", 1, "Complex");
+    bass_.loadFileIntoPosition("Bass 3.mp3", 2, "Busy");
+    bass_.loadFileIntoPosition("Bass 4.mp3", 3, "Harmonic");
 
-    harmony_.loadFileIntoPosition("Harmony 1.mp3", 0);
-    harmony_.loadFileIntoPosition("Harmony 2.mp3", 1);
-    harmony_.loadFileIntoPosition("Harmony 3.mp3", 2);
-    harmony_.loadFileIntoPosition("Harmony 4.mp3", 3);
+    harmony_.loadFileIntoPosition("Harmony 1.mp3", 0, "Elegant");
+    harmony_.loadFileIntoPosition("Harmony 2.mp3", 1, "Simple");
+    harmony_.loadFileIntoPosition("Harmony 3.mp3", 2, "Funny");
+    harmony_.loadFileIntoPosition("Harmony 4.mp3", 3, "Silly");
 
-    melody_.loadFileIntoPosition("Melody 1.mp3", 0);
-    melody_.loadFileIntoPosition("Melody 2.mp3", 1);
-    melody_.loadFileIntoPosition("Melody 3.mp3", 2);
-    melody_.loadFileIntoPosition("Melody 4.mp3", 3);
+    melody_.loadFileIntoPosition("Melody 1.mp3", 0, "High");
+    melody_.loadFileIntoPosition("Melody 2.mp3", 1, "Low");
+    melody_.loadFileIntoPosition("Melody 3.mp3", 2, "Mid");
+    melody_.loadFileIntoPosition("Melody 4.mp3", 3, "Full");
     
     
 //    voices_.push_back(&percussion_);

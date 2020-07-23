@@ -18,7 +18,7 @@ public:
     Voice();
     ~Voice() {}
     
-    void loadFileIntoPosition(const String &fname, int position);
+    void loadFileIntoPosition(const String &fname, int position, const String &stemName);
     void changePlayState(TransportState newState);
     void setStemVol(int stem, float vol, bool zeroOthers);
     void setAllStems(const Array<float> &vols) {
@@ -42,6 +42,12 @@ public:
     }
     void setName(const String &name) {
         name_ = name;
+    }
+    String name() const {
+        return name_;
+    }
+    String stemNames(int index) const {
+        return stemNames_[index];
     }
 
 private:
@@ -144,6 +150,7 @@ private:
     
     String name_;
     juce::OwnedArray<Audio> files_;
+    StringArray stemNames_;
     AudioBuffer<float> summingBuffer_;
     Array<float> stemVols_;
     Array<float> prevStemVols_;

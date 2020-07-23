@@ -31,6 +31,11 @@ public:
         return isPlaying_;
     }
     
+    Voice *voiceAt(int index) {
+        jassert(index < voices_.size());
+        return voices_.at(index);
+    }
+    
     Voice* drums() { return &drums_; }
     Voice* bass() { return &bass_; }
     Voice* harmony() { return &harmony_; }

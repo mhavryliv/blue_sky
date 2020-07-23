@@ -130,12 +130,14 @@ void VoiceUI::paint (juce::Graphics& g) {
     const Point<float> midPoint (width/2.f, height / 2.f);
     
     Colour lineColour = Colours::white;
-    Colour baseColour = Colours::skyblue;
     Array<Colour> colours;
     colours.add(baseColour);
-    colours.add(Colours::darkorange);
-    colours.add(Colours::yellowgreen);
-    colours.add(Colours::palevioletred);
+    colours.add(baseColour);
+    colours.add(baseColour);
+    colours.add(baseColour);
+//    colours.add(Colours::darkorange);
+//    colours.add(Colours::yellowgreen);
+//    colours.add(Colours::palevioletred);
     
     // Draw background
     g.fillAll(Colours::whitesmoke);
@@ -147,35 +149,6 @@ void VoiceUI::paint (juce::Graphics& g) {
         g.setColour(colours[i].withAlpha(weights[i] * weights[i]));
         g.fillRect(quads[i]);
     }
-    
-//    g.setColour(baseColour.withAlpha(weights[0]));
-//    g.fillRect(quads[0]);
-//    g.setColour(Colours::darkorange);
-//    g.fillRect(quads[1]);
-//
-//    g.setColour(Colours::yellowgreen);
-//    g.fillRect(quads[2]);
-//
-//    g.setColour(Colours::palevioletred);
-//    g.fillRect(quads[3]);
-
-    
-    /* This demo code just fills the component's background and
-       draws some placeholder text to get you started.
-
-       You should replace everything in this method with your own
-       drawing code..
-    */
-
-//    g.fillAll (getLookAndFeel().findColour (juce::ResizableWindow::backgroundColourId));   // clear the background
-//
-//    g.setColour (juce::Colours::grey);
-//    g.drawRect (getLocalBounds(), 1);   // draw an outline around the component
-//
-//    g.setColour (juce::Colours::white);
-//    g.setFont (14.0f);
-//    g.drawText ("VoiceUI", getLocalBounds(),
-//                juce::Justification::centred, true);   // draw some placeholder text
 }
 
 void VoiceUI::resized()

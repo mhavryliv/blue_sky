@@ -642,6 +642,13 @@
 			path = "/Users/mhavryliv/Development/Projucer/JUCE/modules/juce_events";
 			sourceTree = "<absolute>";
 		};
+		BE742E0A7C4DADECE566BEE7 = {
+			isa = PBXFileReference;
+			lastKnownFileType = sourcecode.cpp.cpp;
+			name = "Home_Old.cpp";
+			path = "../../Source/UI/Home_Old.cpp";
+			sourceTree = "SOURCE_ROOT";
+		};
 		C1E93FAF6C68A40A664422CD = {
 			isa = PBXFileReference;
 			lastKnownFileType = sourcecode.cpp.objcpp;
@@ -754,6 +761,13 @@
 			path = System/Library/Frameworks/UIKit.framework;
 			sourceTree = SDKROOT;
 		};
+		FB5DEC45A9C3395F4E6BD6DF = {
+			isa = PBXFileReference;
+			lastKnownFileType = sourcecode.c.h;
+			name = "Home_Old.h";
+			path = "../../Source/UI/Home_Old.h";
+			sourceTree = "SOURCE_ROOT";
+		};
 		FCD0D758C5767944BEC29730 = {
 			isa = PBXFileReference;
 			lastKnownFileType = sourcecode.cpp.objcpp;
@@ -778,6 +792,8 @@
 			children = (
 				51C3E1C3BFCF9076FB697FCF,
 				A60895E80C94C88DA83A10B7,
+				BE742E0A7C4DADECE566BEE7,
+				FB5DEC45A9C3395F4E6BD6DF,
 				25E5ED33876A2C752378C859,
 				EB68BD1224CD9748BFA332C0,
 				9C9CF5151C634800EFB9395B,

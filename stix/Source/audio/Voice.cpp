@@ -20,7 +20,7 @@ Voice::Voice() {
     }
 }
 
-void Voice::loadFileIntoPosition(const String &fname, int position) {
+void Voice::loadFileIntoPosition(const String &fname, int position, const String &stemName) {
     // Get a reference to the Audio object
     Audio *audio = files_.getUnchecked(position);
     InputStream *is = Utils::createAssetInputStream(fname.toRawUTF8());
@@ -29,7 +29,7 @@ void Voice::loadFileIntoPosition(const String &fname, int position) {
         return;
     }
     audio->loadFileFromInputStream(is);
-    
+    stemNames_.set(position, stemName);
 }
 
 void Voice::changePlayState(TransportState newState) {

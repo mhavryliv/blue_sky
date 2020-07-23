@@ -12,8 +12,10 @@
         <FILE id="RquM07" name="Voice.h" compile="0" resource="0" file="Source/audio/Voice.h"/>
       </GROUP>
       <GROUP id="{6E0E7E12-C0D4-A099-3BA5-BD1F5930099F}" name="UI">
-        <FILE id="wlSc8O" name="Home.cpp" compile="1" resource="0" file="Source/UI/Home.cpp"/>
-        <FILE id="oKF7lC" name="Home.h" compile="0" resource="0" file="Source/UI/Home.h"/>
+        <FILE id="gTKipx" name="Home.cpp" compile="1" resource="0" file="Source/UI/Home.cpp"/>
+        <FILE id="I7EOTk" name="Home.h" compile="0" resource="0" file="Source/UI/Home.h"/>
+        <FILE id="wlSc8O" name="Home_Old.cpp" compile="0" resource="0" file="Source/UI/Home_Old.cpp"/>
+        <FILE id="oKF7lC" name="Home_Old.h" compile="0" resource="0" file="Source/UI/Home_Old.h"/>
         <FILE id="dil3PX" name="MainComponent.cpp" compile="1" resource="0"
               file="Source/UI/MainComponent.cpp"/>
         <FILE id="rfUDH4" name="MainComponent.h" compile="0" resource="0" file="Source/UI/MainComponent.h"/>

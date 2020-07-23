@@ -37,6 +37,8 @@ public:
         voice_ = v;
     }
     
+    Colour baseColour;
+    
 private:
     StringArray voiceNames_;
     Array<float> quadWeightsForNormalisedPos(const Point<float> pos);
