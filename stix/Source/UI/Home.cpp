@@ -76,7 +76,7 @@ void Home::paint (juce::Graphics& g) {
     g.setFont(Font(25.f, Font::bold));
     String playState;
     if(player_->isPlaying()) {
-        playState = "Pause";
+        playState = "Stop";
     }
     else {
         playState = "Play";

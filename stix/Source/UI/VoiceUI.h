@@ -27,11 +27,6 @@ public:
     void resized() override;
     void mouseDown (const MouseEvent& event) override;
     void mouseMove (const MouseEvent& event) override;
-
-    void setVoiceNames(const StringArray &names) {
-        jassert(names.size() == 4);
-        voiceNames_ = names;
-    }
     
     void setVoicePointer(Voice *v) {
         voice_ = v;
@@ -40,7 +35,6 @@ public:
     Colour baseColour;
     
 private:
-    StringArray voiceNames_;
     Array<float> quadWeightsForNormalisedPos(const Point<float> pos);
     Array<Rectangle<float>> getQuads();
     Array<Rectangle<float>> getQuadVolZones();

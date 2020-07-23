@@ -79,6 +79,7 @@ private:
                         break;
                         
                     case Starting:
+                        transportSource_.setPosition (0.0);
                         transportSource_.start();
                         break;
                         

@@ -50,24 +50,10 @@ Player::Player() : state_(Stopped) {
     melody_.loadFileIntoPosition("Melody 3.mp3", 2, "Mid");
     melody_.loadFileIntoPosition("Melody 4.mp3", 3, "Full");
     
-    
-//    voices_.push_back(&percussion_);
-//    voices_.push_back(&leads_);
-//    voices_.push_back(&samples_);
-
-//    for(int i = 0; i < voices_.size(); ++i) {
-//        Voice *voice = voices_.at(i);
-//        voice->setFormatManager(&formatManager_);
-//        voice->loadFileIntoPosition(fileNames[i], 0);
-//    }
-    
-//    drums_.loadFileIntoPosition("drums_1.wav", 0);
-//    percussion_.loadFileIntoPosition("percussion_1.wav", 0);
-//    leads_.loadFileIntoPosition("leads_1.wav", 0);
-//    samples_.loadFileIntoPosition("samples_1.wav", 0);
-    
     // Do this last, because it forces a call to prepareToPlay
     setAudioChannels(0, 2);
+    
+    state_ = TransportState::Stopped;
 }
 
 Player::~Player() {

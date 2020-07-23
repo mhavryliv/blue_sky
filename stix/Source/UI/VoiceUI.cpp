@@ -130,14 +130,12 @@ void VoiceUI::paint (juce::Graphics& g) {
     const Point<float> midPoint (width/2.f, height / 2.f);
     
     Colour lineColour = Colours::white;
+    Colour textColour = Colours::black;
     Array<Colour> colours;
     colours.add(baseColour);
     colours.add(baseColour);
     colours.add(baseColour);
     colours.add(baseColour);
-//    colours.add(Colours::darkorange);
-//    colours.add(Colours::yellowgreen);
-//    colours.add(Colours::palevioletred);
     
     // Draw background
     g.fillAll(Colours::whitesmoke);
@@ -148,12 +146,12 @@ void VoiceUI::paint (juce::Graphics& g) {
     for(int i = 0; i < 4; ++i) {
         g.setColour(colours[i].withAlpha(weights[i] * weights[i]));
         g.fillRect(quads[i]);
+        g.setColour(textColour);
+        g.drawText(voice_->stemNames(i), quads[i], Justification::centred);
     }
 }
 
-void VoiceUI::resized()
-{
+void VoiceUI::resized() {
     // This method is where you should set the bounds of any child
     // components that your component contains..
-
 }
