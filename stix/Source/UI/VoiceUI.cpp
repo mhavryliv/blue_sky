@@ -10,6 +10,7 @@
 
 #include <JuceHeader.h>
 #include "VoiceUI.h"
+#include "../audio/Voice.h"
 
 //==============================================================================
 VoiceUI::VoiceUI()
@@ -27,8 +28,14 @@ VoiceUI::~VoiceUI()
 void VoiceUI::mouseDown (const MouseEvent& event) {
     quadWeightsForNormalisedPos(event.getMouseDownPosition().toFloat());
 //    Logger::writeToLog("Mouse down");
-//    setAlpha(0.f);
-//    setInterceptsMouseClicks(false, false);
+    setAlpha(0.f);
+    setInterceptsMouseClicks(false, false);
+}
+
+void VoiceUI::mouseMove(const MouseEvent &event) {
+    Array<float> weights = quadWeightsForNormalisedPos(getMouseXYRelative().toFloat());
+    voice_->setAllStems(weights);
+    repaint();
 }
 
 Array<Rectangle<float>> VoiceUI::getQuads() {

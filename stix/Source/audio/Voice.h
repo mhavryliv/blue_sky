@@ -21,6 +21,10 @@ public:
     void loadFileIntoPosition(const String &fname, int position);
     void changePlayState(TransportState newState);
     void setStemVol(int stem, float vol, bool zeroOthers);
+    void setAllStems(const Array<float> &vols) {
+        jassert(vols.size() == 4);
+        stemVols_ = vols;
+    }
     
     // Audio player helpers
     void prepareToPlay(int sampsPerBlock, double srate);

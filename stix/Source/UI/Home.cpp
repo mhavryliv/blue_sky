@@ -129,6 +129,8 @@ void Home::buttonClicked (juce::Button* buttonThatWasClicked)
     if (buttonThatWasClicked == drumsButton_.get())
     {
         //[UserButtonCode_drumsButton_] -- add your button handler code here..
+        // Assign the voice
+        voiceUI_->setVoicePointer(player_->drums());
         ComponentAnimator &anim = Desktop::getInstance().getAnimator();
         anim.fadeIn(voiceUI_.get(), 250);
         voiceUI_->setInterceptsMouseClicks(true, true);
