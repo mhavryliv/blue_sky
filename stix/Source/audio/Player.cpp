@@ -54,6 +54,7 @@ Player::Player() : state_(Stopped) {
     setAudioChannels(0, 2);
     
     state_ = TransportState::Stopped;
+    isPlaying_ = false;
 }
 
 Player::~Player() {
