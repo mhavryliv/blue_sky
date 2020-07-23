@@ -41,26 +41,26 @@ Home::Home ()
 
     drumsButton_->setBounds (24, 40, 120, 24);
 
-    percButton_.reset (new juce::TextButton ("new button"));
-    addAndMakeVisible (percButton_.get());
-    percButton_->setButtonText (TRANS("Percussion"));
-    percButton_->addListener (this);
+    bassButton_.reset (new juce::TextButton ("new button"));
+    addAndMakeVisible (bassButton_.get());
+    bassButton_->setButtonText (TRANS("Bass"));
+    bassButton_->addListener (this);
 
-    percButton_->setBounds (248, 40, 120, 24);
+    bassButton_->setBounds (248, 40, 120, 24);
 
-    samplesButton_.reset (new juce::TextButton ("new button"));
-    addAndMakeVisible (samplesButton_.get());
-    samplesButton_->setButtonText (TRANS("Samples"));
-    samplesButton_->addListener (this);
+    harmonyButton_.reset (new juce::TextButton ("new button"));
+    addAndMakeVisible (harmonyButton_.get());
+    harmonyButton_->setButtonText (TRANS("Harmony"));
+    harmonyButton_->addListener (this);
 
-    samplesButton_->setBounds (24, 112, 120, 24);
+    harmonyButton_->setBounds (24, 112, 120, 24);
 
-    leadButton_.reset (new juce::TextButton ("new button"));
-    addAndMakeVisible (leadButton_.get());
-    leadButton_->setButtonText (TRANS("Lead"));
-    leadButton_->addListener (this);
+    melodyButton_.reset (new juce::TextButton ("new button"));
+    addAndMakeVisible (melodyButton_.get());
+    melodyButton_->setButtonText (TRANS("Melody"));
+    melodyButton_->addListener (this);
 
-    leadButton_->setBounds (248, 111, 120, 24);
+    melodyButton_->setBounds (248, 111, 120, 24);
 
     playPauseButton_.reset (new juce::TextButton ("new button"));
     addAndMakeVisible (playPauseButton_.get());
@@ -88,9 +88,9 @@ Home::~Home()
     //[/Destructor_pre]
 
     drumsButton_ = nullptr;
-    percButton_ = nullptr;
-    samplesButton_ = nullptr;
-    leadButton_ = nullptr;
+    bassButton_ = nullptr;
+    harmonyButton_ = nullptr;
+    melodyButton_ = nullptr;
     playPauseButton_ = nullptr;
 
 
@@ -129,31 +129,26 @@ void Home::buttonClicked (juce::Button* buttonThatWasClicked)
     if (buttonThatWasClicked == drumsButton_.get())
     {
         //[UserButtonCode_drumsButton_] -- add your button handler code here..
-        // Assign the voice
-        voiceUI_->setVoicePointer(player_->drums());
-        ComponentAnimator &anim = Desktop::getInstance().getAnimator();
-        anim.fadeIn(voiceUI_.get(), 250);
-        voiceUI_->setInterceptsMouseClicks(true, true);
-        player_->drums()->setStemVol(0, 1.f, true);
+        showVoiceUI(player_->drums());
         //[/UserButtonCode_drumsButton_]
     }
-    else if (buttonThatWasClicked == percButton_.get())
+    else if (buttonThatWasClicked == bassButton_.get())
     {
-        //[UserButtonCode_percButton_] -- add your button handler code here..
-        player_->drums()->setStemVol(1, 1.f, true);
-        //[/UserButtonCode_percButton_]
+        //[UserButtonCode_bassButton_] -- add your button handler code here..
+        showVoiceUI(player_->bass());
+        //[/UserButtonCode_bassButton_]
     }
-    else if (buttonThatWasClicked == samplesButton_.get())
+    else if (buttonThatWasClicked == harmonyButton_.get())
     {
-        //[UserButtonCode_samplesButton_] -- add your button handler code here..
-        player_->drums()->setStemVol(2, 1.f, true);
-        //[/UserButtonCode_samplesButton_]
+        //[UserButtonCode_harmonyButton_] -- add your button handler code here..
+        showVoiceUI(player_->harmony());
+        //[/UserButtonCode_harmonyButton_]
     }
-    else if (buttonThatWasClicked == leadButton_.get())
+    else if (buttonThatWasClicked == melodyButton_.get())
     {
-        //[UserButtonCode_leadButton_] -- add your button handler code here..
-        player_->drums()->setStemVol(3, 1.f, true);
-        //[/UserButtonCode_leadButton_]
+        //[UserButtonCode_melodyButton_] -- add your button handler code here..
+        showVoiceUI(player_->melody());
+        //[/UserButtonCode_melodyButton_]
     }
     else if (buttonThatWasClicked == playPauseButton_.get())
     {
@@ -177,6 +172,13 @@ void Home::buttonClicked (juce::Button* buttonThatWasClicked)
 //[MiscUserCode] You can add your own definitions of your custom methods or any other code here...
 
 #pragma mark - My code
+
+void Home::showVoiceUI(Voice *voice) {
+    voiceUI_->setVoicePointer(voice);
+    ComponentAnimator &anim = Desktop::getInstance().getAnimator();
+    anim.fadeIn(voiceUI_.get(), 250);
+    voiceUI_->setInterceptsMouseClicks(true, true);
+}
 
 void Home::changeListenerCallback(ChangeBroadcaster *source) {
 //    if(player_->isTransportSource(source)) {
@@ -209,14 +211,14 @@ BEGIN_JUCER_METADATA
   <TEXTBUTTON name="new button" id="53590cd4afaa418e" memberName="drumsButton_"
               virtualName="" explicitFocusOrder="0" pos="24 40 120 24" buttonText="Drums"
               connectedEdges="0" needsCallback="1" radioGroupId="0"/>
-  <TEXTBUTTON name="new button" id="52cb7739214d30e6" memberName="percButton_"
-              virtualName="" explicitFocusOrder="0" pos="248 40 120 24" buttonText="Percussion"
+  <TEXTBUTTON name="new button" id="52cb7739214d30e6" memberName="bassButton_"
+              virtualName="" explicitFocusOrder="0" pos="248 40 120 24" buttonText="Bass"
               connectedEdges="0" needsCallback="1" radioGroupId="0"/>
-  <TEXTBUTTON name="new button" id="dfcdb6f6c16a97c4" memberName="samplesButton_"
-              virtualName="" explicitFocusOrder="0" pos="24 112 120 24" buttonText="Samples"
+  <TEXTBUTTON name="new button" id="dfcdb6f6c16a97c4" memberName="harmonyButton_"
+              virtualName="" explicitFocusOrder="0" pos="24 112 120 24" buttonText="Harmony"
               connectedEdges="0" needsCallback="1" radioGroupId="0"/>
-  <TEXTBUTTON name="new button" id="617a1b4566fb9441" memberName="leadButton_"
-              virtualName="" explicitFocusOrder="0" pos="248 111 120 24" buttonText="Lead"
+  <TEXTBUTTON name="new button" id="617a1b4566fb9441" memberName="melodyButton_"
+              virtualName="" explicitFocusOrder="0" pos="248 111 120 24" buttonText="Melody"
               connectedEdges="0" needsCallback="1" radioGroupId="0"/>
   <TEXTBUTTON name="new button" id="51f8c43abf1df459" memberName="playPauseButton_"
               virtualName="" explicitFocusOrder="0" pos="0Cc 160 100 24" buttonText="Play"

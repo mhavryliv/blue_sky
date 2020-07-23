@@ -18,25 +18,37 @@ Player::Player() : state_(Stopped) {
     harmony_.setName("Harmony");
     melody_.setName("Melody");
 
-    StringArray fileNames;
-    fileNames.add("drums_1.wav");
-    fileNames.add("percussion_1.wav");
-    fileNames.add("leads_1.wav");
-    fileNames.add("samples_1.wav");
-
     
     // Load it all into drums and see if I can get the voices all playing
     voices_.push_back(&drums_);
+    voices_.push_back(&bass_);
+    voices_.push_back(&harmony_);
+    voices_.push_back(&melody_);
+    
     for(int i = 0; i < voices_.size(); ++i) {
         Voice *voice = voices_.at(i);
         voice->setFormatManager(&formatManager_);
     }
 
-    drums_.loadFileIntoPosition(fileNames[0], 0);
-    drums_.loadFileIntoPosition(fileNames[1], 1);
-    drums_.loadFileIntoPosition(fileNames[2], 2);
-    drums_.loadFileIntoPosition(fileNames[3], 3);
-    
+    drums_.loadFileIntoPosition("Drums 1.mp3", 0);
+    drums_.loadFileIntoPosition("Drums 2.mp3", 1);
+    drums_.loadFileIntoPosition("Drums 3.mp3", 2);
+    drums_.loadFileIntoPosition("Drums 4.mp3", 3);
+
+    bass_.loadFileIntoPosition("Bass 1.mp3", 0);
+    bass_.loadFileIntoPosition("Bass 2.mp3", 1);
+    bass_.loadFileIntoPosition("Bass 3.mp3", 2);
+    bass_.loadFileIntoPosition("Bass 4.mp3", 3);
+
+    harmony_.loadFileIntoPosition("Harmony 1.mp3", 0);
+    harmony_.loadFileIntoPosition("Harmony 2.mp3", 1);
+    harmony_.loadFileIntoPosition("Harmony 3.mp3", 2);
+    harmony_.loadFileIntoPosition("Harmony 4.mp3", 3);
+
+    melody_.loadFileIntoPosition("Melody 1.mp3", 0);
+    melody_.loadFileIntoPosition("Melody 2.mp3", 1);
+    melody_.loadFileIntoPosition("Melody 3.mp3", 2);
+    melody_.loadFileIntoPosition("Melody 4.mp3", 3);
     
     
 //    voices_.push_back(&percussion_);

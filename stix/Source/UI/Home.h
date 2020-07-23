@@ -48,7 +48,11 @@ public:
     //[UserMethods]     -- You can add your own custom methods in this section.
     void setPlayerRef(Player *ref) {
         player_ = ref;
-//        player_->transport()->addChangeListener(this);
+        // Initialise the stems
+        player_->drums()->setStemVol(0, 1.f, true);
+        player_->bass()->setStemVol(0, 1.f, true);
+        player_->harmony()->setStemVol(0, 1.f, true);
+        player_->melody()->setStemVol(0, 1.f, true);
     }
 
     void changeListenerCallback(ChangeBroadcaster *source) override;
@@ -64,13 +68,15 @@ private:
     //[UserVariables]   -- You can add your own custom variables in this section.
     Player *player_;
     std::unique_ptr<VoiceUI> voiceUI_;
+
+    void showVoiceUI(Voice *voice);
     //[/UserVariables]
 
     //==============================================================================
     std::unique_ptr<juce::TextButton> drumsButton_;
-    std::unique_ptr<juce::TextButton> percButton_;
-    std::unique_ptr<juce::TextButton> samplesButton_;
-    std::unique_ptr<juce::TextButton> leadButton_;
+    std::unique_ptr<juce::TextButton> bassButton_;
+    std::unique_ptr<juce::TextButton> harmonyButton_;
+    std::unique_ptr<juce::TextButton> melodyButton_;
     std::unique_ptr<juce::TextButton> playPauseButton_;
 
 
