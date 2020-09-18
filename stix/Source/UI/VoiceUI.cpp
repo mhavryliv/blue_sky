@@ -26,10 +26,18 @@ VoiceUI::~VoiceUI()
 }
 
 void VoiceUI::mouseDown (const MouseEvent& event) {
+//    float r = event.source.getCurrentRotation();
+//    Logger::writeToLog(String(r));
     quadWeightsForNormalisedPos(event.getMouseDownPosition().toFloat());
 //    Logger::writeToLog("Mouse down");
-    setAlpha(0.f);
-    setInterceptsMouseClicks(false, false);
+    if(event.getNumberOfClicks() == 2) {
+        setAlpha(0.f);
+        setInterceptsMouseClicks(false, false);
+    }
+}
+
+void VoiceUI::mouseDrag(const MouseEvent &event) {
+    mouseMove(event);
 }
 
 void VoiceUI::mouseMove(const MouseEvent &event) {

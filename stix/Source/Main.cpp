@@ -49,6 +49,7 @@ public:
     //==============================================================================
     void initialise (const String& commandLine) override
     {
+        Logger::writeToLog("Starting");
         mainWindow.reset (new MainAppWindow (getApplicationName()));
         
     }
@@ -79,7 +80,7 @@ private:
 
            #if JUCE_IOS || JUCE_ANDROID
             setFullScreen (true);
-            Desktop::getInstance().setOrientationsEnabled (Desktop::rotatedClockwise | Desktop::rotatedAntiClockwise);
+            Desktop::getInstance().setOrientationsEnabled (Desktop::allOrientations);
            #else
             setBounds ((int) (0.1f * getParentWidth()),
                        (int) (0.1f * getParentHeight()),

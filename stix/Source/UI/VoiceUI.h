@@ -27,6 +27,7 @@ public:
     void resized() override;
     void mouseDown (const MouseEvent& event) override;
     void mouseMove (const MouseEvent& event) override;
+    void mouseDrag (const MouseEvent& event) override;
     
     void setVoicePointer(Voice *v) {
         voice_ = v;

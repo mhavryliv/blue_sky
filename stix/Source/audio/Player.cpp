@@ -30,25 +30,25 @@ Player::Player() : state_(Stopped) {
         voice->setFormatManager(&formatManager_);
     }
 
-    drums_.loadFileIntoPosition("Rhythm 1.mp3", 0, "Clean");
-    drums_.loadFileIntoPosition("Rhythm 2.mp3", 1, "Dirty");
-    drums_.loadFileIntoPosition("Rhythm 3.mp3", 2, "Extra");
-    drums_.loadFileIntoPosition("Rhythm 4.mp3", 3, "Funny");
+    drums_.loadFileIntoPosition("Rhythm 1.wav", 0, "Clean");
+    drums_.loadFileIntoPosition("Rhythm 2.wav", 1, "Dirty");
+    drums_.loadFileIntoPosition("Rhythm 3.wav", 2, "Extra");
+    drums_.loadFileIntoPosition("Rhythm 4.wav", 3, "Funny");
 
-    bass_.loadFileIntoPosition("Bass 1.mp3", 0, "Simple");
-    bass_.loadFileIntoPosition("Bass 2.mp3", 1, "Complex");
-    bass_.loadFileIntoPosition("Bass 3.mp3", 2, "Busy");
-    bass_.loadFileIntoPosition("Bass 4.mp3", 3, "Harmonic");
+    bass_.loadFileIntoPosition("Bass 1.wav", 0, "Simple");
+    bass_.loadFileIntoPosition("Bass 2.wav", 1, "Complex");
+    bass_.loadFileIntoPosition("Bass 3.wav", 2, "Busy");
+    bass_.loadFileIntoPosition("Bass 4.wav", 3, "Harmonic");
 
-    harmony_.loadFileIntoPosition("Harmony 1.mp3", 0, "Elegant");
-    harmony_.loadFileIntoPosition("Harmony 2.mp3", 1, "Simple");
-    harmony_.loadFileIntoPosition("Harmony 3.mp3", 2, "Funny");
-    harmony_.loadFileIntoPosition("Harmony 4.mp3", 3, "Silly");
+    harmony_.loadFileIntoPosition("Harmony 1.wav", 0, "Elegant");
+    harmony_.loadFileIntoPosition("Harmony 2.wav", 1, "Simple");
+    harmony_.loadFileIntoPosition("Harmony 3.wav", 2, "Funny");
+    harmony_.loadFileIntoPosition("Harmony 4.wav", 3, "Silly");
 
-    melody_.loadFileIntoPosition("Melody 1.mp3", 0, "High");
-    melody_.loadFileIntoPosition("Melody 2.mp3", 1, "Low");
-    melody_.loadFileIntoPosition("Melody 3.mp3", 2, "Mid");
-    melody_.loadFileIntoPosition("Melody 4.mp3", 3, "Full");
+    melody_.loadFileIntoPosition("Melody 1.wav", 0, "High");
+    melody_.loadFileIntoPosition("Melody 2.wav", 1, "Low");
+    melody_.loadFileIntoPosition("Melody 3.wav", 2, "Mid");
+    melody_.loadFileIntoPosition("Melody 4.wav", 3, "Full");
     
     // Do this last, because it forces a call to prepareToPlay
     setAudioChannels(0, 2);
