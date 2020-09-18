@@ -88,6 +88,9 @@ Array<Rectangle<float>> VoiceUI::getQuadVolZones() {
 
 }
 
+// Melody should only play one at a time, all faded out in the centre
+// Bass shouldn't all be playing max vol in the centre
+// For drum track, only fade out once out of the the quadrant
 Array<float> VoiceUI::quadWeightsForNormalisedPos(const Point<float> pos) {
     Array<Rectangle<float>> quads = getQuads();
     

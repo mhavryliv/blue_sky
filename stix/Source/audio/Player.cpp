@@ -30,10 +30,10 @@ Player::Player() : state_(Stopped) {
         voice->setFormatManager(&formatManager_);
     }
 
-    drums_.loadFileIntoPosition("Drums 1.mp3", 0, "Clean");
-    drums_.loadFileIntoPosition("Drums 2.mp3", 1, "Dirty");
-    drums_.loadFileIntoPosition("Drums 3.mp3", 2, "Extra");
-    drums_.loadFileIntoPosition("Drums 4.mp3", 3, "Funny");
+    drums_.loadFileIntoPosition("Rhythm 1.mp3", 0, "Clean");
+    drums_.loadFileIntoPosition("Rhythm 2.mp3", 1, "Dirty");
+    drums_.loadFileIntoPosition("Rhythm 3.mp3", 2, "Extra");
+    drums_.loadFileIntoPosition("Rhythm 4.mp3", 3, "Funny");
 
     bass_.loadFileIntoPosition("Bass 1.mp3", 0, "Simple");
     bass_.loadFileIntoPosition("Bass 2.mp3", 1, "Complex");
