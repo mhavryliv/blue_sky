@@ -34,12 +34,16 @@ public:
     }
     
     Colour baseColour;
+    const float zeroOutPointForMelody = 0.25;
     
 private:
     Array<float> quadWeightsForNormalisedPos(const Point<float> pos);
+    Array<float> quadWeightsForNormalisedPosMelody(const Point<float> pos);
     Array<Rectangle<float>> getQuads();
     Array<Rectangle<float>> getQuadVolZones();
     Voice *voice_;
+    
+    void paintMelodyStuff(Graphics &g);
     
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (VoiceUI)
 };
