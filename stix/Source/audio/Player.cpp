@@ -30,28 +30,35 @@ Player::Player() : state_(Stopped) {
         voice->setFormatManager(&formatManager_);
     }
 
-    drums_.loadFileIntoPosition("Rhythm 1.wav", 0, "Clean");
-    drums_.loadFileIntoPosition("Rhythm 2.wav", 1, "Dirty");
-    drums_.loadFileIntoPosition("Rhythm 3.wav", 2, "Extra");
-    drums_.loadFileIntoPosition("Rhythm 4.wav", 3, "Funny");
+    drums_.loadFileIntoPosition("Rhythm 1_48khz.wav", 0, "Clean");
+    drums_.loadFileIntoPosition("Rhythm 2_48khz.wav", 1, "Dirty");
+    drums_.loadFileIntoPosition("Rhythm 3_48khz.wav", 2, "Extra");
+    drums_.loadFileIntoPosition("Rhythm 4_48khz.wav", 3, "Funny");
 
-    bass_.loadFileIntoPosition("Bass 1.wav", 0, "Simple");
-    bass_.loadFileIntoPosition("Bass 2.wav", 1, "Complex");
-    bass_.loadFileIntoPosition("Bass 3.wav", 2, "Busy");
-    bass_.loadFileIntoPosition("Bass 4.wav", 3, "Harmonic");
+    bass_.loadFileIntoPosition("Bass 1_48khz.wav", 0, "Simple");
+    bass_.loadFileIntoPosition("Bass 2_48khz.wav", 1, "Complex");
+    bass_.loadFileIntoPosition("Bass 3_48khz.wav", 2, "Busy");
+    bass_.loadFileIntoPosition("Bass 4_48khz.wav", 3, "Harmonic");
 
-    harmony_.loadFileIntoPosition("Harmony 1.wav", 0, "Elegant");
-    harmony_.loadFileIntoPosition("Harmony 2.wav", 1, "Simple");
-    harmony_.loadFileIntoPosition("Harmony 3.wav", 2, "Funny");
-    harmony_.loadFileIntoPosition("Harmony 4.wav", 3, "Silly");
+    harmony_.loadFileIntoPosition("Harmony 1_48khz.wav", 0, "Elegant");
+    harmony_.loadFileIntoPosition("Harmony 2_48khz.wav", 1, "Simple");
+    harmony_.loadFileIntoPosition("Harmony 3_48khz.wav", 2, "Funny");
+    harmony_.loadFileIntoPosition("Harmony 4_48khz.wav", 3, "Silly");
 
-    melody_.loadFileIntoPosition("Melody 1.wav", 0, "High");
-    melody_.loadFileIntoPosition("Melody 2.wav", 1, "Low");
-    melody_.loadFileIntoPosition("Melody 3.wav", 2, "Mid");
-    melody_.loadFileIntoPosition("Melody 4.wav", 3, "Full");
+    melody_.loadFileIntoPosition("Melody 1_48khz.wav", 0, "High");
+    melody_.loadFileIntoPosition("Melody 2_48khz.wav", 1, "Low");
+    melody_.loadFileIntoPosition("Melody 3_48khz.wav", 2, "Mid");
+    melody_.loadFileIntoPosition("Melody 4_48khz.wav", 3, "Full");
     
     // Do this last, because it forces a call to prepareToPlay
     setAudioChannels(0, 2);
+    
+    AudioDeviceManager::AudioDeviceSetup audioSetup;
+    deviceManager.getAudioDeviceSetup (audioSetup);
+//    audioSetup.sampleRate = 44100.0;
+    audioSetup.bufferSize = 1024;
+    
+    this->deviceManager.setAudioDeviceSetup (audioSetup, true);
     
     state_ = TransportState::Stopped;
     isPlaying_ = false;
@@ -97,6 +104,7 @@ void Player::changePlayState(TransportState newState) {
 #pragma mark - Audio Callbacks
 
 void Player::prepareToPlay(int sampsPerBlock, double srate) {
+    Logger::writeToLog("Sample rate: " + String(srate) + ", block size: " + String(sampsPerBlock));
     for(Voice *voice : voices_) {
         voice->prepareToPlay(sampsPerBlock, srate);
     }

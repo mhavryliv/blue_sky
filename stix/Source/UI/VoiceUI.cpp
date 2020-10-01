@@ -20,41 +20,58 @@ VoiceUI::VoiceUI()
     setInterceptsMouseClicks(false, false);
     addMouseListener(this, true);
     slider_ = nullptr;
-    addMelodyComponents();
-
+    slider_ = new Slider(Slider::LinearHorizontal, Slider::NoTextBox);
+    slider_->addListener(this);
+    addAndMakeVisible(slider_);
+    resized();
+    
 }
 
 void VoiceUI::sliderValueChanged(Slider *s) {
-    if(s == slider_) {
-        zeroOutPointForMelody = s->getValue();
-//        Logger::writeToLog(String(zeroOutPointForMelody));
+    if(s == slider_ && voice_->name().equalsIgnoreCase("melody")) {
+        zeroOutPointForMelody = (float)s->getValue();
+        repaint();
+    }
+    if(s == slider_ && voice_->name().equalsIgnoreCase("bass")) {
+        maxSumValForBass = (float)s->getValue();
         repaint();
     }
 }
 
 void VoiceUI::addMelodyComponents() {
-    slider_ = new Slider(Slider::LinearHorizontal, Slider::NoTextBox);
-    slider_->setRange(0, 1);
-    slider_->addListener(this);
-    addAndMakeVisible(slider_);
+//    slider_ = new Slider(Slider::LinearHorizontal, Slider::NoTextBox);
+    slider_->setRange(0.1, 0.9);
+    slider_->setValue(zeroOutPointForMelody, dontSendNotification);
+    slider_->setVisible(true);
+//    slider_->addListener(this);
+//    addAndMakeVisible(slider_);
+}
+
+void VoiceUI::addBassComponents() {
+//    slider_ = new Slider(Slider::LinearHorizontal, Slider::NoTextBox);
+    slider_->setRange(0.5, 4);
+    slider_->setValue(maxSumValForBass, dontSendNotification);
+    slider_->setVisible(true);
+//    slider_->addListener(this);
+//    addAndMakeVisible(slider_);
 }
 
 void VoiceUI::setVoicePointer(Voice *v) {
     voice_ = v;
-//    if(voice_->name().equalsIgnoreCase("melody")) {
-//        addMelodyComponents();
-//    }
-//    else if(slider_ != nullptr) {
-//        slider_->removeListener(this);
-//        delete slider_;
-//        slider_ = nullptr;
-//    }
+    if(voice_->name().equalsIgnoreCase("melody")) {
+        addMelodyComponents();
+    }
+    else if(voice_->name().equalsIgnoreCase("bass")) {
+        addBassComponents();
+    }
+    else {
+        slider_->setVisible(false);
+    }
 }
 
 VoiceUI::~VoiceUI() {
-    if(slider_ != nullptr) {
-        delete slider_;
-    }
+    removeChildComponent(slider_);
+    delete slider_;
 }
 
 void VoiceUI::mouseDown (const MouseEvent& event) {
@@ -128,6 +145,67 @@ Array<Rectangle<float>> VoiceUI::getQuadVolZones() {
 
 }
 
+// Bass should have configurable vol at centre
+Array<float> VoiceUI::quadWeightsForNormalisedPosBass(const Point<float> pos) {
+    Array<Rectangle<float>> quads = getQuads();
+    Array<float> vols;
+    vols.resize(4);
+    // The maximum distance is the corner to corner length
+    const float maxDist = sqrt(powf(getHeight(), 2) + powf(getWidth(), 2));
+    for(int i = 0; i < 4; ++i) {
+        Point<float> p;
+        if(i == 0) {
+            p = quads[i].getTopLeft();
+        }
+        else if(i == 1) {
+            p = quads[i].getTopRight();
+        }
+        else if(i == 2) {
+            p = quads[2].getBottomLeft();
+        }
+        else if(i == 3) {
+            p = quads[3].getBottomRight();
+        }
+        
+        float dist = p.getDistanceFrom(pos);
+        vols.setUnchecked(i, dist);
+    }
+    
+    // Store some info about them...
+    float max = 0.f, min = 1.f;
+    int maxIndex = -1, minIndex = -1;
+    
+    // Invert them
+    float sum = 0.f;
+    for(int i = 0; i < 4; ++i) {
+        const float val = (vols[i] / maxDist);
+        if(val <= min) {
+            min = val;
+            minIndex = i;
+        }
+        if(val >= max) {
+            max = val;
+            maxIndex = i;
+        }
+        // Invert the value for volume
+        const float inverted = 1.f - val;
+        vols.setUnchecked(i, inverted);
+//        Logger::writeToLog(String(i) + ", " + String(inverted, 2));
+        sum += inverted;
+    }
+    
+    // Scale them
+    const float mult = maxSumValForBass / sum;
+//    Logger::writeToLog("Scaled...");
+    for(int i = 0; i < 4; ++i) {
+        const float newVal = vols[i] * mult;
+        vols.set(i, jmin(newVal, 1.f));
+//        Logger::writeToLog(String(i) + ", " + String(newVal, 2));
+    }
+    
+    return vols;
+}
+
 // Melody should only play one at a time, all faded out in the centre
 Array<float> VoiceUI::quadWeightsForNormalisedPosMelody(const Point<float> pos) {
     Array<Rectangle<float>> quads = getQuads();
@@ -166,12 +244,10 @@ Array<float> VoiceUI::quadWeightsForNormalisedPosMelody(const Point<float> pos) 
     
     // invert it so it's strongest in the corner
     normVal = 1.f - normVal;
-//    Logger::writeToLog(String(normVal));
     
     // And rescale it to the silence portion
     float scaled = jmax(normVal - zeroOutPointForMelody, 0.f);
     scaled /= (1.f - zeroOutPointForMelody);
-//    Logger::writeToLog(String(scaled));
     vols.set(whichQuad, scaled);
     
     return vols;
@@ -184,7 +260,9 @@ Array<float> VoiceUI::quadWeightsForNormalisedPos(const Point<float> pos) {
     if(voice_->name().equalsIgnoreCase("melody")) {
         return quadWeightsForNormalisedPosMelody(pos);
     }
-    Logger::writeToLog(pos.toString());
+    if(voice_->name().equalsIgnoreCase("bass")) {
+        return quadWeightsForNormalisedPosBass(pos);
+    }
     Array<Rectangle<float>> quads = getQuads();
     Array<float> vols;
     vols.resize(4);
@@ -211,7 +289,7 @@ Array<float> VoiceUI::quadWeightsForNormalisedPos(const Point<float> pos) {
     
     // Store some info about them...
     float max = 0.f, min = 1.f;
-    int maxIndex, minIndex;
+    int maxIndex = -1, minIndex = -1;
     
     // Invert them
     for(int i = 0; i < 4; ++i) {
@@ -228,22 +306,6 @@ Array<float> VoiceUI::quadWeightsForNormalisedPos(const Point<float> pos) {
         const float inverted = 1.f - val;
         vols.setUnchecked(i, inverted);
     }
-    
-    // Do the calculation based on which voice
-    if(voice_->name().equalsIgnoreCase("melody")) {
-        // if melody, only allow volume for the strongest part
-        // and zero out if it's near the center
-        for(int i = 0; i < vols.size(); ++i) {
-            if(i != minIndex) {
-                vols.set(i, 0.f);
-            }
-            if(i == minIndex && vols[i] < zeroOutPointForMelody) {
-                vols.set(i, 0.f);
-            }
-        }
-    }
-
-
     return vols;
 }
 
@@ -281,7 +343,7 @@ void VoiceUI::paint (juce::Graphics& g) {
 }
 
 void VoiceUI::paintMelodyStuff(Graphics &g) {
-    g.setColour(Colours::black);
+    g.setColour(Colours::seagreen);
     Rectangle<float> c = getBounds().toFloat();
     float width = (float)(getBounds().getWidth() * 1) * zeroOutPointForMelody;
     float height = (float)(getBounds().getHeight() * 1) * zeroOutPointForMelody;
@@ -289,6 +351,9 @@ void VoiceUI::paintMelodyStuff(Graphics &g) {
     c.setHeight(height);
     c.setCentre(g.getClipBounds().toFloat().getCentre());
     g.drawRoundedRectangle(c, 20.f, 2.f);
+    // raise the rect slightly for text
+    c.translate(0, -20);
+    g.drawText("Mute zone", c, Justification::centred);
 //    g.drawEllipse(c, 2);
 }
 

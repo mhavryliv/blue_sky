@@ -32,15 +32,18 @@ public:
     void sliderValueChanged(Slider *s) override;
     
     void addMelodyComponents();
+    void addBassComponents();
     
     void setVoicePointer(Voice *v);
     
     Colour baseColour;
     float zeroOutPointForMelody = 0.25;
+    float maxSumValForBass = 1;
     
 private:
     Array<float> quadWeightsForNormalisedPos(const Point<float> pos);
     Array<float> quadWeightsForNormalisedPosMelody(const Point<float> pos);
+    Array<float> quadWeightsForNormalisedPosBass(const Point<float> pos);
     Array<Rectangle<float>> getQuads();
     Array<Rectangle<float>> getQuadVolZones();
     Voice *voice_;
