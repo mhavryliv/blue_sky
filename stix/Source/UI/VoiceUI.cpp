@@ -17,16 +17,17 @@ VoiceUI::VoiceUI()
 {
     // In your constructor, you should add any child components, and
     // initialise any special settings that your component needs.
-    setInterceptsMouseClicks(true, false);
+    setInterceptsMouseClicks(false, false);
+    addMouseListener(this, true);
     slider_ = nullptr;
-//    addMelodyComponents();
+    addMelodyComponents();
 
 }
 
 void VoiceUI::sliderValueChanged(Slider *s) {
     if(s == slider_) {
         zeroOutPointForMelody = s->getValue();
-        Logger::writeToLog(String(zeroOutPointForMelody));
+//        Logger::writeToLog(String(zeroOutPointForMelody));
         repaint();
     }
 }
@@ -170,7 +171,7 @@ Array<float> VoiceUI::quadWeightsForNormalisedPosMelody(const Point<float> pos) 
     // And rescale it to the silence portion
     float scaled = jmax(normVal - zeroOutPointForMelody, 0.f);
     scaled /= (1.f - zeroOutPointForMelody);
-    Logger::writeToLog(String(scaled));
+//    Logger::writeToLog(String(scaled));
     vols.set(whichQuad, scaled);
     
     return vols;
@@ -282,12 +283,13 @@ void VoiceUI::paint (juce::Graphics& g) {
 void VoiceUI::paintMelodyStuff(Graphics &g) {
     g.setColour(Colours::black);
     Rectangle<float> c = getBounds().toFloat();
-    float width = (float)(getBounds().getWidth() * 2.f);
-    width = width * zeroOutPointForMelody;
+    float width = (float)(getBounds().getWidth() * 1) * zeroOutPointForMelody;
+    float height = (float)(getBounds().getHeight() * 1) * zeroOutPointForMelody;
     c.setWidth(width);
-    c.setHeight(width);
+    c.setHeight(height);
     c.setCentre(g.getClipBounds().toFloat().getCentre());
-    g.drawEllipse(c, 2.f);
+    g.drawRoundedRectangle(c, 20.f, 2.f);
+//    g.drawEllipse(c, 2);
 }
 
 void VoiceUI::resized() {
@@ -298,7 +300,7 @@ void VoiceUI::resized() {
         Rectangle<int> r = getBounds();
         r.setHeight(30);
         r.setCentre(getBounds().getCentre());
-        r.translate(0, 100);
+//        r.setY(getHeight()-30);
         slider_->setBounds(r);
     }
 }
