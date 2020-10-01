@@ -102,7 +102,7 @@
                   extraFrameworks="CoreMotion">
       <CONFIGURATIONS>
         <CONFIGURATION isDebug="1" name="Debug" recommendedWarnings="LLVM"/>
-        <CONFIGURATION isDebug="0" name="Release" recommendedWarnings="LLVM"/>
+        <CONFIGURATION isDebug="0" name="Release" recommendedWarnings="LLVM" linkTimeOptimisation="0"/>
       </CONFIGURATIONS>
       <MODULEPATHS>
         <MODULEPATH id="juce_video" path="../../modules"/>

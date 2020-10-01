@@ -55,6 +55,7 @@ private:
     Slider *slider_;
     
     void paintMelodyStuff(Graphics &g);
+    void paintBassStuff(Graphics &g);
     
     Point<float> lastMotionPoint_;
     

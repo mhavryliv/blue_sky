@@ -44,7 +44,7 @@ MainComponent::MainComponent(MotionMonitor *motionMonitor) {
     
     setSize (400, 600);
     
-    startTimer(100);
+    startTimer(40);
 
 }
 

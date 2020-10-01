@@ -78,6 +78,7 @@ VoiceUI::~VoiceUI() {
 void VoiceUI::mouseDown (const MouseEvent& event) {
 //    float r = event.source.getCurrentRotation();
 //    Logger::writeToLog(String(r));
+
     quadWeightsForNormalisedPos(event.getMouseDownPosition().toFloat());
 //    Logger::writeToLog("Mouse down");
     if(event.getNumberOfClicks() == 2) {
@@ -96,23 +97,38 @@ void VoiceUI::updatePitchRoll(float pitch, float roll) {
 //    Logger::writeToLog(pos.toString());
     // normalise it to the screen width and height
     const float halfpi = float_Pi / 2.f;
-    float x = roll + halfpi;
-    x = jmax(x, 0.f);
-    x = jmin(x, float_Pi);
-    x /= float_Pi;
-    x *= getWidth();
+    const float fullpi = halfpi * 2.f;
+    const float range = halfpi;
+    const float halfrange = range/2.f;
+    float x = jmax(roll, -halfrange);
+    x = jmin(x, halfrange);
+    x += halfrange;
+//    x = jmax(x, 0.f);
+//    x = jmin(x, fullpi);
+    x /= range;
     
-    float y = pitch + halfpi;
-    y = jmax(y, 0.f);
-    y = jmin(y, float_Pi);
-    y /= float_Pi;
-    y *= getHeight();
+    float y = jmax(pitch, -halfrange);
+    y = jmin(y, halfrange);
+    y += halfrange;
+    y /= range;
+    
+//    float y = pitch + halfpi;
+//    y = jmax(y, 0.f);
+//    y = jmin(y, fullpi);
+//    y /= fullpi;
+    
+    pos.x = x;
+    pos.y = y;
+//    Logger::writeToLog(pos.toString());
+    
+    x *= (getWidth() - 1);
+    y *= (getHeight() - 1);
     
     pos.x = x;
     pos.y = y;
     
     
-//    Logger::writeToLog(pos.toString());
+
     lastMotionPoint_ = pos;
     Array<float> weights = quadWeightsForNormalisedPos(pos);
     voice_->setAllStems(weights);
@@ -261,6 +277,10 @@ Array<float> VoiceUI::quadWeightsForNormalisedPosMelody(const Point<float> pos) 
         }
     }
     if(whichQuad == -1) {
+//        Logger::writeToLog("No quad bitch");
+//        for(int i = 0; i < quads.size(); ++i) {
+//            Logger::writeToLog(quads[i].toString());
+//        }
         return vols;
     }
     
@@ -361,6 +381,7 @@ void VoiceUI::paint (juce::Graphics& g) {
 //    const Array<float> weights = quadWeightsForNormalisedPos(getMouseXYRelative().toFloat());
     const Array<float> weights = quadWeightsForNormalisedPos(lastMotionPoint_);
     
+    
     for(int i = 0; i < 4; ++i) {
         g.setColour(colours[i].withAlpha(weights[i] * weights[i]));
         g.fillRect(quads[i]);
@@ -371,6 +392,12 @@ void VoiceUI::paint (juce::Graphics& g) {
     if(voice_->name().equalsIgnoreCase("melody")) {
         paintMelodyStuff(g);
     }
+    if(voice_->name().equalsIgnoreCase("bass")) {
+        paintBassStuff(g);
+    }
+    
+    g.setColour(Colours::black.withAlpha(0.5f));
+    g.fillEllipse((int)lastMotionPoint_.x, (int)lastMotionPoint_.y, 10, 10);
 }
 
 void VoiceUI::paintMelodyStuff(Graphics &g) {
@@ -386,6 +413,13 @@ void VoiceUI::paintMelodyStuff(Graphics &g) {
     c.translate(0, -20);
     g.drawText("Mute zone", c, Justification::centred);
 //    g.drawEllipse(c, 2);
+}
+
+void VoiceUI::paintBassStuff(Graphics &g) {
+    Rectangle<float> c = getBounds().toFloat();
+    // raise the rect slightly for text
+    c.translate(0, -20);
+    g.drawText("Intensity", c, Justification::centred);
 }
 
 void VoiceUI::resized() {
