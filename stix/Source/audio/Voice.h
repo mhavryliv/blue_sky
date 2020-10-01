@@ -119,10 +119,10 @@ private:
             info_.numSamples = bufferToFill.numSamples;
             info_.startSample = bufferToFill.startSample;
             transportSource_.getNextAudioBlock(info_);
-            for(int i = 0; i < audioBuffer_.getNumSamples(); ++i) {
-                float leftVal = audioBuffer_.getReadPointer(0)[i];
-                float rightVal = audioBuffer_.getReadPointer(1)[i];
-            }
+//            for(int i = 0; i < audioBuffer_.getNumSamples(); ++i) {
+//                float leftVal = audioBuffer_.getReadPointer(0)[i];
+//                float rightVal = audioBuffer_.getReadPointer(1)[i];
+//            }
         }
         
         void copyFromLocalToDst(AudioBuffer<float> &dst,

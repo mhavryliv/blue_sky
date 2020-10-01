@@ -86,9 +86,13 @@ void Voice::getNextAudioBlock(const AudioSourceChannelInfo &bufferToFill) {
 //    }
     
     // Copy the summing buffer to buffer to fill
+    const float *readLeft = summingBuffer_.getReadPointer(0);
+    const float *readRight = summingBuffer_.getReadPointer(1);
+    float *writeLeft = bufferToFill.buffer->getWritePointer(0);
+    float *writeRight = bufferToFill.buffer->getWritePointer(1);
     for(int i = 0; i < bufferToFill.numSamples; ++i) {
-        bufferToFill.buffer->getWritePointer(0)[i] += summingBuffer_.getReadPointer(0)[i];
-        bufferToFill.buffer->getWritePointer(1)[i] += summingBuffer_.getReadPointer(1)[i];
+        *(writeLeft + i) += *(readLeft + i);
+        *(writeRight + i) += *(readRight + i);
     }
     
     // Update the previous stem vols
