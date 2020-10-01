@@ -29,6 +29,8 @@ public:
     void mouseMove (const MouseEvent& event) override;
     void mouseDrag (const MouseEvent& event) override;
     
+    void updatePitchRoll (float pitch, float roll);
+    
     void sliderValueChanged(Slider *s) override;
     
     void addMelodyComponents();
@@ -39,6 +41,8 @@ public:
     Colour baseColour;
     float zeroOutPointForMelody = 0.25;
     float maxSumValForBass = 1;
+    
+    bool isInFocus = false;
     
 private:
     Array<float> quadWeightsForNormalisedPos(const Point<float> pos);
@@ -51,6 +55,9 @@ private:
     Slider *slider_;
     
     void paintMelodyStuff(Graphics &g);
+    
+    Point<float> lastMotionPoint_;
+    
     
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (VoiceUI)
 };

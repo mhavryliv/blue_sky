@@ -43,6 +43,8 @@ MainComponent::MainComponent(MotionMonitor *motionMonitor) {
     addAndMakeVisible(homeScreen_.get());
     
     setSize (400, 600);
+    
+    startTimer(100);
 
 }
 
@@ -51,14 +53,20 @@ MainComponent::~MainComponent() {
     homeScreen_.reset();
 }
 
+void MainComponent::timerCallback() {
+    MotionMonitor::MotionData mdata;
+    motionMonitor_->getMotionData(mdata);
+    homeScreen_->updatePitchRoll(mdata.attitude.x, mdata.attitude.y);
+//    Logger::writeToLog("Pitch/roll/yaw: " + String(mdata.attitude.x) + "/"
+//                       + String(mdata.attitude.y) + "/" + String(mdata.attitude.z));
+    
+}
+
 void MainComponent::paint(Graphics &g) {
     g.setColour(Colours::black);
     g.fillAll();
     
-    MotionMonitor::MotionData mdata;
-    motionMonitor_->getMotionData(mdata);
-    Logger::writeToLog("Pitch/roll/yaw: " + String(mdata.attitude.x) + "/"
-                       + String(mdata.attitude.y) + "/" + String(mdata.attitude.z));
+
 }
 
 

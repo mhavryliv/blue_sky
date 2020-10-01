@@ -24,6 +24,7 @@ VoiceUI::VoiceUI()
     slider_->addListener(this);
     addAndMakeVisible(slider_);
     resized();
+    lastMotionPoint_ = Point<float>(getWidth()/2.f, getHeight() / 2.f);
     
 }
 
@@ -82,6 +83,7 @@ void VoiceUI::mouseDown (const MouseEvent& event) {
     if(event.getNumberOfClicks() == 2) {
         setAlpha(0.f);
         setInterceptsMouseClicks(false, false);
+        isInFocus = false;
     }
 }
 
@@ -89,10 +91,38 @@ void VoiceUI::mouseDrag(const MouseEvent &event) {
     mouseMove(event);
 }
 
-void VoiceUI::mouseMove(const MouseEvent &event) {
-    Array<float> weights = quadWeightsForNormalisedPos(getMouseXYRelative().toFloat());
+void VoiceUI::updatePitchRoll(float pitch, float roll) {
+    Point<float> pos (roll, pitch);
+//    Logger::writeToLog(pos.toString());
+    // normalise it to the screen width and height
+    const float halfpi = float_Pi / 2.f;
+    float x = roll + halfpi;
+    x = jmax(x, 0.f);
+    x = jmin(x, float_Pi);
+    x /= float_Pi;
+    x *= getWidth();
+    
+    float y = pitch + halfpi;
+    y = jmax(y, 0.f);
+    y = jmin(y, float_Pi);
+    y /= float_Pi;
+    y *= getHeight();
+    
+    pos.x = x;
+    pos.y = y;
+    
+    
+//    Logger::writeToLog(pos.toString());
+    lastMotionPoint_ = pos;
+    Array<float> weights = quadWeightsForNormalisedPos(pos);
     voice_->setAllStems(weights);
     repaint();
+}
+
+void VoiceUI::mouseMove(const MouseEvent &event) {
+//    Array<float> weights = quadWeightsForNormalisedPos(getMouseXYRelative().toFloat());
+//    voice_->setAllStems(weights);
+//    repaint();
 }
 
 Array<Rectangle<float>> VoiceUI::getQuads() {
@@ -328,7 +358,8 @@ void VoiceUI::paint (juce::Graphics& g) {
     g.fillAll(Colours::whitesmoke);
     
     Array<Rectangle<float>> quads = getQuads();
-    const Array<float> weights = quadWeightsForNormalisedPos(getMouseXYRelative().toFloat());
+//    const Array<float> weights = quadWeightsForNormalisedPos(getMouseXYRelative().toFloat());
+    const Array<float> weights = quadWeightsForNormalisedPos(lastMotionPoint_);
     
     for(int i = 0; i < 4; ++i) {
         g.setColour(colours[i].withAlpha(weights[i] * weights[i]));

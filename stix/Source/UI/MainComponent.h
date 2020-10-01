@@ -34,7 +34,7 @@
 class MotionMonitor;
 
 //==============================================================================
-class MainComponent    : public Component
+class MainComponent    : public Component, public Timer
 {
 public:
     //==============================================================================
@@ -45,6 +45,9 @@ public:
 
     void paint(Graphics &g) override;
     void resized() override;
+    
+    void timerCallback() override;
+    
 
     //==============================================================================
 

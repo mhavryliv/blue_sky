@@ -23,6 +23,7 @@ Home::Home() {
     colours_.add(Colours::darkorange);
     colours_.add(Colours::yellowgreen);
     colours_.add(Colours::palevioletred);
+    
 }
 
 Home::~Home() {
@@ -116,7 +117,14 @@ void Home::showVoiceUI(Voice *voice, Colour colour) {
     voiceUI_->baseColour = colour;
     ComponentAnimator &anim = Desktop::getInstance().getAnimator();
     anim.fadeIn(voiceUI_.get(), 250);
+    voiceUI_->isInFocus = true;
     voiceUI_->setInterceptsMouseClicks(true, true);
+}
+
+void Home::updatePitchRoll(float pitch, float roll) {
+    if(voiceUI_->isInFocus) {
+        voiceUI_->updatePitchRoll(pitch, roll);
+    }
 }
 
 void Home::mouseDown(const MouseEvent &event) {
