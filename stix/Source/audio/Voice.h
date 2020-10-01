@@ -12,6 +12,7 @@
 
 #include <JuceHeader.h>
 #include "Utils.h"
+using namespace juce;
 
 class Voice : public Component{
 public:

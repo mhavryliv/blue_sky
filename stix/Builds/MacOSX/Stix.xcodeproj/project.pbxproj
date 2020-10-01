@@ -81,6 +81,10 @@
 			isa = PBXBuildFile;
 			fileRef = E0A3F113BC27B7B4D6F1D693;
 		};
+		FD3D1E4D2CA9E4B48EBE2BD5 = {
+			isa = PBXBuildFile;
+			fileRef = A1C35FB64F4D8667FB92F93E;
+		};
 		03B5AB3B84A745ADDA6C55B7 = {
 			isa = PBXBuildFile;
 			fileRef = D34757AEE959CFDE2D8C92A7;
@@ -416,6 +420,13 @@
 			path = ../../Source/UI/Home.cpp;
 			sourceTree = "SOURCE_ROOT";
 		};
+		51E2CBEE6EB0AADBEE4A10DD = {
+			isa = PBXFileReference;
+			lastKnownFileType = sourcecode.c.h;
+			name = MotionMonitor.h;
+			path = ../../Source/motion/MotionMonitor.h;
+			sourceTree = "SOURCE_ROOT";
+		};
 		5965349393850F41DF76F350 = {
 			isa = PBXFileReference;
 			lastKnownFileType = sourcecode.cpp.cpp;
@@ -569,6 +580,13 @@
 			name = Accelerate.framework;
 			path = System/Library/Frameworks/Accelerate.framework;
 			sourceTree = SDKROOT;
+		};
+		A1C35FB64F4D8667FB92F93E = {
+			isa = PBXFileReference;
+			lastKnownFileType = sourcecode.cpp.objcpp;
+			name = MotionMonitor.mm;
+			path = ../../Source/motion/MotionMonitor.mm;
+			sourceTree = "SOURCE_ROOT";
 		};
 		A1D6D36B96B6B37C31F32829 = {
 			isa = PBXFileReference;
@@ -724,6 +742,15 @@
 			path = "../../JuceLibraryCode/include_juce_events.mm";
 			sourceTree = "SOURCE_ROOT";
 		};
+		9AE5051004E289DD565E2729 = {
+			isa = PBXGroup;
+			children = (
+				51E2CBEE6EB0AADBEE4A10DD,
+				A1C35FB64F4D8667FB92F93E,
+			);
+			name = motion;
+			sourceTree = "<group>";
+		};
 		DAEFDB67F494BA76855C0581 = {
 			isa = PBXGroup;
 			children = (
@@ -754,6 +781,7 @@
 		6F933968486D9AD9FE112622 = {
 			isa = PBXGroup;
 			children = (
+				9AE5051004E289DD565E2729,
 				DAEFDB67F494BA76855C0581,
 				D8BD06F96EA3C171D2B51512,
 				260481E972425474BB8155B0,
@@ -1098,6 +1126,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FD3D1E4D2CA9E4B48EBE2BD5,
 				03B5AB3B84A745ADDA6C55B7,
 				6E1CF07F205590F3E564A4CD,
 				12159BCAF7A8D57B70E89CC9,

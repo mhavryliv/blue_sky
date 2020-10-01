@@ -11,6 +11,7 @@
 #pragma once
 
 #include <JuceHeader.h>
+using namespace juce;
 
 enum TransportState
 {

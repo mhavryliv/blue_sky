@@ -31,12 +31,14 @@
 
 #include "../audio/Player.h"
 
+class MotionMonitor;
+
 //==============================================================================
 class MainComponent    : public Component
 {
 public:
     //==============================================================================
-    MainComponent();
+    MainComponent(MotionMonitor *motionMonitor);
     ~MainComponent() override;
 
     //==============================================================================
@@ -54,6 +56,8 @@ public:
 private:
     std::unique_ptr<Player> player_;
     std::unique_ptr<Home> homeScreen_;
+    
+    MotionMonitor *motionMonitor_;
 
 
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (MainComponent)

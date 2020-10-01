@@ -24,9 +24,12 @@
   ==============================================================================
 */
 
-#include "../JuceLibraryCode/JuceHeader.h"
-#include "UI/MainComponent.h"
 
+#include "../JuceLibraryCode/JuceHeader.h"
+#include "motion/MotionMonitor.h"
+
+using namespace juce;
+#include "UI/MainComponent.h"
 
 std::unique_ptr<AudioDeviceManager> sharedAudioDeviceManager;
 
@@ -50,7 +53,9 @@ public:
     void initialise (const String& commandLine) override
     {
         Logger::writeToLog("Starting");
-        mainWindow.reset (new MainAppWindow (getApplicationName()));
+        motionMonitor = new MotionMonitor(40.0f);
+
+        mainWindow.reset (new MainAppWindow (getApplicationName(), motionMonitor.get()));
         
     }
 
@@ -66,10 +71,11 @@ public:
     void anotherInstanceStarted (const String&) override                {}
 
 private:
+    ScopedPointer<MotionMonitor> motionMonitor;
     class MainAppWindow    : public DocumentWindow
     {
     public:
-        MainAppWindow (const String& name)
+        MainAppWindow (const String& name, MotionMonitor *mm)
             : DocumentWindow (name, Desktop::getInstance().getDefaultLookAndFeel()
                                                           .findColour (ResizableWindow::backgroundColourId),
                               DocumentWindow::allButtons)
@@ -89,7 +95,7 @@ private:
 //                       jmax (600, (int) (0.7f * getParentHeight())));
            #endif
 
-            setContentOwned (new MainComponent(), false);
+            setContentOwned (new MainComponent(mm), false);
             setVisible (true);
 
         }

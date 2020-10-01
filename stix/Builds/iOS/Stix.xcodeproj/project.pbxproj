@@ -49,6 +49,10 @@
 			isa = PBXBuildFile;
 			fileRef = 61AE09C749B007B70A265D9B;
 		};
+		3BA8B2D3E864E98C8CD7D6FF = {
+			isa = PBXBuildFile;
+			fileRef = F4CB1B08492F0FFFBFD62D5F;
+		};
 		0B0CE6D5062E5C02A41F24BC = {
 			isa = PBXBuildFile;
 			fileRef = 873F9DD54978E601102353B4;
@@ -96,6 +100,10 @@
 		75DB074DBAE04408A0A917B7 = {
 			isa = PBXBuildFile;
 			fileRef = E0A3F113BC27B7B4D6F1D693;
+		};
+		FD3D1E4D2CA9E4B48EBE2BD5 = {
+			isa = PBXBuildFile;
+			fileRef = A1C35FB64F4D8667FB92F93E;
 		};
 		03B5AB3B84A745ADDA6C55B7 = {
 			isa = PBXBuildFile;
@@ -439,6 +447,13 @@
 			path = ../../Source/UI/Home.cpp;
 			sourceTree = "SOURCE_ROOT";
 		};
+		51E2CBEE6EB0AADBEE4A10DD = {
+			isa = PBXFileReference;
+			lastKnownFileType = sourcecode.c.h;
+			name = MotionMonitor.h;
+			path = ../../Source/motion/MotionMonitor.h;
+			sourceTree = "SOURCE_ROOT";
+		};
 		5965349393850F41DF76F350 = {
 			isa = PBXFileReference;
 			lastKnownFileType = sourcecode.cpp.cpp;
@@ -607,6 +622,13 @@
 			path = System/Library/Frameworks/Accelerate.framework;
 			sourceTree = SDKROOT;
 		};
+		A1C35FB64F4D8667FB92F93E = {
+			isa = PBXFileReference;
+			lastKnownFileType = sourcecode.cpp.objcpp;
+			name = MotionMonitor.mm;
+			path = ../../Source/motion/MotionMonitor.mm;
+			sourceTree = "SOURCE_ROOT";
+		};
 		A1D6D36B96B6B37C31F32829 = {
 			isa = PBXFileReference;
 			lastKnownFileType = sourcecode.cpp.objcpp;
@@ -747,6 +769,13 @@
 			path = "/Users/mhavryliv/Development/Projucer/JUCE/modules/juce_product_unlocking";
 			sourceTree = "<absolute>";
 		};
+		F4CB1B08492F0FFFBFD62D5F = {
+			isa = PBXFileReference;
+			lastKnownFileType = wrapper.framework;
+			name = CoreMotion.framework;
+			path = System/Library/Frameworks/CoreMotion.framework;
+			sourceTree = SDKROOT;
+		};
 		F5F2EA2238973488632FC322 = {
 			isa = PBXFileReference;
 			lastKnownFileType = sourcecode.cpp.objcpp;
@@ -774,6 +803,15 @@
 			name = "include_juce_events.mm";
 			path = "../../JuceLibraryCode/include_juce_events.mm";
 			sourceTree = "SOURCE_ROOT";
+		};
+		9AE5051004E289DD565E2729 = {
+			isa = PBXGroup;
+			children = (
+				51E2CBEE6EB0AADBEE4A10DD,
+				A1C35FB64F4D8667FB92F93E,
+			);
+			name = motion;
+			sourceTree = "<group>";
 		};
 		DAEFDB67F494BA76855C0581 = {
 			isa = PBXGroup;
@@ -805,6 +843,7 @@
 		6F933968486D9AD9FE112622 = {
 			isa = PBXGroup;
 			children = (
+				9AE5051004E289DD565E2729,
 				DAEFDB67F494BA76855C0581,
 				D8BD06F96EA3C171D2B51512,
 				260481E972425474BB8155B0,
@@ -902,6 +941,7 @@
 				B28EFB9D1DF0B6D6499A7DEF,
 				1CFE3935A3B810D5D68A2504,
 				61AE09C749B007B70A265D9B,
+				F4CB1B08492F0FFFBFD62D5F,
 				873F9DD54978E601102353B4,
 				49ECA8B998B339A083674A22,
 				7983C452610C1638B7E78F12,
@@ -1166,6 +1206,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FD3D1E4D2CA9E4B48EBE2BD5,
 				03B5AB3B84A745ADDA6C55B7,
 				6E1CF07F205590F3E564A4CD,
 				12159BCAF7A8D57B70E89CC9,
@@ -1209,6 +1250,7 @@
 				7F57DB52C3CEFDC26DDD38FC,
 				46071CE2B98B562B7BF27CB1,
 				6A61CBB4E39BFD392D97528F,
+				3BA8B2D3E864E98C8CD7D6FF,
 				0B0CE6D5062E5C02A41F24BC,
 				5E4310B3F6BB639875D3E9B8,
 				AE7FB2AC3885F4BF53A5DDA1,

@@ -34,6 +34,8 @@ add_library( ${BINARY_NAME}
 
     SHARED
 
+    "../../../Source/motion/MotionMonitor.h"
+    "../../../Source/motion/MotionMonitor.mm"
     "../../../Source/audio/Player.cpp"
     "../../../Source/audio/Player.h"
     "../../../Source/audio/Utils.h"
@@ -1798,6 +1800,8 @@ add_library( ${BINARY_NAME}
     "../../../JuceLibraryCode/JuceHeader.h"
 )
 
+set_source_files_properties("../../../Source/motion/MotionMonitor.h" PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties("../../../Source/motion/MotionMonitor.mm" PROPERTIES HEADER_FILE_ONLY TRUE)
 set_source_files_properties("../../../Source/audio/Player.h" PROPERTIES HEADER_FILE_ONLY TRUE)
 set_source_files_properties("../../../Source/audio/Utils.h" PROPERTIES HEADER_FILE_ONLY TRUE)
 set_source_files_properties("../../../Source/audio/Voice.h" PROPERTIES HEADER_FILE_ONLY TRUE)

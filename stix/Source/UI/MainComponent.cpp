@@ -25,13 +25,15 @@
 */
 
 #include "MainComponent.h"
+#include "../motion/MotionMonitor.h"
 
 //==============================================================================
 
 
 //==============================================================================
-MainComponent::MainComponent() {
+MainComponent::MainComponent(MotionMonitor *motionMonitor) {
 
+    motionMonitor_ = motionMonitor;
     player_.reset(new Player());
     
     setOpaque (true);
@@ -52,6 +54,11 @@ MainComponent::~MainComponent() {
 void MainComponent::paint(Graphics &g) {
     g.setColour(Colours::black);
     g.fillAll();
+    
+    MotionMonitor::MotionData mdata;
+    motionMonitor_->getMotionData(mdata);
+    Logger::writeToLog("Pitch/roll/yaw: " + String(mdata.attitude.x) + "/"
+                       + String(mdata.attitude.y) + "/" + String(mdata.attitude.z));
 }
 
 
