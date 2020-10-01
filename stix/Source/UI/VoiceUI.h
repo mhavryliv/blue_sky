@@ -17,7 +17,7 @@ class Voice;
 //==============================================================================
 /*
 */
-class VoiceUI  : public juce::Component
+class VoiceUI  : public juce::Component, public Slider::Listener
 {
 public:
     VoiceUI();
@@ -29,12 +29,14 @@ public:
     void mouseMove (const MouseEvent& event) override;
     void mouseDrag (const MouseEvent& event) override;
     
-    void setVoicePointer(Voice *v) {
-        voice_ = v;
-    }
+    void sliderValueChanged(Slider *s) override;
+    
+    void addMelodyComponents();
+    
+    void setVoicePointer(Voice *v);
     
     Colour baseColour;
-    const float zeroOutPointForMelody = 0.25;
+    float zeroOutPointForMelody = 0.25;
     
 private:
     Array<float> quadWeightsForNormalisedPos(const Point<float> pos);
@@ -42,6 +44,8 @@ private:
     Array<Rectangle<float>> getQuads();
     Array<Rectangle<float>> getQuadVolZones();
     Voice *voice_;
+    
+    Slider *slider_;
     
     void paintMelodyStuff(Graphics &g);
     

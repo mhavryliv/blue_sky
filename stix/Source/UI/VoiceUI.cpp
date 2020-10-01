@@ -18,11 +18,42 @@ VoiceUI::VoiceUI()
     // In your constructor, you should add any child components, and
     // initialise any special settings that your component needs.
     setInterceptsMouseClicks(true, false);
+    slider_ = nullptr;
+//    addMelodyComponents();
 
 }
 
-VoiceUI::~VoiceUI()
-{
+void VoiceUI::sliderValueChanged(Slider *s) {
+    if(s == slider_) {
+        zeroOutPointForMelody = s->getValue();
+        Logger::writeToLog(String(zeroOutPointForMelody));
+        repaint();
+    }
+}
+
+void VoiceUI::addMelodyComponents() {
+    slider_ = new Slider(Slider::LinearHorizontal, Slider::NoTextBox);
+    slider_->setRange(0, 1);
+    slider_->addListener(this);
+    addAndMakeVisible(slider_);
+}
+
+void VoiceUI::setVoicePointer(Voice *v) {
+    voice_ = v;
+//    if(voice_->name().equalsIgnoreCase("melody")) {
+//        addMelodyComponents();
+//    }
+//    else if(slider_ != nullptr) {
+//        slider_->removeListener(this);
+//        delete slider_;
+//        slider_ = nullptr;
+//    }
+}
+
+VoiceUI::~VoiceUI() {
+    if(slider_ != nullptr) {
+        delete slider_;
+    }
 }
 
 void VoiceUI::mouseDown (const MouseEvent& event) {
@@ -120,6 +151,9 @@ Array<float> VoiceUI::quadWeightsForNormalisedPosMelody(const Point<float> pos) 
             }
         }
     }
+    if(whichQuad == -1) {
+        return vols;
+    }
     
     // figure out how strong it is in this quad
     const float maxDist =
@@ -137,7 +171,7 @@ Array<float> VoiceUI::quadWeightsForNormalisedPosMelody(const Point<float> pos) 
     float scaled = jmax(normVal - zeroOutPointForMelody, 0.f);
     scaled /= (1.f - zeroOutPointForMelody);
     Logger::writeToLog(String(scaled));
-    
+    vols.set(whichQuad, scaled);
     
     return vols;
 }
@@ -246,12 +280,12 @@ void VoiceUI::paint (juce::Graphics& g) {
 }
 
 void VoiceUI::paintMelodyStuff(Graphics &g) {
-    g.setColour(Colours::white);
+    g.setColour(Colours::black);
     Rectangle<float> c = getBounds().toFloat();
-    float reduceBy = c.getWidth() * ((1.f - zeroOutPointForMelody) * 0.5f);
-//    Logger::writeToLog(String(reduceBy, 2));
-    c.reduce(reduceBy, 0);
-    c.setHeight(c.getWidth());
+    float width = (float)(getBounds().getWidth() * 2.f);
+    width = width * zeroOutPointForMelody;
+    c.setWidth(width);
+    c.setHeight(width);
     c.setCentre(g.getClipBounds().toFloat().getCentre());
     g.drawEllipse(c, 2.f);
 }
@@ -259,4 +293,12 @@ void VoiceUI::paintMelodyStuff(Graphics &g) {
 void VoiceUI::resized() {
     // This method is where you should set the bounds of any child
     // components that your component contains..
+    
+    if(slider_ != nullptr) {
+        Rectangle<int> r = getBounds();
+        r.setHeight(30);
+        r.setCentre(getBounds().getCentre());
+        r.translate(0, 100);
+        slider_->setBounds(r);
+    }
 }

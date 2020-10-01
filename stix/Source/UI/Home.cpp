@@ -112,6 +112,7 @@ Array<Rectangle<float>> Home::getQuads() {
 
 void Home::showVoiceUI(Voice *voice, Colour colour) {
     voiceUI_->setVoicePointer(voice);
+    voiceUI_->resized();
     voiceUI_->baseColour = colour;
     ComponentAnimator &anim = Desktop::getInstance().getAnimator();
     anim.fadeIn(voiceUI_.get(), 250);
