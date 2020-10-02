@@ -257,7 +257,7 @@ Array<float> VoiceUI::quadWeightsForNormalisedPosBass(const Point<float> pos) {
     
     // Apply the power curve
     for(int i = 0; i < 4; ++i) {
-        const float newVal = powf(vols[i], (1.f/bassDropOff));;
+        const float newVal = powf(vols[i], (1.f/(1.f - bassDropOff)));;
         vols.set(i, newVal);
     }
     
@@ -436,7 +436,7 @@ void VoiceUI::paintBassStuff(Graphics &g) {
     // raise the rect slightly for text
     c.translate(0, -20);
     g.drawText("Intensity", c, Justification::centred);
-    c.translate(0, -30);
+    c.translate(0, 60);
     g.drawText("Drop off", c, Justification::centred);
 }
 

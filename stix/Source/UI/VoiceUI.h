@@ -40,7 +40,7 @@ public:
     
     Colour baseColour;
     float zeroOutPointForMelody = 0.25;
-    float maxSumValForBass = 1;
+    float maxSumValForBass = 2.25;
     float bassDropOff = 1;
     
     bool isInFocus = false;
