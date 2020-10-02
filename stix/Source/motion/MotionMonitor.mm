@@ -1,4 +1,4 @@
-
+#if JUCE_IOS
 #import <CoreMotion/CoreMotion.h>
 #include "MotionMonitor.h"
 
@@ -155,3 +155,4 @@ bool MotionMonitor::getGyroData(GyroData& gyroData)
     return true;
 }
 
+#endif

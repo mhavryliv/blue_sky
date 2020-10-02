@@ -26,7 +26,11 @@
 
 
 #include "../JuceLibraryCode/JuceHeader.h"
+#if JUCE_IOS
 #include "motion/MotionMonitor.h"
+#else
+#include "motion/MotionMonitor_OSX.h"
+#endif
 
 using namespace juce;
 #include "UI/MainComponent.h"
@@ -53,7 +57,7 @@ public:
     void initialise (const String& commandLine) override
     {
         Logger::writeToLog("Starting");
-        motionMonitor = new MotionMonitor(40.0f);
+        motionMonitor = new MotionMonitor(20.0f);
 
         mainWindow.reset (new MainAppWindow (getApplicationName(), motionMonitor.get()));
         

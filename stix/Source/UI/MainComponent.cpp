@@ -44,7 +44,7 @@ MainComponent::MainComponent(MotionMonitor *motionMonitor) {
     
     setSize (400, 600);
     
-    startTimer(40);
+    startTimer(20);
 
 }
 
@@ -54,12 +54,11 @@ MainComponent::~MainComponent() {
 }
 
 void MainComponent::timerCallback() {
+#if JUCE_IOS
     MotionMonitor::MotionData mdata;
     motionMonitor_->getMotionData(mdata);
     homeScreen_->updatePitchRoll(mdata.attitude.x, mdata.attitude.y);
-//    Logger::writeToLog("Pitch/roll/yaw: " + String(mdata.attitude.x) + "/"
-//                       + String(mdata.attitude.y) + "/" + String(mdata.attitude.z));
-    
+#endif
 }
 
 void MainComponent::paint(Graphics &g) {

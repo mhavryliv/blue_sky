@@ -22,7 +22,11 @@ VoiceUI::VoiceUI()
     slider_ = nullptr;
     slider_ = new Slider(Slider::LinearHorizontal, Slider::NoTextBox);
     slider_->addListener(this);
+    slider2_ = nullptr;
+    slider2_ = new Slider(Slider::LinearHorizontal, Slider::NoTextBox);
+    slider2_->addListener(this);
     addAndMakeVisible(slider_);
+    addAndMakeVisible(slider2_);
     resized();
     lastMotionPoint_ = Point<float>(getWidth()/2.f, getHeight() / 2.f);
     
@@ -35,6 +39,10 @@ void VoiceUI::sliderValueChanged(Slider *s) {
     }
     if(s == slider_ && voice_->name().equalsIgnoreCase("bass")) {
         maxSumValForBass = (float)s->getValue();
+        repaint();
+    }
+    if(s == slider2_ && voice_->name().equalsIgnoreCase("bass")) {
+        bassDropOff = (float)s->getValue();
         repaint();
     }
 }
@@ -53,6 +61,9 @@ void VoiceUI::addBassComponents() {
     slider_->setRange(0.5, 4);
     slider_->setValue(maxSumValForBass, dontSendNotification);
     slider_->setVisible(true);
+    slider2_->setRange(0.1, 1);
+    slider2_->setValue(bassDropOff, dontSendNotification);
+    slider2_->setVisible(true);
 //    slider_->addListener(this);
 //    addAndMakeVisible(slider_);
 }
@@ -72,12 +83,12 @@ void VoiceUI::setVoicePointer(Voice *v) {
 
 VoiceUI::~VoiceUI() {
     removeChildComponent(slider_);
+    removeChildComponent(slider2_);
     delete slider_;
+    delete slider2_;
 }
 
 void VoiceUI::mouseDown (const MouseEvent& event) {
-//    float r = event.source.getCurrentRotation();
-//    Logger::writeToLog(String(r));
 
     quadWeightsForNormalisedPos(event.getMouseDownPosition().toFloat());
 //    Logger::writeToLog("Mouse down");
@@ -103,8 +114,6 @@ void VoiceUI::updatePitchRoll(float pitch, float roll) {
     float x = jmax(roll, -halfrange);
     x = jmin(x, halfrange);
     x += halfrange;
-//    x = jmax(x, 0.f);
-//    x = jmin(x, fullpi);
     x /= range;
     
     float y = jmax(pitch, -halfrange);
@@ -112,23 +121,18 @@ void VoiceUI::updatePitchRoll(float pitch, float roll) {
     y += halfrange;
     y /= range;
     
-//    float y = pitch + halfpi;
-//    y = jmax(y, 0.f);
-//    y = jmin(y, fullpi);
-//    y /= fullpi;
-    
     pos.x = x;
     pos.y = y;
 //    Logger::writeToLog(pos.toString());
     
+    // Multiply by dimensions minus 1 to make sure the point is within one of the quadrants
     x *= (getWidth() - 1);
     y *= (getHeight() - 1);
     
     pos.x = x;
     pos.y = y;
-    
-    
 
+    // Set the global record of the latest position
     lastMotionPoint_ = pos;
     Array<float> weights = quadWeightsForNormalisedPos(pos);
     voice_->setAllStems(weights);
@@ -136,9 +140,13 @@ void VoiceUI::updatePitchRoll(float pitch, float roll) {
 }
 
 void VoiceUI::mouseMove(const MouseEvent &event) {
-//    Array<float> weights = quadWeightsForNormalisedPos(getMouseXYRelative().toFloat());
-//    voice_->setAllStems(weights);
-//    repaint();
+#ifdef JUCE_IOS
+#else
+    lastMotionPoint_ = getMouseXYRelative().toFloat();
+    Array<float> weights = quadWeightsForNormalisedPos(getMouseXYRelative().toFloat());
+    voice_->setAllStems(weights);
+    repaint();
+#endif
 }
 
 Array<Rectangle<float>> VoiceUI::getQuads() {
@@ -242,11 +250,15 @@ Array<float> VoiceUI::quadWeightsForNormalisedPosBass(const Point<float> pos) {
     
     // Scale them
     const float mult = maxSumValForBass / sum;
-//    Logger::writeToLog("Scaled...");
     for(int i = 0; i < 4; ++i) {
         const float newVal = vols[i] * mult;
         vols.set(i, jmin(newVal, 1.f));
-//        Logger::writeToLog(String(i) + ", " + String(newVal, 2));
+    }
+    
+    // Apply the power curve
+    for(int i = 0; i < 4; ++i) {
+        const float newVal = powf(vols[i], (1.f/bassDropOff));;
+        vols.set(i, newVal);
     }
     
     return vols;
@@ -381,12 +393,16 @@ void VoiceUI::paint (juce::Graphics& g) {
 //    const Array<float> weights = quadWeightsForNormalisedPos(getMouseXYRelative().toFloat());
     const Array<float> weights = quadWeightsForNormalisedPos(lastMotionPoint_);
     
-    
+    const Font mainFont = g.getCurrentFont();
     for(int i = 0; i < 4; ++i) {
         g.setColour(colours[i].withAlpha(weights[i] * weights[i]));
         g.fillRect(quads[i]);
         g.setColour(textColour);
+        g.setFont(mainFont);
         g.drawText(voice_->stemNames(i), quads[i], Justification::centred);
+        g.setFont(10.f);
+        g.drawText(String((int)(weights[i] * 100)) + "%",
+                   quads[i].translated(0, -20), Justification::centred);
     }
     
     if(voice_->name().equalsIgnoreCase("melody")) {
@@ -420,6 +436,8 @@ void VoiceUI::paintBassStuff(Graphics &g) {
     // raise the rect slightly for text
     c.translate(0, -20);
     g.drawText("Intensity", c, Justification::centred);
+    c.translate(0, -30);
+    g.drawText("Drop off", c, Justification::centred);
 }
 
 void VoiceUI::resized() {
@@ -432,5 +450,7 @@ void VoiceUI::resized() {
         r.setCentre(getBounds().getCentre());
 //        r.setY(getHeight()-30);
         slider_->setBounds(r);
+        r.translate(0, 60);
+        slider2_->setBounds(r);
     }
 }

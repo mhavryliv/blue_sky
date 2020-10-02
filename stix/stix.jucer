@@ -9,6 +9,8 @@
         <FILE id="cqNBIg" name="MotionMonitor.h" compile="0" resource="0" file="Source/motion/MotionMonitor.h"/>
         <FILE id="L24msS" name="MotionMonitor.mm" compile="1" resource="0"
               file="Source/motion/MotionMonitor.mm"/>
+        <FILE id="NNJ8tt" name="MotionMonitor_OSX.h" compile="0" resource="0"
+              file="Source/motion/MotionMonitor_OSX.h"/>
       </GROUP>
       <GROUP id="{00A6A030-6898-FCD3-B75D-D0B852157F58}" name="audio">
         <FILE id="h36i60" name="Player.cpp" compile="1" resource="0" file="Source/audio/Player.cpp"/>

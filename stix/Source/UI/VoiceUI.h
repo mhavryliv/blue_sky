@@ -41,6 +41,7 @@ public:
     Colour baseColour;
     float zeroOutPointForMelody = 0.25;
     float maxSumValForBass = 1;
+    float bassDropOff = 1;
     
     bool isInFocus = false;
     
@@ -53,6 +54,7 @@ private:
     Voice *voice_;
     
     Slider *slider_;
+    Slider *slider2_;
     
     void paintMelodyStuff(Graphics &g);
     void paintBassStuff(Graphics &g);

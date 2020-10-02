@@ -511,6 +511,13 @@
 			path = ../../JuceLibraryCode/AppConfig.h;
 			sourceTree = "SOURCE_ROOT";
 		};
+		7DDEA47B56B2661C8CA0F943 = {
+			isa = PBXFileReference;
+			lastKnownFileType = sourcecode.c.h;
+			name = "MotionMonitor_OSX.h";
+			path = "../../Source/motion/MotionMonitor_OSX.h";
+			sourceTree = "SOURCE_ROOT";
+		};
 		831A01C745C905F5715CD822 = {
 			isa = PBXFileReference;
 			lastKnownFileType = sourcecode.cpp.cpp;
@@ -747,6 +754,7 @@
 			children = (
 				51E2CBEE6EB0AADBEE4A10DD,
 				A1C35FB64F4D8667FB92F93E,
+				7DDEA47B56B2661C8CA0F943,
 			);
 			name = motion;
 			sourceTree = "<group>";
