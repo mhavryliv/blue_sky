@@ -10,9 +10,13 @@
 
 #pragma once
 
+#include <JuceHeader.h>
+
 class MotionMonitor {
 public:
-    MotionMonitor(float rate) {}
+    MotionMonitor(float rate) {
+        Logger::writeToLog("Using OSX motion managaer");
+    }
     ~MotionMonitor() {}
     
     struct MotionData

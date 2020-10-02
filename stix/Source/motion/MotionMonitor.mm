@@ -1,4 +1,4 @@
-#if JUCE_IOS
+#ifdef THE_PHONE
 #import <CoreMotion/CoreMotion.h>
 #include "MotionMonitor.h"
 

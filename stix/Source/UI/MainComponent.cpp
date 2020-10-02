@@ -44,7 +44,7 @@ MainComponent::MainComponent(MotionMonitor *motionMonitor) {
     
     setSize (400, 600);
     
-    startTimer(20);
+    startTimer(40);
 
 }
 
@@ -54,9 +54,11 @@ MainComponent::~MainComponent() {
 }
 
 void MainComponent::timerCallback() {
-#if JUCE_IOS
+#ifdef THE_PHONE
     MotionMonitor::MotionData mdata;
     motionMonitor_->getMotionData(mdata);
+//    Logger::writeToLog(String(mdata.attitude.y));
+    
     homeScreen_->updatePitchRoll(mdata.attitude.x, mdata.attitude.y);
 #endif
 }

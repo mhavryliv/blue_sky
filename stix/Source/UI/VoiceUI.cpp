@@ -140,7 +140,7 @@ void VoiceUI::updatePitchRoll(float pitch, float roll) {
 }
 
 void VoiceUI::mouseMove(const MouseEvent &event) {
-#ifdef JUCE_IOS
+#ifdef THE_PHONE
 #else
     lastMotionPoint_ = getMouseXYRelative().toFloat();
     Array<float> weights = quadWeightsForNormalisedPos(getMouseXYRelative().toFloat());
