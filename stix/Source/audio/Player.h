@@ -13,6 +13,7 @@
 #include <JuceHeader.h>
 #include "Voice.h"
 
+
 class Player : public ChangeBroadcaster, public AudioAppComponent {
 public:
     
@@ -35,6 +36,11 @@ public:
         jassert(index < voices_.size());
         return voices_.at(index);
     }
+    void setCurPos(const Point<float> &pos) {
+        curPos_ = pos;
+        Logger::writeToLog(pos.toString());
+    }
+    
     
     Voice* drums() { return &drums_; }
     Voice* bass() { return &bass_; }
@@ -51,6 +57,12 @@ private:
     
     bool isPlaying_;
     
+    Array<float> voiceWeights_;
+    
     std::vector<Voice*> voices_;
+    
+    Point<float> curPos_;
+    
+    
     
 };

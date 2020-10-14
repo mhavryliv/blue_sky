@@ -27,6 +27,7 @@ public:
     void resized() override;
 
     void mouseDown (const MouseEvent& event) override;
+    void mouseMove (const MouseEvent& event) override;
     void updatePitchRoll (float pitch, float roll);
     
     void setPlayerRef(Player *ref);

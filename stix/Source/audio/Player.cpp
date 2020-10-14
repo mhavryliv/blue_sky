@@ -9,6 +9,7 @@
 */
 
 #include "Player.h"
+#include "../UI/VoiceUI.h"
 
 Player::Player() : state_(Stopped) {
     formatManager_.registerBasicFormats();
@@ -117,7 +118,13 @@ void Player::releaseResources() {
 }
 
 void Player::getNextAudioBlock(const AudioSourceChannelInfo &bufferToFill) {
-    for(Voice *voice : voices_) {
-        voice->getNextAudioBlock(bufferToFill);
+    const Array<float> weights = VoiceUI::defaultQuadWeights(curPos_, 1.f, 1.f, 0.5, 2);
+//    Logger::writeToLog(String(weights[0]));
+    for(int i = 0; i < 4; ++i) {
+        Voice *voice = voices_[i];
+        voice->getNextAudioBlock(bufferToFill, weights[i]);
     }
+//    for(Voice *voice : voices_) {
+//        voice->getNextAudioBlock(bufferToFill);
+//    }
 }

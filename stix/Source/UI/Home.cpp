@@ -44,6 +44,17 @@ void Home::setPlayerRef(Player *ref) {
     player_->melody()->setStemVol(0, 1.f, true);
 }
 
+void Home::mouseMove(const MouseEvent &event) {
+#ifdef THE_PHONE
+#else
+    Point<float> pos = getMouseXYRelative().toFloat();
+    pos.x = pos.x / (float)getWidth();
+    pos.y = pos.y / (float)getHeight();
+    player_->setCurPos(pos);
+    
+#endif
+}
+
 void Home::paint (juce::Graphics& g) {
     // Break into four quadrants
     const float height = getHeight();
@@ -125,6 +136,9 @@ void Home::updatePitchRoll(float pitch, float roll) {
     if(voiceUI_->isInFocus) {
         voiceUI_->updatePitchRoll(pitch, roll);
     }
+    // always update the player
+    Point<float> normalisedPos = VoiceUI::convertPitchRollToNormXY(pitch, roll);
+    player_->setCurPos(normalisedPos);
 }
 
 void Home::mouseDown(const MouseEvent &event) {

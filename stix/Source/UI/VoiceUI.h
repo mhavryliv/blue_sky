@@ -44,6 +44,13 @@ public:
     float bassDropOff = 1;
     
     bool isInFocus = false;
+
+    static Array<float> defaultQuadWeights(const Point<float> pos,
+                                           const float width, const float height,
+                                           const float dropOff = 0.5f,
+                                           const float maxSumVal = 1.f);
+    static Point<float> convertPitchRollToNormXY(const float pitch, const float roll);
+
     
 private:
     Array<float> quadWeightsForNormalisedPos(const Point<float> pos);

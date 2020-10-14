@@ -64,7 +64,7 @@ void Voice::releaseResources() {
     }
 }
 
-void Voice::getNextAudioBlock(const AudioSourceChannelInfo &bufferToFill) {
+void Voice::getNextAudioBlock(const AudioSourceChannelInfo &bufferToFill, const float amp) {
     if(summingBuffer_.getNumSamples() != bufferToFill.numSamples) {
         summingBuffer_.setSize(2, bufferToFill.numSamples, false, true, true);
     }
@@ -90,12 +90,14 @@ void Voice::getNextAudioBlock(const AudioSourceChannelInfo &bufferToFill) {
     const float *readRight = summingBuffer_.getReadPointer(1);
     float *writeLeft = bufferToFill.buffer->getWritePointer(0);
     float *writeRight = bufferToFill.buffer->getWritePointer(1);
+    const float ampStep = (amp - prevAmp_) / (float)bufferToFill.numSamples;
     for(int i = 0; i < bufferToFill.numSamples; ++i) {
-        *(writeLeft + i) += *(readLeft + i);
-        *(writeRight + i) += *(readRight + i);
+        *(writeLeft + i) += (*(readLeft + i) * (prevAmp_ + ampStep*i));
+        *(writeRight + i) += (*(readRight + i) * (prevAmp_ + ampStep*i));
     }
     
     // Update the previous stem vols
     prevStemVols_.clearQuick();
     prevStemVols_.addArray(stemVols_);
+    prevAmp_ = amp;
 }

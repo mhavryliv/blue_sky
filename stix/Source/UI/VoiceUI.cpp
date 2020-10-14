@@ -52,6 +52,7 @@ void VoiceUI::addMelodyComponents() {
     slider_->setRange(0.1, 0.9);
     slider_->setValue(zeroOutPointForMelody, dontSendNotification);
     slider_->setVisible(true);
+    slider2_->setVisible(false);
 //    slider_->addListener(this);
 //    addAndMakeVisible(slider_);
 }
@@ -78,6 +79,7 @@ void VoiceUI::setVoicePointer(Voice *v) {
     }
     else {
         slider_->setVisible(false);
+        slider2_->setVisible(false);
     }
 }
 
@@ -103,9 +105,9 @@ void VoiceUI::mouseDrag(const MouseEvent &event) {
     mouseMove(event);
 }
 
-void VoiceUI::updatePitchRoll(float pitch, float roll) {
+Point<float> VoiceUI::convertPitchRollToNormXY(const float pitch, const float roll) {
     Point<float> pos (roll, pitch);
-//    Logger::writeToLog(pos.toString());
+    //    Logger::writeToLog(pos.toString());
     // normalise it to the screen width and height
     const float halfpi = float_Pi / 2.f;
     const float fullpi = halfpi * 2.f;
@@ -123,6 +125,34 @@ void VoiceUI::updatePitchRoll(float pitch, float roll) {
     
     pos.x = x;
     pos.y = y;
+    
+    return pos;
+}
+
+void VoiceUI::updatePitchRoll(float pitch, float roll) {
+//    Point<float> pos (roll, pitch);
+//    Logger::writeToLog(pos.toString());
+    Point<float> pos = convertPitchRollToNormXY(pitch, roll);
+    float x = pos.x;
+    float y = pos.y;
+    /**
+    const float halfpi = float_Pi / 2.f;
+    const float fullpi = halfpi * 2.f;
+    const float range = halfpi;
+    const float halfrange = range/2.f;
+    float x = jmax(roll, -halfrange);
+    x = jmin(x, halfrange);
+    x += halfrange;
+    x /= range;
+    
+    float y = jmax(pitch, -halfrange);
+    y = jmin(y, halfrange);
+    y += halfrange;
+    y /= range;
+    
+    pos.x = x;
+    pos.y = y;
+     **/
 //    Logger::writeToLog(pos.toString());
     
     // Multiply by dimensions minus 1 to make sure the point is within one of the quadrants
@@ -197,6 +227,83 @@ Array<Rectangle<float>> VoiceUI::getQuadVolZones() {
     
     return quads;
 
+}
+
+/**
+ A good default fade algorithm, based on the bass part fading.
+ All parameters should be normalised
+ */
+Array<float> VoiceUI::defaultQuadWeights(const Point<float> pos,
+                                         const float width, const float height,
+                                         const float dropOff, const float maxSumVal) {
+    const float halfheight = height / 2.f;
+    const float halfwidth = width / 2.f;
+    Array<Rectangle<float>> quads;
+    quads.add(Rectangle<float>(0, 0, halfwidth, halfheight));
+    quads.add(Rectangle<float>(halfwidth, 0, halfwidth, halfheight));
+    quads.add(Rectangle<float>(0, halfheight, halfwidth, halfheight));
+    quads.add(Rectangle<float>(halfwidth, halfheight, halfwidth, halfheight));
+    
+    Array<float> vols;
+    vols.resize(4);
+    // The maximum distance is the corner to corner length
+    const float maxDist = sqrt(powf(height, 2) + powf(width, 2));
+    for(int i = 0; i < 4; ++i) {
+        Point<float> p;
+        if(i == 0) {
+            p = quads[i].getTopLeft();
+        }
+        else if(i == 1) {
+            p = quads[i].getTopRight();
+        }
+        else if(i == 2) {
+            p = quads[2].getBottomLeft();
+        }
+        else if(i == 3) {
+            p = quads[3].getBottomRight();
+        }
+        
+        float dist = p.getDistanceFrom(pos);
+        vols.setUnchecked(i, dist);
+    }
+    
+    // Store some info about them...
+    float max = 0.f, min = 1.f;
+    int maxIndex = -1, minIndex = -1;
+    
+    // Invert them
+    float sum = 0.f;
+    for(int i = 0; i < 4; ++i) {
+        const float val = (vols[i] / maxDist);
+        if(val <= min) {
+            min = val;
+            minIndex = i;
+        }
+        if(val >= max) {
+            max = val;
+            maxIndex = i;
+        }
+        // Invert the value for volume
+        const float inverted = 1.f - val;
+        vols.setUnchecked(i, inverted);
+        //        Logger::writeToLog(String(i) + ", " + String(inverted, 2));
+        sum += inverted;
+    }
+    
+    // Scale them
+//    const float mult = maxSumVal / sum;
+//    for(int i = 0; i < 4; ++i) {
+//        const float newVal = vols[i] * mult;
+//        vols.set(i, jmin(newVal, 1.f));
+//    }
+    
+    // Apply the power curve
+    for(int i = 0; i < 4; ++i) {
+        const float newVal = powf(vols[i], (1.f/(1.f - dropOff)));;
+        vols.set(i, newVal);
+    }
+    
+    return vols;
 }
 
 // Bass should have configurable vol at centre

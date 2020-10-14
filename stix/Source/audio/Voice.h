@@ -30,7 +30,7 @@ public:
     // Audio player helpers
     void prepareToPlay(int sampsPerBlock, double srate);
     void releaseResources();
-    void getNextAudioBlock(const AudioSourceChannelInfo &bufferToFill);
+    void getNextAudioBlock(const AudioSourceChannelInfo &bufferToFill, const float amp = 1.f);
     
     const int MAX_LAYERS = 4;
     
@@ -54,6 +54,8 @@ public:
 private:
     AudioFormatManager *formatManager_;
     TransportState playState_;
+    
+    float prevAmp_ = 0.f;
     
     struct Audio {
         Audio() {
