@@ -3,75 +3,103 @@
   <component name="AndroidLogFilters">
     <option name="TOOL_WINDOW_CONFIGURED_FILTER" value="Show only selected application" />
   </component>
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="NONE" />
+  </component>
   <component name="ChangeListManager">
     <list default="true" id="402407bb-5658-4445-8ec6-6f972c3de1c9" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.gradle/4.10/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.10/fileHashes/fileHashes.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/4.10/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.10/fileHashes/fileHashes.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/4.10/javaCompile/javaCompile.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.10/javaCompile/javaCompile.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/4.10/taskHistory/taskHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.10/taskHistory/taskHistory.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/4.10/taskHistory/taskHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.10/taskHistory/taskHistory.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Assets/Bass 1_48khz.wav" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Assets/Bass 2_48khz.wav" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Assets/Bass 3_48khz.wav" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Assets/Bass 4_48khz.wav" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Assets/Harmony 1_48khz.wav" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Assets/Harmony 2_48khz.wav" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Assets/Harmony 3_48khz.wav" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Assets/Harmony 4_48khz.wav" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Assets/Melody 1_48khz.wav" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Assets/Melody 2_48khz.wav" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Assets/Melody 3_48khz.wav" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Assets/Melody 4_48khz.wav" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Assets/Rhythm 1_48khz.wav" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Assets/Rhythm 2_48khz.wav" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Assets/Rhythm 3_48khz.wav" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Assets/Rhythm 4_48khz.wav" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/4.10/fileChanges/last-build.bin" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/4.10/fileContent/fileContent.lock" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/4.10/fileHashes/fileHashes.bin" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/4.10/fileHashes/fileHashes.lock" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/4.10/fileHashes/resourceHashesCache.bin" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/4.10/gc.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/4.10/javaCompile/javaCompile.lock" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/4.10/javaCompile/taskHistory.bin" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/4.10/taskHistory/taskHistory.bin" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/4.10/taskHistory/taskHistory.lock" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/cache.properties" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/cache.properties" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.name" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.name" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/caches/build_file_checksums.ser" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/caches/build_file_checksums.ser" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/.externalNativeBuild/cmake/debug_Debug/armeabi-v7a/.ninja_deps" beforeDir="false" afterPath="$PROJECT_DIR$/app/.externalNativeBuild/cmake/debug_Debug/armeabi-v7a/.ninja_deps" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/.externalNativeBuild/cmake/debug_Debug/armeabi-v7a/.ninja_log" beforeDir="false" afterPath="$PROJECT_DIR$/app/.externalNativeBuild/cmake/debug_Debug/armeabi-v7a/.ninja_log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/.externalNativeBuild/cmake/debug_Debug/armeabi-v7a/CMakeCache.txt" beforeDir="false" afterPath="$PROJECT_DIR$/app/.externalNativeBuild/cmake/debug_Debug/armeabi-v7a/CMakeCache.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/.externalNativeBuild/cmake/debug_Debug/armeabi-v7a/CMakeFiles/juce_jni.dir/data/eva/blue_sky/stix/Source/Main.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/app/.externalNativeBuild/cmake/debug_Debug/armeabi-v7a/CMakeFiles/juce_jni.dir/data/eva/blue_sky/stix/Source/Main.cpp.o" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/.externalNativeBuild/cmake/debug_Debug/armeabi-v7a/CMakeFiles/juce_jni.dir/data/eva/blue_sky/stix/Source/UI/Home.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/app/.externalNativeBuild/cmake/debug_Debug/armeabi-v7a/CMakeFiles/juce_jni.dir/data/eva/blue_sky/stix/Source/UI/Home.cpp.o" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/.externalNativeBuild/cmake/debug_Debug/armeabi-v7a/CMakeFiles/juce_jni.dir/data/eva/blue_sky/stix/Source/UI/MainComponent.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/app/.externalNativeBuild/cmake/debug_Debug/armeabi-v7a/CMakeFiles/juce_jni.dir/data/eva/blue_sky/stix/Source/UI/MainComponent.cpp.o" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/.externalNativeBuild/cmake/debug_Debug/armeabi-v7a/CMakeFiles/juce_jni.dir/data/eva/blue_sky/stix/Source/audio/Player.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/app/.externalNativeBuild/cmake/debug_Debug/armeabi-v7a/CMakeFiles/juce_jni.dir/data/eva/blue_sky/stix/Source/audio/Player.cpp.o" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/.externalNativeBuild/cmake/debug_Debug/armeabi-v7a/android_gradle_build.json" beforeDir="false" afterPath="$PROJECT_DIR$/app/.externalNativeBuild/cmake/debug_Debug/armeabi-v7a/android_gradle_build.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/.externalNativeBuild/cmake/debug_Debug/armeabi-v7a/build.ninja" beforeDir="false" afterPath="$PROJECT_DIR$/app/.externalNativeBuild/cmake/debug_Debug/armeabi-v7a/build.ninja" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/.externalNativeBuild/cmake/debug_Debug/armeabi-v7a/cmake_build_output.txt" beforeDir="false" afterPath="$PROJECT_DIR$/app/.externalNativeBuild/cmake/debug_Debug/armeabi-v7a/cmake_build_output.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/.externalNativeBuild/cmake/debug_Debug/armeabi-v7a/cmake_server_log.txt" beforeDir="false" afterPath="$PROJECT_DIR$/app/.externalNativeBuild/cmake/debug_Debug/armeabi-v7a/cmake_server_log.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/.externalNativeBuild/cmake/debug_Debug/armeabi-v7a/compile_commands.json" beforeDir="false" afterPath="$PROJECT_DIR$/app/.externalNativeBuild/cmake/debug_Debug/armeabi-v7a/compile_commands.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/.externalNativeBuild/cmake/debug_Debug/x86/CMakeCache.txt" beforeDir="false" afterPath="$PROJECT_DIR$/app/.externalNativeBuild/cmake/debug_Debug/x86/CMakeCache.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/.externalNativeBuild/cmake/debug_Debug/x86/android_gradle_build.json" beforeDir="false" afterPath="$PROJECT_DIR$/app/.externalNativeBuild/cmake/debug_Debug/x86/android_gradle_build.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/.externalNativeBuild/cmake/debug_Debug/x86/build.ninja" beforeDir="false" afterPath="$PROJECT_DIR$/app/.externalNativeBuild/cmake/debug_Debug/x86/build.ninja" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/.externalNativeBuild/cmake/debug_Debug/x86/cmake_build_output.txt" beforeDir="false" afterPath="$PROJECT_DIR$/app/.externalNativeBuild/cmake/debug_Debug/x86/cmake_build_output.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/.externalNativeBuild/cmake/debug_Debug/x86/cmake_server_log.txt" beforeDir="false" afterPath="$PROJECT_DIR$/app/.externalNativeBuild/cmake/debug_Debug/x86/cmake_server_log.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/.externalNativeBuild/cmake/debug_Debug/x86/compile_commands.json" beforeDir="false" afterPath="$PROJECT_DIR$/app/.externalNativeBuild/cmake/debug_Debug/x86/compile_commands.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/.externalNativeBuild/cmake/release_Release/arm64-v8a/CMakeCache.txt" beforeDir="false" afterPath="$PROJECT_DIR$/app/.externalNativeBuild/cmake/release_Release/arm64-v8a/CMakeCache.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/.externalNativeBuild/cmake/release_Release/arm64-v8a/android_gradle_build.json" beforeDir="false" afterPath="$PROJECT_DIR$/app/.externalNativeBuild/cmake/release_Release/arm64-v8a/android_gradle_build.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/.externalNativeBuild/cmake/release_Release/arm64-v8a/build.ninja" beforeDir="false" afterPath="$PROJECT_DIR$/app/.externalNativeBuild/cmake/release_Release/arm64-v8a/build.ninja" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/.externalNativeBuild/cmake/release_Release/arm64-v8a/cmake_build_output.txt" beforeDir="false" afterPath="$PROJECT_DIR$/app/.externalNativeBuild/cmake/release_Release/arm64-v8a/cmake_build_output.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/.externalNativeBuild/cmake/release_Release/arm64-v8a/cmake_server_log.txt" beforeDir="false" afterPath="$PROJECT_DIR$/app/.externalNativeBuild/cmake/release_Release/arm64-v8a/cmake_server_log.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/.externalNativeBuild/cmake/release_Release/arm64-v8a/compile_commands.json" beforeDir="false" afterPath="$PROJECT_DIR$/app/.externalNativeBuild/cmake/release_Release/arm64-v8a/compile_commands.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/.externalNativeBuild/cmake/release_Release/armeabi-v7a/CMakeCache.txt" beforeDir="false" afterPath="$PROJECT_DIR$/app/.externalNativeBuild/cmake/release_Release/armeabi-v7a/CMakeCache.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/.externalNativeBuild/cmake/release_Release/armeabi-v7a/android_gradle_build.json" beforeDir="false" afterPath="$PROJECT_DIR$/app/.externalNativeBuild/cmake/release_Release/armeabi-v7a/android_gradle_build.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/.externalNativeBuild/cmake/release_Release/armeabi-v7a/build.ninja" beforeDir="false" afterPath="$PROJECT_DIR$/app/.externalNativeBuild/cmake/release_Release/armeabi-v7a/build.ninja" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/.externalNativeBuild/cmake/release_Release/armeabi-v7a/cmake_build_output.txt" beforeDir="false" afterPath="$PROJECT_DIR$/app/.externalNativeBuild/cmake/release_Release/armeabi-v7a/cmake_build_output.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/.externalNativeBuild/cmake/release_Release/armeabi-v7a/cmake_server_log.txt" beforeDir="false" afterPath="$PROJECT_DIR$/app/.externalNativeBuild/cmake/release_Release/armeabi-v7a/cmake_server_log.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/.externalNativeBuild/cmake/release_Release/armeabi-v7a/compile_commands.json" beforeDir="false" afterPath="$PROJECT_DIR$/app/.externalNativeBuild/cmake/release_Release/armeabi-v7a/compile_commands.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/.externalNativeBuild/cmake/release_Release/x86/CMakeCache.txt" beforeDir="false" afterPath="$PROJECT_DIR$/app/.externalNativeBuild/cmake/release_Release/x86/CMakeCache.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/.externalNativeBuild/cmake/release_Release/x86/android_gradle_build.json" beforeDir="false" afterPath="$PROJECT_DIR$/app/.externalNativeBuild/cmake/release_Release/x86/android_gradle_build.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/.externalNativeBuild/cmake/release_Release/x86/android_gradle_build_mini.json" beforeDir="false" afterPath="$PROJECT_DIR$/app/.externalNativeBuild/cmake/release_Release/x86/android_gradle_build_mini.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/.externalNativeBuild/cmake/release_Release/x86/build.ninja" beforeDir="false" afterPath="$PROJECT_DIR$/app/.externalNativeBuild/cmake/release_Release/x86/build.ninja" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/.externalNativeBuild/cmake/release_Release/x86/cmake_build_output.txt" beforeDir="false" afterPath="$PROJECT_DIR$/app/.externalNativeBuild/cmake/release_Release/x86/cmake_build_output.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/.externalNativeBuild/cmake/release_Release/x86/cmake_server_log.txt" beforeDir="false" afterPath="$PROJECT_DIR$/app/.externalNativeBuild/cmake/release_Release/x86/cmake_server_log.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/.externalNativeBuild/cmake/release_Release/x86/compile_commands.json" beforeDir="false" afterPath="$PROJECT_DIR$/app/.externalNativeBuild/cmake/release_Release/x86/compile_commands.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/.externalNativeBuild/cmake/release_Release/x86_64/CMakeCache.txt" beforeDir="false" afterPath="$PROJECT_DIR$/app/.externalNativeBuild/cmake/release_Release/x86_64/CMakeCache.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/.externalNativeBuild/cmake/release_Release/x86_64/android_gradle_build.json" beforeDir="false" afterPath="$PROJECT_DIR$/app/.externalNativeBuild/cmake/release_Release/x86_64/android_gradle_build.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/.externalNativeBuild/cmake/release_Release/x86_64/build.ninja" beforeDir="false" afterPath="$PROJECT_DIR$/app/.externalNativeBuild/cmake/release_Release/x86_64/build.ninja" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/.externalNativeBuild/cmake/release_Release/x86_64/cmake_build_output.txt" beforeDir="false" afterPath="$PROJECT_DIR$/app/.externalNativeBuild/cmake/release_Release/x86_64/cmake_build_output.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/.externalNativeBuild/cmake/release_Release/x86_64/cmake_server_log.txt" beforeDir="false" afterPath="$PROJECT_DIR$/app/.externalNativeBuild/cmake/release_Release/x86_64/cmake_server_log.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/.externalNativeBuild/cmake/release_Release/x86_64/compile_commands.json" beforeDir="false" afterPath="$PROJECT_DIR$/app/.externalNativeBuild/cmake/release_Release/x86_64/compile_commands.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../MacOSX/build/Debug/Stix.app/Contents/MacOS/Stix" beforeDir="false" afterPath="$PROJECT_DIR$/../MacOSX/build/Debug/Stix.app/Contents/MacOS/Stix" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Source/UI/Home.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/../../Source/UI/Home.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Source/UI/Home.h" beforeDir="false" afterPath="$PROJECT_DIR$/../../Source/UI/Home.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Stix.iml" beforeDir="false" afterPath="$PROJECT_DIR$/Stix.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/CMakeLists.txt" beforeDir="false" afterPath="$PROJECT_DIR$/app/CMakeLists.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/app/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/debug/res/values/string.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/debug/res/values/string.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/drawable-hdpi/icon.png" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/drawable-hdpi/icon.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/drawable-ldpi/icon.png" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/drawable-ldpi/icon.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/drawable-mdpi/icon.png" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/drawable-mdpi/icon.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/drawable-xhdpi/icon.png" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/drawable-xhdpi/icon.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/release/res/values/string.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/release/res/values/string.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gradle/wrapper/LICENSE-for-gradlewrapper.txt" beforeDir="false" afterPath="$PROJECT_DIR$/gradle/wrapper/LICENSE-for-gradlewrapper.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gradle/wrapper/gradle-wrapper.properties" beforeDir="false" afterPath="$PROJECT_DIR$/gradle/wrapper/gradle-wrapper.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gradlew" beforeDir="false" afterPath="$PROJECT_DIR$/gradlew" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/local.properties" beforeDir="false" afterPath="$PROJECT_DIR$/local.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/settings.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/settings.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../MacOSX/Icon.icns" beforeDir="false" afterPath="$PROJECT_DIR$/../MacOSX/Icon.icns" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../MacOSX/Stix.xcodeproj/project.pbxproj" beforeDir="false" afterPath="$PROJECT_DIR$/../MacOSX/Stix.xcodeproj/project.pbxproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../MacOSX/Stix.xcodeproj/project.xcworkspace/xcshareddata/WorkspaceSettings.xcsettings" beforeDir="false" afterPath="$PROJECT_DIR$/../MacOSX/Stix.xcodeproj/project.xcworkspace/xcshareddata/WorkspaceSettings.xcsettings" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../iOS/Icon.icns" beforeDir="false" afterPath="$PROJECT_DIR$/../iOS/Icon.icns" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../iOS/LaunchScreen.storyboard" beforeDir="false" afterPath="$PROJECT_DIR$/../iOS/LaunchScreen.storyboard" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../iOS/Stix.xcodeproj/project.pbxproj" beforeDir="false" afterPath="$PROJECT_DIR$/../iOS/Stix.xcodeproj/project.pbxproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../iOS/Stix.xcodeproj/project.xcworkspace/xcshareddata/WorkspaceSettings.xcsettings" beforeDir="false" afterPath="$PROJECT_DIR$/../iOS/Stix.xcodeproj/project.xcworkspace/xcshareddata/WorkspaceSettings.xcsettings" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../iOS/Stix/Images.xcassets/AppIcon.appiconset/Icon-29.png" beforeDir="false" afterPath="$PROJECT_DIR$/../iOS/Stix/Images.xcassets/AppIcon.appiconset/Icon-29.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../iOS/Stix/Images.xcassets/AppIcon.appiconset/Icon-29@2x.png" beforeDir="false" afterPath="$PROJECT_DIR$/../iOS/Stix/Images.xcassets/AppIcon.appiconset/Icon-29@2x.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../iOS/Stix/Images.xcassets/AppIcon.appiconset/Icon-29@3x.png" beforeDir="false" afterPath="$PROJECT_DIR$/../iOS/Stix/Images.xcassets/AppIcon.appiconset/Icon-29@3x.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../iOS/Stix/Images.xcassets/AppIcon.appiconset/Icon-60@2x.png" beforeDir="false" afterPath="$PROJECT_DIR$/../iOS/Stix/Images.xcassets/AppIcon.appiconset/Icon-60@2x.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../iOS/Stix/Images.xcassets/AppIcon.appiconset/Icon-72.png" beforeDir="false" afterPath="$PROJECT_DIR$/../iOS/Stix/Images.xcassets/AppIcon.appiconset/Icon-72.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../iOS/Stix/Images.xcassets/AppIcon.appiconset/Icon-72@2x.png" beforeDir="false" afterPath="$PROJECT_DIR$/../iOS/Stix/Images.xcassets/AppIcon.appiconset/Icon-72@2x.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../iOS/Stix/Images.xcassets/AppIcon.appiconset/Icon-76.png" beforeDir="false" afterPath="$PROJECT_DIR$/../iOS/Stix/Images.xcassets/AppIcon.appiconset/Icon-76.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../iOS/Stix/Images.xcassets/AppIcon.appiconset/Icon-76@2x.png" beforeDir="false" afterPath="$PROJECT_DIR$/../iOS/Stix/Images.xcassets/AppIcon.appiconset/Icon-76@2x.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../iOS/Stix/Images.xcassets/AppIcon.appiconset/Icon-83.5@2x.png" beforeDir="false" afterPath="$PROJECT_DIR$/../iOS/Stix/Images.xcassets/AppIcon.appiconset/Icon-83.5@2x.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../iOS/Stix/Images.xcassets/AppIcon.appiconset/Icon-@3x.png" beforeDir="false" afterPath="$PROJECT_DIR$/../iOS/Stix/Images.xcassets/AppIcon.appiconset/Icon-@3x.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../iOS/Stix/Images.xcassets/AppIcon.appiconset/Icon-AppStore-1024.png" beforeDir="false" afterPath="$PROJECT_DIR$/../iOS/Stix/Images.xcassets/AppIcon.appiconset/Icon-AppStore-1024.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../iOS/Stix/Images.xcassets/AppIcon.appiconset/Icon-Notification-20@2x.png" beforeDir="false" afterPath="$PROJECT_DIR$/../iOS/Stix/Images.xcassets/AppIcon.appiconset/Icon-Notification-20@2x.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../iOS/Stix/Images.xcassets/AppIcon.appiconset/Icon-Notification-20@3x.png" beforeDir="false" afterPath="$PROJECT_DIR$/../iOS/Stix/Images.xcassets/AppIcon.appiconset/Icon-Notification-20@3x.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../iOS/Stix/Images.xcassets/AppIcon.appiconset/Icon-Notifications-20.png" beforeDir="false" afterPath="$PROJECT_DIR$/../iOS/Stix/Images.xcassets/AppIcon.appiconset/Icon-Notifications-20.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../iOS/Stix/Images.xcassets/AppIcon.appiconset/Icon-Notifications-20@2x.png" beforeDir="false" afterPath="$PROJECT_DIR$/../iOS/Stix/Images.xcassets/AppIcon.appiconset/Icon-Notifications-20@2x.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../iOS/Stix/Images.xcassets/AppIcon.appiconset/Icon-Small-1.png" beforeDir="false" afterPath="$PROJECT_DIR$/../iOS/Stix/Images.xcassets/AppIcon.appiconset/Icon-Small-1.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../iOS/Stix/Images.xcassets/AppIcon.appiconset/Icon-Small-50.png" beforeDir="false" afterPath="$PROJECT_DIR$/../iOS/Stix/Images.xcassets/AppIcon.appiconset/Icon-Small-50.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../iOS/Stix/Images.xcassets/AppIcon.appiconset/Icon-Small-50@2x.png" beforeDir="false" afterPath="$PROJECT_DIR$/../iOS/Stix/Images.xcassets/AppIcon.appiconset/Icon-Small-50@2x.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../iOS/Stix/Images.xcassets/AppIcon.appiconset/Icon-Small@2x-1.png" beforeDir="false" afterPath="$PROJECT_DIR$/../iOS/Stix/Images.xcassets/AppIcon.appiconset/Icon-Small@2x-1.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../iOS/Stix/Images.xcassets/AppIcon.appiconset/Icon-Spotlight-40.png" beforeDir="false" afterPath="$PROJECT_DIR$/../iOS/Stix/Images.xcassets/AppIcon.appiconset/Icon-Spotlight-40.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../iOS/Stix/Images.xcassets/AppIcon.appiconset/Icon-Spotlight-40@2x-1.png" beforeDir="false" afterPath="$PROJECT_DIR$/../iOS/Stix/Images.xcassets/AppIcon.appiconset/Icon-Spotlight-40@2x-1.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../iOS/Stix/Images.xcassets/AppIcon.appiconset/Icon-Spotlight-40@2x.png" beforeDir="false" afterPath="$PROJECT_DIR$/../iOS/Stix/Images.xcassets/AppIcon.appiconset/Icon-Spotlight-40@2x.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../iOS/Stix/Images.xcassets/AppIcon.appiconset/Icon-Spotlight-40@3x.png" beforeDir="false" afterPath="$PROJECT_DIR$/../iOS/Stix/Images.xcassets/AppIcon.appiconset/Icon-Spotlight-40@3x.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../iOS/Stix/Images.xcassets/AppIcon.appiconset/Icon.png" beforeDir="false" afterPath="$PROJECT_DIR$/../iOS/Stix/Images.xcassets/AppIcon.appiconset/Icon.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../iOS/Stix/Images.xcassets/AppIcon.appiconset/Icon@2x.png" beforeDir="false" afterPath="$PROJECT_DIR$/../iOS/Stix/Images.xcassets/AppIcon.appiconset/Icon@2x.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../JuceLibraryCode/AppConfig.h" beforeDir="false" afterPath="$PROJECT_DIR$/../../JuceLibraryCode/AppConfig.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../Source/audio/Player.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/../../Source/audio/Player.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../stix.jucer" beforeDir="false" afterPath="$PROJECT_DIR$/../../stix.jucer" afterDir="false" />
     </list>
-    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="DefaultGradleProjectSettings">
-    <option name="isMigrated" value="true" />
-  </component>
-  <component name="ExecutionTargetManager" SELECTED_TARGET="3482fcae" />
+  <component name="ExecutionTargetManager" SELECTED_TARGET="device_and_snapshot_combo_box_target[]" />
   <component name="ExternalProjectsData">
     <projectState path="$PROJECT_DIR$">
       <ProjectState />
@@ -84,92 +112,27 @@
       </state>
     </system>
   </component>
-  <component name="FavoritesManager">
-    <favorites_list name="DemoRunner" />
-  </component>
-  <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/../../Source/Main.cpp">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="300">
-              <caret line="20" column="26" selection-start-line="20" selection-start-column="26" selection-end-line="20" selection-end-column="26" />
-              <folding>
-                <element signature="e#893#935#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/../../Source/UI/MainComponent.h">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="132">
-              <caret line="34" column="41" lean-forward="true" selection-start-line="34" selection-start-column="41" selection-end-line="34" selection-end-column="41" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-    </leaf>
-  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../../.." />
   </component>
-  <component name="IdeDocumentHistory">
-    <option name="CHANGED_PATHS">
-      <list>
-        <option value="$PROJECT_DIR$/../../Source/Main.cpp" />
-        <option value="$PROJECT_DIR$/../../Source/UI/MainComponent.h" />
-      </list>
-    </option>
-  </component>
-  <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="208" />
-    <option name="y" value="149" />
-    <option name="width" value="1264" />
-    <option name="height" value="775" />
-  </component>
+  <component name="ProjectId" id="1jM55Z1VfuFFY5bTSj8HJ0SJwia" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
-  <component name="ProjectView">
-    <navigator proportions="" version="1">
-      <foldersAlwaysOnTop value="true" />
-    </navigator>
-    <panes>
-      <pane id="ProjectPane" />
-      <pane id="Scope" />
-      <pane id="PackagesPane" />
-      <pane id="AndroidView">
-        <subPane>
-          <expand>
-            <path>
-              <item name="Stix" type="1abcf292:AndroidViewProjectNode" />
-              <item name="Gradle Scripts" type="ae0cef3a:AndroidBuildScriptsGroupNode" />
-            </path>
-          </expand>
-          <select />
-        </subPane>
-      </pane>
-    </panes>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
     <property name="DeviceAndSnapshotComboBoxAction.selectedDevice" value="3482fcae" />
     <property name="DeviceAndSnapshotComboBoxAction.selectionTime" value="2020-01-22T04:21:44.530Z" />
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
-    <property name="android.sdk.path" value="$USER_HOME$/Library/Android/sdk" />
+    <property name="android.sdk.path" value="$USER_HOME$/AppData/Local/Android/Sdk" />
     <property name="not.eligible.for.single.variant.sync" value="true" />
-    <property name="settings.editor.selected.configurable" value="AndroidSdkUpdater" />
-  </component>
-  <component name="RunDashboard">
-    <option name="ruleStates">
-      <list>
-        <RuleState>
-          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
-        </RuleState>
-        <RuleState>
-          <option name="name" value="StatusDashboardGroupingRule" />
-        </RuleState>
-      </list>
-    </option>
+    <property name="project.structure.last.edited" value="SDK Location" />
+    <property name="project.structure.proportion" value="0.17" />
+    <property name="project.structure.side.proportion" value="0.0" />
+    <property name="settings.editor.selected.configurable" value="preferences.general" />
   </component>
   <component name="RunManager">
     <configuration default="true" type="AndroidJUnit" factoryName="Android JUnit">
@@ -180,12 +143,13 @@
       </method>
     </configuration>
     <configuration name="app" type="AndroidRunConfigurationType" factoryName="Android App" activateToolWindowBeforeRun="false">
-      <module name="app" />
+      <module name="Stix.app" />
       <option name="DEPLOY" value="true" />
       <option name="DEPLOY_APK_FROM_BUNDLE" value="false" />
       <option name="DEPLOY_AS_INSTANT" value="false" />
       <option name="ARTIFACT_NAME" value="" />
       <option name="PM_INSTALL_OPTIONS" value="" />
+      <option name="ALL_USERS" value="false" />
       <option name="DYNAMIC_FEATURES_DISABLED_LIST" value="" />
       <option name="ACTIVITY_EXTRA_FLAGS" value="" />
       <option name="MODE" value="default_activity" />
@@ -194,8 +158,6 @@
       <option name="SKIP_NOOP_APK_INSTALLATIONS" value="true" />
       <option name="FORCE_STOP_RUNNING_APP" value="true" />
       <option name="TARGET_SELECTION_MODE" value="DEVICE_AND_SNAPSHOT_COMBO_BOX" />
-      <option name="USE_LAST_SELECTED_DEVICE" value="false" />
-      <option name="PREFERRED_AVD" value="" />
       <option name="SELECTED_CLOUD_MATRIX_CONFIGURATION_ID" value="-1" />
       <option name="SELECTED_CLOUD_MATRIX_PROJECT_ID" value="" />
       <option name="DEBUGGER_TYPE" value="Auto" />
@@ -223,11 +185,16 @@
       </Native>
       <Profilers>
         <option name="ADVANCED_PROFILING_ENABLED" value="true" />
+        <option name="STARTUP_PROFILING_ENABLED" value="false" />
         <option name="STARTUP_CPU_PROFILING_ENABLED" value="false" />
         <option name="STARTUP_CPU_PROFILING_CONFIGURATION_NAME" value="Sample Java Methods" />
+        <option name="STARTUP_NATIVE_MEMORY_PROFILING_ENABLED" value="false" />
+        <option name="NATIVE_MEMORY_SAMPLE_RATE_BYTES" value="2048" />
       </Profilers>
       <option name="DEEP_LINK" value="" />
       <option name="ACTIVITY_CLASS" value="" />
+      <option name="SEARCH_ACTIVITY_IN_GLOBAL_SCOPE" value="false" />
+      <option name="SKIP_ACTIVITY_VALIDATION" value="false" />
       <method v="2">
         <option name="Android.Gradle.BeforeRunTask" enabled="true" />
       </method>
@@ -255,35 +222,54 @@
       <is-autoscroll-to-source value="true" />
     </todo-panel>
   </component>
-  <component name="ToolWindowManager">
-    <frame x="0" y="23" width="1680" height="1027" extended-state="6" />
-    <layout>
-      <window_info id="Captures" order="0" side_tool="true" visible="true" weight="0.16849817" />
-      <window_info content_ui="combo" id="Project" order="1" visible="true" weight="0.16849817" />
-      <window_info id="Structure" order="2" side_tool="true" weight="0.32967034" />
-      <window_info id="Favorites" order="3" side_tool="true" weight="0.32967034" />
-      <window_info id="Build Variants" order="4" side_tool="true" />
-      <window_info id="Image Layers" order="5" />
-      <window_info id="Designer" order="6" />
-      <window_info id="Resources Explorer" order="7" sideWeight="0.4985294" weight="0.32967034" />
-      <window_info id="Capture Tool" order="8" />
-      <window_info anchor="bottom" id="Run" order="0" weight="0.32941177" />
-      <window_info anchor="bottom" id="Logcat" order="1" weight="0.32941177" />
-      <window_info anchor="bottom" id="TODO" order="2" weight="0.32941177" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.32941177" />
-      <window_info anchor="bottom" id="Terminal" order="4" weight="0.32941177" />
-      <window_info anchor="bottom" id="Event Log" order="5" side_tool="true" />
-      <window_info anchor="bottom" id="Version Control" order="6" />
-      <window_info anchor="bottom" id="Build" order="7" weight="0.3604278" />
-      <window_info active="true" anchor="bottom" id="Android Profiler" order="8" visible="true" weight="0.96791446" />
-      <window_info anchor="bottom" id="Find" order="9" />
-      <window_info anchor="right" id="Device File Explorer" order="0" side_tool="true" />
-      <window_info anchor="right" id="Capture Analysis" order="1" />
-      <window_info anchor="right" id="Gradle" order="2" />
-      <window_info anchor="right" id="Theme Preview" order="3" />
-      <window_info anchor="right" id="Palette&#9;" order="4" />
-      <window_info anchor="right" id="Assistant" order="5" weight="0.32967034" />
-    </layout>
+  <component name="WindowStateProjectService">
+    <state x="320" y="10" key="#PSD" timestamp="1603684680274">
+      <screen x="0" y="0" width="2560" height="1400" />
+    </state>
+    <state x="160" y="5" key="#PSD/0.0.1280.680@0.0.1280.680" timestamp="1603606093837" />
+    <state x="320" y="10" key="#PSD/0.0.2560.1400@0.0.2560.1400" timestamp="1603684680274" />
+    <state x="351" y="0" key="#app" timestamp="1603601905024">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state x="351" y="0" key="#app/0.0.1280.680@0.0.1280.680" timestamp="1603601905024" />
+    <state x="96" y="0" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1603601884939">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state x="96" y="0" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1280.680@0.0.1280.680" timestamp="1603601884939" />
+    <state x="1229" y="458" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog" timestamp="1603682254038">
+      <screen x="0" y="0" width="2560" height="1400" />
+    </state>
+    <state x="1229" y="458" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog/0.0.2560.1400@0.0.2560.1400" timestamp="1603682254038" />
+    <state x="200" y="206" width="2160" height="989" key="AVDManager" timestamp="1603686247599">
+      <screen x="0" y="0" width="2560" height="1400" />
+    </state>
+    <state x="100" y="100" width="1080" height="480" key="AVDManager/0.0.1280.680@0.0.1280.680" timestamp="1603604267084" />
+    <state x="200" y="206" width="2160" height="989" key="AVDManager/0.0.2560.1400@0.0.2560.1400" timestamp="1603686247598" />
+    <state width="1258" height="400" key="GridCell.Tab.0.bottom" timestamp="1603686026354">
+      <screen x="0" y="0" width="2560" height="1400" />
+    </state>
+    <state width="1258" height="400" key="GridCell.Tab.0.bottom/0.0.2560.1400@0.0.2560.1400" timestamp="1603686026354" />
+    <state width="1258" height="400" key="GridCell.Tab.0.center" timestamp="1603686026354">
+      <screen x="0" y="0" width="2560" height="1400" />
+    </state>
+    <state width="1258" height="400" key="GridCell.Tab.0.center/0.0.2560.1400@0.0.2560.1400" timestamp="1603686026354" />
+    <state width="1258" height="400" key="GridCell.Tab.0.left" timestamp="1603686026354">
+      <screen x="0" y="0" width="2560" height="1400" />
+    </state>
+    <state width="1258" height="400" key="GridCell.Tab.0.left/0.0.2560.1400@0.0.2560.1400" timestamp="1603686026354" />
+    <state width="1258" height="400" key="GridCell.Tab.0.right" timestamp="1603686026354">
+      <screen x="0" y="0" width="2560" height="1400" />
+    </state>
+    <state width="1258" height="400" key="GridCell.Tab.0.right/0.0.2560.1400@0.0.2560.1400" timestamp="1603686026354" />
+    <state x="284" y="0" key="SettingsEditor" timestamp="1603686229217">
+      <screen x="0" y="0" width="2560" height="1400" />
+    </state>
+    <state x="142" y="0" key="SettingsEditor/0.0.1280.680@0.0.1280.680" timestamp="1603606445464" />
+    <state x="284" y="0" key="SettingsEditor/0.0.2560.1400@0.0.2560.1400" timestamp="1603686229217" />
+    <state x="943" y="315" width="672" height="678" key="search.everywhere.popup" timestamp="1603686198844">
+      <screen x="0" y="0" width="2560" height="1400" />
+    </state>
+    <state x="943" y="315" width="672" height="678" key="search.everywhere.popup/0.0.2560.1400@0.0.2560.1400" timestamp="1603686198844" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -297,25 +283,5 @@
         </breakpoint>
       </breakpoints>
     </breakpoint-manager>
-  </component>
-  <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/../../../../modules/juce_audio_devices/native/juce_android_OpenSL.cpp" />
-    <entry file="file://$PROJECT_DIR$/../../Source/Main.cpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="300">
-          <caret line="20" column="26" selection-start-line="20" selection-start-column="26" selection-end-line="20" selection-end-column="26" />
-          <folding>
-            <element signature="e#893#935#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../../Source/UI/MainComponent.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="132">
-          <caret line="34" column="41" lean-forward="true" selection-start-line="34" selection-start-column="41" selection-end-line="34" selection-end-column="41" />
-        </state>
-      </provider>
-    </entry>
   </component>
 </project>
