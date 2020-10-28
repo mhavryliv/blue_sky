@@ -89,7 +89,7 @@ void Voice::getNextAudioBlock(const AudioSourceChannelInfo &bufferToFill, const 
     // Check number of output channels on device
     int numChannels = bufferToFill.buffer->getNumChannels();
     
-    // Handle Mono or Stereo output
+    // Handle Mono or Stereo outputs
     if (numChannels == 1){
         // Mono Output: Copy the summing buffer to buffer to fill
         const float *readLeft = summingBuffer_.getReadPointer(0);
