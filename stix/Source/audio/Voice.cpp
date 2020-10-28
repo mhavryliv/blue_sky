@@ -85,15 +85,30 @@ void Voice::getNextAudioBlock(const AudioSourceChannelInfo &bufferToFill, const 
 //        audio->copyFromLocalToDst(summingBuffer_);
 //    }
     
-    // Copy the summing buffer to buffer to fill
-    const float *readLeft = summingBuffer_.getReadPointer(0);
-    const float *readRight = summingBuffer_.getReadPointer(1);
-    float *writeLeft = bufferToFill.buffer->getWritePointer(0);
-    float *writeRight = bufferToFill.buffer->getWritePointer(1);
-    const float ampStep = (amp - prevAmp_) / (float)bufferToFill.numSamples;
-    for(int i = 0; i < bufferToFill.numSamples; ++i) {
-        *(writeLeft + i) += (*(readLeft + i) * (prevAmp_ + ampStep*i));
-        *(writeRight + i) += (*(readRight + i) * (prevAmp_ + ampStep*i));
+    
+    // Check number of output channels on device
+    int numChannels = bufferToFill.buffer->getNumChannels();
+    
+    // Handle Mono or Stereo output
+    if (numChannels == 1){
+        // Mono Output: Copy the summing buffer to buffer to fill
+        const float *readLeft = summingBuffer_.getReadPointer(0);
+        float *writeLeft = bufferToFill.buffer->getWritePointer(0);
+        const float ampStep = (amp - prevAmp_) / (float)bufferToFill.numSamples;
+        for(int i = 0; i < bufferToFill.numSamples; ++i) {
+            *(writeLeft + i) += (*(readLeft + i) * (prevAmp_ + ampStep*i));
+        }
+    }else if (numChannels == 2){
+        // Stereo Output: Copy the summing buffer to buffer to fill
+        const float *readLeft = summingBuffer_.getReadPointer(0);
+        const float *readRight = summingBuffer_.getReadPointer(1);
+        float *writeLeft = bufferToFill.buffer->getWritePointer(0);
+        float *writeRight = bufferToFill.buffer->getWritePointer(1);
+        const float ampStep = (amp - prevAmp_) / (float)bufferToFill.numSamples;
+        for(int i = 0; i < bufferToFill.numSamples; ++i) {
+            *(writeLeft + i) += (*(readLeft + i) * (prevAmp_ + ampStep*i));
+            *(writeRight + i) += (*(readRight + i) * (prevAmp_ + ampStep*i));
+        }
     }
     
     // Update the previous stem vols

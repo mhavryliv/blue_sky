@@ -12,7 +12,7 @@
     <key>CFBundleIconFile</key>
     <string>Icon.icns</string>
     <key>CFBundleIdentifier</key>
-    <string>com.mhavryliv.uts.stix</string>
+    <string>edu.monash.Stix</string>
     <key>CFBundleName</key>
     <string>Stix</string>
     <key>CFBundleDisplayName</key>

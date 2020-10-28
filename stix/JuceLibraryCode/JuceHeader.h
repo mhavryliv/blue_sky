@@ -50,7 +50,7 @@
 namespace ProjectInfo
 {
     const char* const  projectName    = "Stix";
-    const char* const  companyName    = "Mark Havryliv";
+    const char* const  companyName    = "SensiLab";
     const char* const  versionString  = "0.1";
     const int          versionNumber  = 0x100;
 }
