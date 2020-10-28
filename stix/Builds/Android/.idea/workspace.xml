@@ -8,91 +8,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="402407bb-5658-4445-8ec6-6f972c3de1c9" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/../../../Assets/Bass 1_48khz.wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../Assets/Bass 2_48khz.wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../Assets/Bass 3_48khz.wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../Assets/Bass 4_48khz.wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../Assets/Harmony 1_48khz.wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../Assets/Harmony 2_48khz.wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../Assets/Harmony 3_48khz.wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../Assets/Harmony 4_48khz.wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../Assets/Melody 1_48khz.wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../Assets/Melody 2_48khz.wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../Assets/Melody 3_48khz.wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../Assets/Melody 4_48khz.wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../Assets/Rhythm 1_48khz.wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../Assets/Rhythm 2_48khz.wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../Assets/Rhythm 3_48khz.wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../Assets/Rhythm 4_48khz.wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/4.10/fileChanges/last-build.bin" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/4.10/fileContent/fileContent.lock" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/4.10/fileHashes/fileHashes.bin" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/4.10/fileHashes/fileHashes.lock" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/4.10/fileHashes/resourceHashesCache.bin" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/4.10/gc.properties" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/4.10/javaCompile/javaCompile.lock" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/4.10/javaCompile/taskHistory.bin" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/4.10/taskHistory/taskHistory.bin" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/4.10/taskHistory/taskHistory.lock" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/cache.properties" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/cache.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/caches/build_file_checksums.ser" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/caches/build_file_checksums.ser" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Stix.iml" beforeDir="false" afterPath="$PROJECT_DIR$/Stix.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/CMakeLists.txt" beforeDir="false" afterPath="$PROJECT_DIR$/app/CMakeLists.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/app/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/debug/res/values/string.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/debug/res/values/string.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/drawable-hdpi/icon.png" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/drawable-hdpi/icon.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/drawable-ldpi/icon.png" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/drawable-ldpi/icon.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/drawable-mdpi/icon.png" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/drawable-mdpi/icon.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/drawable-xhdpi/icon.png" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/drawable-xhdpi/icon.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/release/res/values/string.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/release/res/values/string.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gradle/wrapper/LICENSE-for-gradlewrapper.txt" beforeDir="false" afterPath="$PROJECT_DIR$/gradle/wrapper/LICENSE-for-gradlewrapper.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gradle/wrapper/gradle-wrapper.properties" beforeDir="false" afterPath="$PROJECT_DIR$/gradle/wrapper/gradle-wrapper.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gradlew" beforeDir="false" afterPath="$PROJECT_DIR$/gradlew" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/local.properties" beforeDir="false" afterPath="$PROJECT_DIR$/local.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/settings.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/settings.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../MacOSX/Icon.icns" beforeDir="false" afterPath="$PROJECT_DIR$/../MacOSX/Icon.icns" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../MacOSX/Stix.xcodeproj/project.pbxproj" beforeDir="false" afterPath="$PROJECT_DIR$/../MacOSX/Stix.xcodeproj/project.pbxproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../MacOSX/Stix.xcodeproj/project.xcworkspace/xcshareddata/WorkspaceSettings.xcsettings" beforeDir="false" afterPath="$PROJECT_DIR$/../MacOSX/Stix.xcodeproj/project.xcworkspace/xcshareddata/WorkspaceSettings.xcsettings" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../iOS/Icon.icns" beforeDir="false" afterPath="$PROJECT_DIR$/../iOS/Icon.icns" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../iOS/LaunchScreen.storyboard" beforeDir="false" afterPath="$PROJECT_DIR$/../iOS/LaunchScreen.storyboard" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../iOS/Stix.xcodeproj/project.pbxproj" beforeDir="false" afterPath="$PROJECT_DIR$/../iOS/Stix.xcodeproj/project.pbxproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../iOS/Stix.xcodeproj/project.xcworkspace/xcshareddata/WorkspaceSettings.xcsettings" beforeDir="false" afterPath="$PROJECT_DIR$/../iOS/Stix.xcodeproj/project.xcworkspace/xcshareddata/WorkspaceSettings.xcsettings" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../iOS/Stix/Images.xcassets/AppIcon.appiconset/Icon-29.png" beforeDir="false" afterPath="$PROJECT_DIR$/../iOS/Stix/Images.xcassets/AppIcon.appiconset/Icon-29.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../iOS/Stix/Images.xcassets/AppIcon.appiconset/Icon-29@2x.png" beforeDir="false" afterPath="$PROJECT_DIR$/../iOS/Stix/Images.xcassets/AppIcon.appiconset/Icon-29@2x.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../iOS/Stix/Images.xcassets/AppIcon.appiconset/Icon-29@3x.png" beforeDir="false" afterPath="$PROJECT_DIR$/../iOS/Stix/Images.xcassets/AppIcon.appiconset/Icon-29@3x.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../iOS/Stix/Images.xcassets/AppIcon.appiconset/Icon-60@2x.png" beforeDir="false" afterPath="$PROJECT_DIR$/../iOS/Stix/Images.xcassets/AppIcon.appiconset/Icon-60@2x.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../iOS/Stix/Images.xcassets/AppIcon.appiconset/Icon-72.png" beforeDir="false" afterPath="$PROJECT_DIR$/../iOS/Stix/Images.xcassets/AppIcon.appiconset/Icon-72.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../iOS/Stix/Images.xcassets/AppIcon.appiconset/Icon-72@2x.png" beforeDir="false" afterPath="$PROJECT_DIR$/../iOS/Stix/Images.xcassets/AppIcon.appiconset/Icon-72@2x.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../iOS/Stix/Images.xcassets/AppIcon.appiconset/Icon-76.png" beforeDir="false" afterPath="$PROJECT_DIR$/../iOS/Stix/Images.xcassets/AppIcon.appiconset/Icon-76.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../iOS/Stix/Images.xcassets/AppIcon.appiconset/Icon-76@2x.png" beforeDir="false" afterPath="$PROJECT_DIR$/../iOS/Stix/Images.xcassets/AppIcon.appiconset/Icon-76@2x.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../iOS/Stix/Images.xcassets/AppIcon.appiconset/Icon-83.5@2x.png" beforeDir="false" afterPath="$PROJECT_DIR$/../iOS/Stix/Images.xcassets/AppIcon.appiconset/Icon-83.5@2x.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../iOS/Stix/Images.xcassets/AppIcon.appiconset/Icon-@3x.png" beforeDir="false" afterPath="$PROJECT_DIR$/../iOS/Stix/Images.xcassets/AppIcon.appiconset/Icon-@3x.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../iOS/Stix/Images.xcassets/AppIcon.appiconset/Icon-AppStore-1024.png" beforeDir="false" afterPath="$PROJECT_DIR$/../iOS/Stix/Images.xcassets/AppIcon.appiconset/Icon-AppStore-1024.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../iOS/Stix/Images.xcassets/AppIcon.appiconset/Icon-Notification-20@2x.png" beforeDir="false" afterPath="$PROJECT_DIR$/../iOS/Stix/Images.xcassets/AppIcon.appiconset/Icon-Notification-20@2x.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../iOS/Stix/Images.xcassets/AppIcon.appiconset/Icon-Notification-20@3x.png" beforeDir="false" afterPath="$PROJECT_DIR$/../iOS/Stix/Images.xcassets/AppIcon.appiconset/Icon-Notification-20@3x.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../iOS/Stix/Images.xcassets/AppIcon.appiconset/Icon-Notifications-20.png" beforeDir="false" afterPath="$PROJECT_DIR$/../iOS/Stix/Images.xcassets/AppIcon.appiconset/Icon-Notifications-20.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../iOS/Stix/Images.xcassets/AppIcon.appiconset/Icon-Notifications-20@2x.png" beforeDir="false" afterPath="$PROJECT_DIR$/../iOS/Stix/Images.xcassets/AppIcon.appiconset/Icon-Notifications-20@2x.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../iOS/Stix/Images.xcassets/AppIcon.appiconset/Icon-Small-1.png" beforeDir="false" afterPath="$PROJECT_DIR$/../iOS/Stix/Images.xcassets/AppIcon.appiconset/Icon-Small-1.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../iOS/Stix/Images.xcassets/AppIcon.appiconset/Icon-Small-50.png" beforeDir="false" afterPath="$PROJECT_DIR$/../iOS/Stix/Images.xcassets/AppIcon.appiconset/Icon-Small-50.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../iOS/Stix/Images.xcassets/AppIcon.appiconset/Icon-Small-50@2x.png" beforeDir="false" afterPath="$PROJECT_DIR$/../iOS/Stix/Images.xcassets/AppIcon.appiconset/Icon-Small-50@2x.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../iOS/Stix/Images.xcassets/AppIcon.appiconset/Icon-Small@2x-1.png" beforeDir="false" afterPath="$PROJECT_DIR$/../iOS/Stix/Images.xcassets/AppIcon.appiconset/Icon-Small@2x-1.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../iOS/Stix/Images.xcassets/AppIcon.appiconset/Icon-Spotlight-40.png" beforeDir="false" afterPath="$PROJECT_DIR$/../iOS/Stix/Images.xcassets/AppIcon.appiconset/Icon-Spotlight-40.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../iOS/Stix/Images.xcassets/AppIcon.appiconset/Icon-Spotlight-40@2x-1.png" beforeDir="false" afterPath="$PROJECT_DIR$/../iOS/Stix/Images.xcassets/AppIcon.appiconset/Icon-Spotlight-40@2x-1.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../iOS/Stix/Images.xcassets/AppIcon.appiconset/Icon-Spotlight-40@2x.png" beforeDir="false" afterPath="$PROJECT_DIR$/../iOS/Stix/Images.xcassets/AppIcon.appiconset/Icon-Spotlight-40@2x.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../iOS/Stix/Images.xcassets/AppIcon.appiconset/Icon-Spotlight-40@3x.png" beforeDir="false" afterPath="$PROJECT_DIR$/../iOS/Stix/Images.xcassets/AppIcon.appiconset/Icon-Spotlight-40@3x.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../iOS/Stix/Images.xcassets/AppIcon.appiconset/Icon.png" beforeDir="false" afterPath="$PROJECT_DIR$/../iOS/Stix/Images.xcassets/AppIcon.appiconset/Icon.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../iOS/Stix/Images.xcassets/AppIcon.appiconset/Icon@2x.png" beforeDir="false" afterPath="$PROJECT_DIR$/../iOS/Stix/Images.xcassets/AppIcon.appiconset/Icon@2x.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../JuceLibraryCode/AppConfig.h" beforeDir="false" afterPath="$PROJECT_DIR$/../../JuceLibraryCode/AppConfig.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Source/audio/Player.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/../../Source/audio/Player.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../stix.jucer" beforeDir="false" afterPath="$PROJECT_DIR$/../../stix.jucer" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -113,6 +29,11 @@
     </system>
   </component>
   <component name="Git.Settings">
+    <option name="PREVIOUS_COMMIT_AUTHORS">
+      <list>
+        <option value="Nathan Suttie" />
+      </list>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../../.." />
   </component>
   <component name="ProjectId" id="1jM55Z1VfuFFY5bTSj8HJ0SJwia" />
@@ -211,6 +132,14 @@
       <option name="presentableId" value="Default" />
       <updated>1574194582095</updated>
     </task>
+    <task id="LOCAL-00001" summary="Replaced samples. Non-functional">
+      <created>1603705318254</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1603705318254</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TodoView">
@@ -221,6 +150,10 @@
       <are-packages-shown value="true" />
       <is-autoscroll-to-source value="true" />
     </todo-panel>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Replaced samples. Non-functional" />
+    <option name="LAST_COMMIT_MESSAGE" value="Replaced samples. Non-functional" />
   </component>
   <component name="WindowStateProjectService">
     <state x="320" y="10" key="#PSD" timestamp="1603684680274">
@@ -245,6 +178,10 @@
     </state>
     <state x="100" y="100" width="1080" height="480" key="AVDManager/0.0.1280.680@0.0.1280.680" timestamp="1603604267084" />
     <state x="200" y="206" width="2160" height="989" key="AVDManager/0.0.2560.1400@0.0.2560.1400" timestamp="1603686247598" />
+    <state x="304" y="269" key="CommitChangelistDialog2" timestamp="1603705316167">
+      <screen x="0" y="0" width="2560" height="1400" />
+    </state>
+    <state x="304" y="269" key="CommitChangelistDialog2/0.0.2560.1400@0.0.2560.1400" timestamp="1603705316167" />
     <state width="1258" height="400" key="GridCell.Tab.0.bottom" timestamp="1603686026354">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
