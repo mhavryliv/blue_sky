@@ -14,11 +14,11 @@
 Player::Player() : state_(Stopped) {
     formatManager_.registerBasicFormats();
 
-    drums_.setName("Drums");
-    bass_.setName("Bass");
-    harmony_.setName("Harmony");
-    melody_.setName("Melody");
-
+    drums_.setName("Upper Harmony");
+    bass_.setName("Melody");
+    harmony_.setName("Bass");
+    melody_.setName("Lower Harmony");
+    
     
     // Load it all into drums and see if I can get the voices all playing
     voices_.push_back(&drums_);
@@ -30,26 +30,26 @@ Player::Player() : state_(Stopped) {
         Voice *voice = voices_.at(i);
         voice->setFormatManager(&formatManager_);
     }
-
-    drums_.loadFileIntoPosition("Rhythm 1_48khz.wav", 0, "Clean");
-    drums_.loadFileIntoPosition("Rhythm 2_48khz.wav", 1, "Dirty");
-    drums_.loadFileIntoPosition("Rhythm 3_48khz.wav", 2, "Extra");
-    drums_.loadFileIntoPosition("Rhythm 4_48khz.wav", 3, "Funny");
-
-    bass_.loadFileIntoPosition("Bass 1_48khz.wav", 0, "Simple");
-    bass_.loadFileIntoPosition("Bass 2_48khz.wav", 1, "Complex");
-    bass_.loadFileIntoPosition("Bass 3_48khz.wav", 2, "Busy");
-    bass_.loadFileIntoPosition("Bass 4_48khz.wav", 3, "Harmonic");
-
-    harmony_.loadFileIntoPosition("Harmony 1_48khz.wav", 0, "Elegant");
-    harmony_.loadFileIntoPosition("Harmony 2_48khz.wav", 1, "Simple");
-    harmony_.loadFileIntoPosition("Harmony 3_48khz.wav", 2, "Funny");
-    harmony_.loadFileIntoPosition("Harmony 4_48khz.wav", 3, "Silly");
-
-    melody_.loadFileIntoPosition("Melody 1_48khz.wav", 0, "High");
-    melody_.loadFileIntoPosition("Melody 2_48khz.wav", 1, "Low");
-    melody_.loadFileIntoPosition("Melody 3_48khz.wav", 2, "Mid");
-    melody_.loadFileIntoPosition("Melody 4_48khz.wav", 3, "Full");
+    
+    drums_.loadFileIntoPosition("Upper Harmony_Piano.wav"   , 0, "Piano");
+    drums_.loadFileIntoPosition("Upper Harmony_Keyboard.wav", 1, "Keyboard");
+    drums_.loadFileIntoPosition("Upper Harmony_Strings.wav" , 2, "Strings");
+    drums_.loadFileIntoPosition("Upper Harmony_Brass.wav"   , 3, "Brass");
+    
+    bass_.loadFileIntoPosition("Melody_Piano.wav"   , 0, "Piano");
+    bass_.loadFileIntoPosition("Melody_Keyboard.wav", 1, "Keyboard");
+    bass_.loadFileIntoPosition("Melody_Strings.wav" , 2, "Strings");
+    bass_.loadFileIntoPosition("Melody_Brass.wav"   , 3, "Brass");
+    
+    harmony_.loadFileIntoPosition("Bass_Piano.wav"      , 0, "Piano");
+    harmony_.loadFileIntoPosition("Bass_Keyboard.wav"   , 1, "Keyboard");
+    harmony_.loadFileIntoPosition("Bass_Strings.wav"    , 2, "Strings");
+    harmony_.loadFileIntoPosition("Bass_Brass.wav"      , 3, "Brass");
+    
+    melody_.loadFileIntoPosition("Lower Harmony_Piano.wav"   , 0, "Piano");
+    melody_.loadFileIntoPosition("Lower Harmony_Keyboard.wav", 1, "Keyboard");
+    melody_.loadFileIntoPosition("Lower Harmony_Strings.wav" , 2, "Strings");
+    melody_.loadFileIntoPosition("Lower Harmony_Brass.wav"   , 3, "Brass");
     
     // Do this last, because it forces a call to prepareToPlay
     setAudioChannels(0, 2);
