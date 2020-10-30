@@ -70,6 +70,31 @@ Player::~Player() {
 }
 
 
+Point<float> Player::getCurPos(){
+    return curPos_;
+}
+
+Point<float> Player::getScreenPos(){
+    Point<float> screenPos;
+    screenPos.x = curPos_.x * (getWidth() - 1);
+    screenPos.y = curPos_.x * (getHeight() - 1);
+    return screenPos;
+}
+
+void Player::setCurPos(const Point<float> &pos) {
+    curPos_ = pos;
+    Logger::writeToLog(pos.toString());
+}
+
+bool Player::isPlaying(){
+    return isPlaying_;
+}
+
+Voice* Player::voiceAt(uint index) {
+    jassert(index < voices_.size());
+    return voices_.at(index);
+}
+
 #pragma mark - Main transport callbacks
 
 //void Player::changeListenerCallback(ChangeBroadcaster *source) {
@@ -121,7 +146,7 @@ void Player::getNextAudioBlock(const AudioSourceChannelInfo &bufferToFill) {
     const Array<float> weights = VoiceUI::defaultQuadWeights(curPos_, 1.f, 1.f, 0.5, 2);
 //    Logger::writeToLog(String(weights[0]));
     for(int i = 0; i < 4; ++i) {
-        Voice *voice = voices_[i];
+        Voice *voice = voices_[(uint)i];
         voice->getNextAudioBlock(bufferToFill, weights[i]);
     }
 //    for(Voice *voice : voices_) {

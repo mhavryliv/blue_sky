@@ -18,7 +18,7 @@ class Player : public ChangeBroadcaster, public AudioAppComponent {
 public:
     
     Player();
-    ~Player();
+    ~Player() override;
     
     // App Audio Overrides
     void prepareToPlay(int sampsPerBlock, double srate) override;
@@ -27,21 +27,15 @@ public:
     
     // Commands from UI
     void changePlayState(TransportState newState);
+    bool isPlaying();
+    Voice* voiceAt(uint index);
     
-    bool isPlaying() const {
-        return isPlaying_;
-    }
+    // Position Tracking
+    void setCurPos(const Point<float> &pos);
+    Point<float> getCurPos();
+    Point<float> getScreenPos();
     
-    Voice *voiceAt(int index) {
-        jassert(index < voices_.size());
-        return voices_.at(index);
-    }
-    void setCurPos(const Point<float> &pos) {
-        curPos_ = pos;
-        Logger::writeToLog(pos.toString());
-    }
-    
-    
+    // Voices
     Voice* drums() { return &drums_; }
     Voice* bass() { return &bass_; }
     Voice* harmony() { return &harmony_; }
@@ -56,13 +50,7 @@ private:
     Voice melody_;
     
     bool isPlaying_;
-    
     Array<float> voiceWeights_;
-    
     std::vector<Voice*> voices_;
-    
     Point<float> curPos_;
-    
-    
-    
 };
