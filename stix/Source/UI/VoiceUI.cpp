@@ -19,6 +19,7 @@ VoiceUI::VoiceUI()
     // initialise any special settings that your component needs.
     setInterceptsMouseClicks(false, false);
     addMouseListener(this, true);
+    /*  //ST Disable Sliders
     slider_ = nullptr;
     slider_ = new Slider(Slider::LinearHorizontal, Slider::NoTextBox);
     slider_->addListener(this);
@@ -27,12 +28,14 @@ VoiceUI::VoiceUI()
     slider2_->addListener(this);
     addAndMakeVisible(slider_);
     addAndMakeVisible(slider2_);
+     */
     resized();
     lastMotionPoint_ = Point<float>(getWidth()/2.f, getHeight() / 2.f);
     
 }
 
 void VoiceUI::sliderValueChanged(Slider *s) {
+    /*  //ST Disable Sliders
     if(s == slider_ && voice_->name().equalsIgnoreCase("melody")) {
         zeroOutPointForMelody = (float)s->getValue();
         repaint();
@@ -45,26 +48,35 @@ void VoiceUI::sliderValueChanged(Slider *s) {
         bassDropOff = (float)s->getValue();
         repaint();
     }
+     */
 }
 
 void VoiceUI::addMelodyComponents() {
 //    slider_ = new Slider(Slider::LinearHorizontal, Slider::NoTextBox);
+    
+    /*  //ST Disable Sliders
     slider_->setRange(0.1, 0.9);
     slider_->setValue(zeroOutPointForMelody, dontSendNotification);
     slider_->setVisible(true);
     slider2_->setVisible(false);
+     */
+    
 //    slider_->addListener(this);
 //    addAndMakeVisible(slider_);
 }
 
 void VoiceUI::addBassComponents() {
 //    slider_ = new Slider(Slider::LinearHorizontal, Slider::NoTextBox);
+    
+    /*  //ST Disable Sliders
     slider_->setRange(0.5, 4);
     slider_->setValue(maxSumValForBass, dontSendNotification);
     slider_->setVisible(true);
     slider2_->setRange(0.1, 1);
     slider2_->setValue(bassDropOff, dontSendNotification);
     slider2_->setVisible(true);
+    */
+     
 //    slider_->addListener(this);
 //    addAndMakeVisible(slider_);
 }
@@ -78,16 +90,20 @@ void VoiceUI::setVoicePointer(Voice *v) {
         addBassComponents();
     }
     else {
+        /*  //ST Disable Sliders
         slider_->setVisible(false);
         slider2_->setVisible(false);
+         */
     }
 }
 
 VoiceUI::~VoiceUI() {
+    /*  //ST Disable Sliders
     removeChildComponent(slider_);
     removeChildComponent(slider2_);
     delete slider_;
     delete slider2_;
+     */
 }
 
 void VoiceUI::mouseDown (const MouseEvent& event) {
@@ -550,7 +566,7 @@ void VoiceUI::paintBassStuff(Graphics &g) {
 void VoiceUI::resized() {
     // This method is where you should set the bounds of any child
     // components that your component contains..
-    
+    /*  //ST Disable Sliders
     if(slider_ != nullptr) {
         Rectangle<int> r = getBounds();
         r.setHeight(30);
@@ -560,4 +576,5 @@ void VoiceUI::resized() {
         r.translate(0, 60);
         slider2_->setBounds(r);
     }
+     */
 }

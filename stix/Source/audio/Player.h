@@ -33,7 +33,6 @@ public:
     // Position Tracking
     void setCurPos(const Point<float> &pos);
     Point<float> getCurPos();
-    Point<float> getScreenPos();
     
     // Voices
     Voice* drums() { return &drums_; }

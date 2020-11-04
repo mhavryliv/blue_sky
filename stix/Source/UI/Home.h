@@ -32,6 +32,8 @@ public:
     
     void setPlayerRef(Player *ref);
     
+    Point<float> getScreenPos();
+    
 private:
     Player *player_;
     std::unique_ptr<VoiceUI> voiceUI_;

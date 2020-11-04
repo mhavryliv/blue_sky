@@ -74,13 +74,6 @@ Point<float> Player::getCurPos(){
     return curPos_;
 }
 
-Point<float> Player::getScreenPos(){
-    Point<float> screenPos;
-    screenPos.x = curPos_.x * (getWidth() - 1);
-    screenPos.y = curPos_.x * (getHeight() - 1);
-    return screenPos;
-}
-
 void Player::setCurPos(const Point<float> &pos) {
     curPos_ = pos;
     Logger::writeToLog(pos.toString());
@@ -146,8 +139,12 @@ void Player::getNextAudioBlock(const AudioSourceChannelInfo &bufferToFill) {
     const Array<float> weights = VoiceUI::defaultQuadWeights(curPos_, 1.f, 1.f, 0.5, 2);
 //    Logger::writeToLog(String(weights[0]));
     for(int i = 0; i < 4; ++i) {
+        float weight = weights[i];
         Voice *voice = voices_[(uint)i];
         voice->getNextAudioBlock(bufferToFill, weights[i]);
+        
+        //ST Debug
+        //Logger::writeToLog(voices_[i]->name()+" "+String(weights[i]));
     }
 //    for(Voice *voice : voices_) {
 //        voice->getNextAudioBlock(bufferToFill);

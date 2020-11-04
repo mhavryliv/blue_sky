@@ -91,17 +91,21 @@ void Home::paint (juce::Graphics& g) {
         playState = "Stop";
         
         // Draw Marble on Screen at current pitch/roll position
-        Point<float> curPos = player_->getCurPos();
-        // Multiply by dimensions minus 1 to make sure the point is within one of the quadrants
-        curPos.x *= (getWidth() - 1);
-        curPos.y *= (getHeight() - 1);
+        Point<float> screenPos = getScreenPos();
         g.setColour(Colours::black.withAlpha(0.5f));
-        g.fillEllipse((int)curPos.x, (int)curPos.y, 10, 10);
+        g.fillEllipse((int)screenPos.x, (int)screenPos.y, 10, 10);
     }
     else {
         playState = "Play";
     }
     g.drawText(playState, playButtonRect_, Justification::centred);
+}
+
+Point<float> Home::getScreenPos(){
+    Point<float> screenPos  = player_->getCurPos();
+    screenPos.x *= (getWidth() - 1);
+    screenPos.y *= (getHeight() - 1);
+    return screenPos;
 }
 
 void Home::resized() {
@@ -142,11 +146,12 @@ void Home::showVoiceUI(Voice *voice, Colour colour) {
 void Home::updatePitchRoll(float pitch, float roll) {
     if(voiceUI_->isInFocus) {
         voiceUI_->updatePitchRoll(pitch, roll);
+    }else{
+        // Only Update the player when in focus
+        Point<float> normalisedPos = VoiceUI::convertPitchRollToNormXY(pitch, roll);
+        player_->setCurPos(normalisedPos);
+        repaint();
     }
-    // always update the player
-    Point<float> normalisedPos = VoiceUI::convertPitchRollToNormXY(pitch, roll);
-    player_->setCurPos(normalisedPos);
-    repaint();
 }
 
 void Home::mouseDown(const MouseEvent &event) {

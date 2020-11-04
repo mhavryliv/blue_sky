@@ -77,6 +77,9 @@ void Voice::getNextAudioBlock(const AudioSourceChannelInfo &bufferToFill, const 
         float prev = prevStemVols_[i];
         float cur = stemVols_[i];
         audio->copyFromLocalToDst(summingBuffer_, prev, cur);
+        
+        //ST Debug
+        //Logger::writeToLog(stemNames_[i]+String(stemVols_[i]));
     }
 
 //    for(Audio *audio : files_) {
