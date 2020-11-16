@@ -30,7 +30,7 @@ Player::Player() : state_(Stopped) {
         Voice *voice = voices_.at(i);
         voice->setFormatManager(&formatManager_);
     }
-    
+    /*
     drums_.loadFileIntoPosition("Upper Harmony_Piano.wav"   , 0, "Piano");
     drums_.loadFileIntoPosition("Upper Harmony_Keyboard.wav", 1, "Keyboard");
     drums_.loadFileIntoPosition("Upper Harmony_Strings.wav" , 2, "Strings");
@@ -50,6 +50,27 @@ Player::Player() : state_(Stopped) {
     melody_.loadFileIntoPosition("Lower Harmony_Keyboard.wav", 1, "Keyboard");
     melody_.loadFileIntoPosition("Lower Harmony_Strings.wav" , 2, "Strings");
     melody_.loadFileIntoPosition("Lower Harmony_Brass.wav"   , 3, "Brass");
+    */
+    
+    drums_.loadFileIntoPosition("Upper Harmony_Piano.mp3"   , 0, "Piano");
+    drums_.loadFileIntoPosition("Upper Harmony_Keyboard.mp3", 1, "Keyboard");
+    drums_.loadFileIntoPosition("Upper Harmony_Strings.mp3" , 2, "Strings");
+    drums_.loadFileIntoPosition("Upper Harmony_Brass.mp3"   , 3, "Brass");
+    
+    bass_.loadFileIntoPosition("Melody_Piano.mp3"   , 0, "Piano");
+    bass_.loadFileIntoPosition("Melody_Keyboard.mp3", 1, "Keyboard");
+    bass_.loadFileIntoPosition("Melody_Strings.mp3" , 2, "Strings");
+    bass_.loadFileIntoPosition("Melody_Brass.mp3"   , 3, "Brass");
+    
+    harmony_.loadFileIntoPosition("Bass_Piano.mp3"      , 0, "Piano");
+    harmony_.loadFileIntoPosition("Bass_Keyboard.mp3"   , 1, "Keyboard");
+    harmony_.loadFileIntoPosition("Bass_Strings.mp3"    , 2, "Strings");
+    harmony_.loadFileIntoPosition("Bass_Brass.mp3"      , 3, "Brass");
+    
+    melody_.loadFileIntoPosition("Lower Harmony_Piano.mp3"   , 0, "Piano");
+    melody_.loadFileIntoPosition("Lower Harmony_Keyboard.mp3", 1, "Keyboard");
+    melody_.loadFileIntoPosition("Lower Harmony_Strings.mp3" , 2, "Strings");
+    melody_.loadFileIntoPosition("Lower Harmony_Brass.mp3"   , 3, "Brass");
     
     // Do this last, because it forces a call to prepareToPlay
     setAudioChannels(0, 2);

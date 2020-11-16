@@ -180,7 +180,8 @@ void VoiceUI::updatePitchRoll(float pitch, float roll) {
 
     // Set the global record of the latest position
     lastMotionPoint_ = pos;
-    Array<float> weights = quadWeightsForNormalisedPos(pos);
+    //Array<float> weights = quadWeightsForNormalisedPos(pos);
+    Array<float> weights = quadWeightsNormalisedXY(pos);
     voice_->setAllStems(weights);
     repaint();
 }
@@ -442,12 +443,15 @@ Array<float> VoiceUI::quadWeightsForNormalisedPosMelody(const Point<float> pos) 
 // Bass shouldn't all be playing max vol in the centre
 // For drum track, only fade out once out of the the quadrant
 Array<float> VoiceUI::quadWeightsForNormalisedPos(const Point<float> pos) {
+    // Handle "Melody" and "Bass" weights differently
+    /*
     if(voice_->name().equalsIgnoreCase("melody")) {
         return quadWeightsForNormalisedPosMelody(pos);
     }
     if(voice_->name().equalsIgnoreCase("bass")) {
         return quadWeightsForNormalisedPosBass(pos);
     }
+     */
     Array<Rectangle<float>> quads = getQuads();
     Array<float> vols;
     vols.resize(4);
@@ -494,6 +498,77 @@ Array<float> VoiceUI::quadWeightsForNormalisedPos(const Point<float> pos) {
     return vols;
 }
 
+Array<float> VoiceUI::quadWeightsNormalisedXY(const Point<float> pos) {
+    // Handle "Melody" and "Bass" weights differently
+    /*
+     if(voice_->name().equalsIgnoreCase("melody")) {
+     return quadWeightsForNormalisedPosMelody(pos);
+     }
+     if(voice_->name().equalsIgnoreCase("bass")) {
+     return quadWeightsForNormalisedPosBass(pos);
+     }
+     */
+    Array<Rectangle<float>> quads = getQuads();
+    Array<float> vols;
+    vols.resize(4);
+    
+    // Normalise axis
+    float width = getWidth();
+    float height = getHeight();
+    Point<float> posNorm = pos;
+    posNorm.x /= getWidth();
+    posNorm.y /= getHeight();
+    
+    
+    // The maximum distance is the corner to corner length
+    const float maxDist = sqrt(powf(getHeight(), 2) + powf(getWidth(), 2));
+    for(int i = 0; i < 4; ++i) {
+        Point<float> p;
+        if(i == 0) {
+            p = quads[i].getTopLeft();
+        }
+        else if(i == 1) {
+            p = quads[i].getTopRight();
+        }
+        else if(i == 2) {
+            p = quads[2].getBottomLeft();
+        }
+        else if(i == 3) {
+            p = quads[3].getBottomRight();
+        }
+        
+        //Normalise p
+        Point<float> pNorm = p;
+        pNorm.x /= getWidth();
+        pNorm.y /= getHeight();
+        
+        float dist = pNorm.getDistanceFrom(posNorm);
+        vols.setUnchecked(i, dist);
+    }
+    
+    // Store some info about them...
+    float max = 0.f, min = 1.f;
+    int maxIndex = -1, minIndex = -1;
+    
+    // Invert them
+    for(int i = 0; i < 4; ++i) {
+        const float val = vols[i];///sqrt(2);   //(vols[i] / maxDist);
+        if(val <= min) {
+            min = val;
+            minIndex = i;
+        }
+        if(val >= max) {
+            max = val;
+            maxIndex = i;
+        }
+        // Invert the value for volume
+        float inverted = 1.f - val;
+        if (inverted<0) inverted = 0;
+        vols.setUnchecked(i, inverted);
+    }
+    return vols;
+}
+
 void VoiceUI::paint (juce::Graphics& g) {
     // Break into four quadrants
     const float height = getHeight();
@@ -514,7 +589,8 @@ void VoiceUI::paint (juce::Graphics& g) {
     
     Array<Rectangle<float>> quads = getQuads();
 //    const Array<float> weights = quadWeightsForNormalisedPos(getMouseXYRelative().toFloat());
-    const Array<float> weights = quadWeightsForNormalisedPos(lastMotionPoint_);
+    //const Array<float> weights = quadWeightsForNormalisedPos(lastMotionPoint_);
+    const Array<float> weights = quadWeightsNormalisedXY(lastMotionPoint_);
     
     const Font mainFont = g.getCurrentFont();
     for(int i = 0; i < 4; ++i) {
@@ -528,12 +604,25 @@ void VoiceUI::paint (juce::Graphics& g) {
                    quads[i].translated(0, -20), Justification::centred);
     }
     
+    Rectangle<float> titleBox = Rectangle<float> (0, getHeight()/2.f-20.f, getWidth(), 40.f);
+    //Rectangle<float> titleBox = Rectangle<float> (0, 350, getWidth(), 40);
+    g.setColour(textColour);
+    //g.fillRect(titleBox);
+    g.setFont(40.f);
+    g.drawText(voice_->name(), titleBox, Justification::centred);
+    
+    // Draw Voice Name
+    
+    
+    /*
+     // Specific graphics for Melody / Bass screens
     if(voice_->name().equalsIgnoreCase("melody")) {
         paintMelodyStuff(g);
     }
     if(voice_->name().equalsIgnoreCase("bass")) {
         paintBassStuff(g);
     }
+    */
     
     g.setColour(Colours::black.withAlpha(0.5f));
     g.fillEllipse((int)lastMotionPoint_.x, (int)lastMotionPoint_.y, 10, 10);

@@ -56,6 +56,7 @@ private:
     Array<float> quadWeightsForNormalisedPos(const Point<float> pos);
     Array<float> quadWeightsForNormalisedPosMelody(const Point<float> pos);
     Array<float> quadWeightsForNormalisedPosBass(const Point<float> pos);
+    Array<float> quadWeightsNormalisedXY(const Point<float> pos);
     Array<Rectangle<float>> getQuads();
     Array<Rectangle<float>> getQuadVolZones();
     Voice *voice_;
